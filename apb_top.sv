@@ -1,21 +1,18 @@
 module top();
   
-  bit presetn;
-  bit pclk;
-  
-  always#5 pclk = ~pclk;
+  logic presetn;
+  logic pclk;
   
   initial begin
-    pclk = 0;
     presetn = 0;
-    #5 presetn = 1;
+    #10 presetn = 1;
   end
   
   //interface instantiation
   apb_if inf(.pclk(pclk),.presetn(presetn));
   
   //DUT instantiation
-  apb_slave#(.DW(32),.AW(5))
+  apb_slave#(.AW(`AW),.DW(`DW))
   dut(
     .transfer(inf.trasnfer),
     .READ_WRITE(inf.READ_WRITE),
