@@ -1,12 +1,12 @@
 # **APB**
 
-## 1.Introduction
+## 1. Introduction
 
 
 The Advanced Peripheral Bus (APB) is part of the Advanced Microcontroller Bus Architecture (AMBA) protocol family. It defines a low-cost interface that is optimised for minimal power consumption and reduced interface complexity. The APB protocol is not pipelined, use it to connect to low-bandwidth peripherals that do not require the high performance of the AXI protocol.APB is a non pipelined structure.
 
 
-1.1 Key Features
+### 1.1 Key Features
 
 1. It supports addresses up to 32 bit wide.
 2. APB4 support for write strobe signal to enable sparse data transfer on the write data
