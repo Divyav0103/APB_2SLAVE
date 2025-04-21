@@ -1,10 +1,10 @@
 class apb_sequence_item extends uvm_sequence_item;
-  rand logic transfer;
-  rand logic [7:0]apb_write_paddr;
-  rand logic [7:0]apb_write_data;
-  rand logic [7:0]apb_read_paddr;
-  rand logic [7:0]apb_read_data_out;
-  logic READ_WRITE;
+  rand bit transfer;
+  rand logic [`AW-1:0]apb_write_paddr;
+  rand logic [`DW-1:0]apb_write_data;
+  rand logic [`AW-1:0]apb_read_paddr;
+  rand logic [`DW-1:0]apb_read_data_out;
+  rand bit READ_WRITE;
   
   `uvm_object_utils_begin(apb_sequence_item)
   `uvm_field_int(transfer, UVM_ALL_ON)
