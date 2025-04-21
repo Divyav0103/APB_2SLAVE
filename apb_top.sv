@@ -18,7 +18,8 @@ module top();
     .READ_WRITE(inf.READ_WRITE),
     .apb_write_paddr(inf.apb_write_paddr),
     .apb_write_data(inf.apb_write_data),
-    .apb_read_paddr(inf.apb_read_paddr));
+    .apb_read_paddr(inf.apb_read_paddr)
+    .apb_read_);
   
   initial begin
     uvm_config_db#(virtual apb_if)::set(null,"*","vif", inf);
