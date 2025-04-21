@@ -38,7 +38,7 @@ bus.
 ![dut drawio](https://github.com/user-attachments/assets/09887148-2bc6-42a6-815a-0c250197eec4)
 
 
-## APB Pin Description
+## Operation of APB
 ![Untitled Diagram drawio](https://github.com/user-attachments/assets/d0acc3ea-d422-4044-9025-be983ed24185)
 
 
