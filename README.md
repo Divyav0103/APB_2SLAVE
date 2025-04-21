@@ -27,7 +27,8 @@ bus.
 
 
 
-![apb_2slave drawio](https://github.com/user-attachments/assets/1578d1bc-fc7c-4167-b5e9-9f1db68a1748)
+![APB_2slave drawio](https://github.com/user-attachments/assets/b5c14962-306a-48b8-a867-853963dbdf8e)
+
 
 
 
