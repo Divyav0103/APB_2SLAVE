@@ -22,7 +22,7 @@ bus.
 11. Flexibility to send completely configured data.
 12. In APB every transfer takes at least two cycles(Setup Phase and Access Phase).
 
-APB ARCHITECTURE
+## APB ARCHITECTURE
 
 
 
@@ -31,7 +31,7 @@ APB ARCHITECTURE
 
 
 
-DUT
+## DUT
 
 
 
