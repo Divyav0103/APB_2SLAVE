@@ -8,7 +8,7 @@ APB ARCHITECTURE
 
 
 
-##DUT
+DUT
 
 
 
