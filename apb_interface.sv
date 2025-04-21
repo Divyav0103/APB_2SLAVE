@@ -5,7 +5,7 @@ interface apb_if(input bit pclk,input bit presetn);
   logic [7:0]apb_write_data;
   logic [7:0]apb_read_paddr;
   logic [7:0]apb_read_data_out;
-  logic [7:0] READ_WRITE;
+  logic READ_WRITE;
   
   clocking drv_cb@(posedge pclk);
     default input#0 output#0;
