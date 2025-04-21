@@ -34,10 +34,5 @@ bus.
 ## DUT
 
 
-
-
-
-
-
 ![dut drawio](https://github.com/user-attachments/assets/09887148-2bc6-42a6-815a-0c250197eec4)
 
