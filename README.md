@@ -14,13 +14,9 @@ bus.
 3. Single Master - Multiple Slaves.
 4. Programmable Wait state insertion.
 5. Slave supports fine grain control of response per address or per transfer.
-6. Programmable character length(multiple of 8 bits).
-7. Simple Interface.
-8. Suitable for many Peripherals.
-9. APB4 supports protected access.
-10. Random PSLVERR insertion.
-11. Flexibility to send completely configured data.
-12. In APB every transfer takes at least two cycles(Setup Phase and Access Phase).
+6. Simple Interface.
+7. Suitable for many Peripherals.
+8. In APB every transfer takes at least two cycles(Setup Phase and Access Phase).
 
 ## 2. APB ARCHITECTURE
 
