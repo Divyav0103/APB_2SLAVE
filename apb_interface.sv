@@ -13,7 +13,7 @@ interface apb_if(input bit pclk,input bit presetn);
     input presetn;
   endclocking
   
-  clocking amon_cb@(posedge pclk) or negedge presetn);
+  clocking mon_cb@(posedge pclk) or negedge presetn);
     default input #0 output #0;
     input apb_read_data_out;
   endclocking
