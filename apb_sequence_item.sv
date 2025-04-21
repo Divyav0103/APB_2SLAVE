@@ -1,7 +1,3 @@
-import uvm_pkg::*;
-`include "uvm_macros.svh"
-`include "define.svh"
-
 class apb_sequence_item extends uvm_sequence_item;
   rand logic transfer;
   rand logic [7:0]apb_write_paddr;
