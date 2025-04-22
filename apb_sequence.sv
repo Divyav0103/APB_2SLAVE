@@ -1,4 +1,14 @@
-class apbsequence extends uvm_sequence;
+//------------------------------------------------------------------------------
+ 
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_sequence.sv
+// Developer    : Divya V 
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
+class apb_sequence extends uvm_sequence;
   `uvm_object_utils(apb_sequence)
   
   function new(string name = "apb_sequence");
