@@ -7,7 +7,6 @@
 //------------------------------------------------------------------------------
 module top();
   
-  //Clock and reset signals
   logic presetn;
   logic pclk;
   
@@ -16,10 +15,8 @@ module top();
     #10 presetn = 1;
   end
   
-  //Instantiate virtual interface
   apb_if inf(.pclk(pclk),.presetn(presetn));
   
-  //DUT instantiation
   apb_slave#(.AW(`AW),.DW(`DW))
   dut(
     .pclk(inf.pclk),
@@ -31,8 +28,7 @@ module top();
     .apb_read_paddr(inf.apb_read_paddr)
     .apb_read_data_out(inf.apb_read_data_out)
   );
-  
-  //Clock generation
+
   initial begin
     pclk = 0;
     forever #5 pclk = ~pclk
@@ -42,7 +38,6 @@ module top();
    `uvm_config_db#(virtual apb_if)::set(null, "*", "vif",inf);
   end
   
-  //Start the UVM test
   initial begin
     run_test();
   end
