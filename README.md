@@ -33,8 +33,20 @@ bus.
 
 ![dut drawio](https://github.com/user-attachments/assets/09887148-2bc6-42a6-815a-0c250197eec4)
 
+## 2.2 Block Diagram
+![image](https://github.com/user-attachments/assets/3b673148-974e-419c-b52c-e1d77d97f5a7)
+
+
 
 ## Operation of APB
 ![Untitled Diagram drawio](https://github.com/user-attachments/assets/d0acc3ea-d422-4044-9025-be983ed24185)
+
+## Testcases
+
+https://in.docworkspace.com/d/sIOTAxqWUAqPNl8AG
+
+## Document
+
+https://in.docworkspace.com/d/sID3AxqWUAuLQnMAG
 
 
