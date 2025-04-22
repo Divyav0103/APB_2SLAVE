@@ -8,6 +8,7 @@
 
 class apb_in_mon extends uvm_monitor;
   `uvm_component_utils(apb_in_mon)
+  
   virtual apb_if vif;
   uvm_analysis_port#(apb_sequence_item) mon_in;
   apb_sequence_item item;
