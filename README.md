@@ -41,6 +41,27 @@ bus.
 ## Operation of APB
 ![Untitled Diagram drawio](https://github.com/user-attachments/assets/d0acc3ea-d422-4044-9025-be983ed24185)
 
+Idle State:
+
+PSELx = 0, PENABLE = 0
+This is the default or inactive state. No transfer is initiated here
+The system will remain in the IDLE state if PREADY = 1 and no transfer is required
+Transition occurs to the SETUP state if a transfer request is initiated (trigger not explicitly shown but implied by the transition arrow)
+
+Setup State:
+PSELx = 1, PENABLE = 0
+In this state, the peripheral select signal (PSELx) is asserted, indicating the target peripheral is selected for communication.
+The system is preparing for the actual data transfer
+Transition to the ACCESS state occurs when PREADY = 0, meaning the bus is not yet ready to complete the transfer
+
+Access State:
+
+PSELx = 1, PENABLE = 1
+This state represents the active transfer phase, where both PSELx and PENABLE are asserted.
+The data transfer occurs during this state
+If PREADY = 1, indicating the bus is ready, and the transfer completes, the system transitions back to the IDLE state
+If PREADY = 0, the system stays in the ACCESS state, waiting for the bus to be ready
+
 ## Testcases
 
 https://in.docworkspace.com/d/sIOTAxqWUAqPNl8AG
