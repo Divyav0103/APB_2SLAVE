@@ -1,4 +1,3 @@
-`include "apb_define.svh"
 interface apb_if(input bit pclk,input bit presetn);
   logic transfer;
   logic [`AW-1:0]apb_write_paddr;
