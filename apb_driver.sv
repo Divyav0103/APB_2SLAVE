@@ -1,3 +1,11 @@
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_driver.sv
+// Developer    : Divya V
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
 class apb_driver extends uvm_driver;
   `uvm_component_utils(apb_driver)
   
