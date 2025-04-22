@@ -1,5 +1,13 @@
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_top.sv
+// Developer    : Divya V
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
 module top();
   
+  //Clock and reset signals
   logic presetn;
   logic pclk;
   
@@ -8,7 +16,7 @@ module top();
     #10 presetn = 1;
   end
   
-  //interface instantiation
+  //Instantiate virtual interface
   apb_if inf(.pclk(pclk),.presetn(presetn));
   
   //DUT instantiation
@@ -24,14 +32,21 @@ module top();
     .apb_read_data_out(inf.apb_read_data_out)
   );
   
+  //Clock generation
   initial begin
-    $dumpfile("dump.vcd");
-    $dumpvars();
     pclk = 0;
     forever #5 pclk = ~pclk
   end
+
+  initial begin
+   `uvm_config_db#(virtual apb_if)::set(null, "*", "vif",inf);
+  end
   
+  //Start the UVM test
   initial begin
     run_test();
   end
 endmodule
+
+
+
