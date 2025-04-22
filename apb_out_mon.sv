@@ -1,4 +1,12 @@
- class apb_out_monitor extends uvm_monitor;
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_out_mon.sv
+// Developer    : Divya V
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
+class apb_out_monitor extends uvm_monitor;
    `uvm_component_utils(apb_out_monitor)
    
    virtual apb_if.out_mon vif;
