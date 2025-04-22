@@ -1,3 +1,13 @@
+//------------------------------------------------------------------------------
+ 
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_interface.sv
+// Developer    : Divya V
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
 interface apb_if(input bit pclk,input bit presetn);
   logic transfer;
   logic [`AW-1:0]apb_write_paddr;
