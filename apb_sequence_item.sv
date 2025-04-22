@@ -1,3 +1,11 @@
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_sequence_item.sv
+// Developer    : Divya V
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
 class apb_sequence_item extends uvm_sequence_item;
   rand bit transfer;
   rand logic [`AW-1:0]apb_write_paddr;
