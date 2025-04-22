@@ -1,3 +1,11 @@
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_active_agent.sv
+// Developer    : Divya V
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
 class apb_active_agent extends uvm_agent;
   `uvm_component_utils(apb_active_agent)
   apb_sequencer seqr;
