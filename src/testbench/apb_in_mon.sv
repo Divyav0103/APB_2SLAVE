@@ -33,11 +33,11 @@ class apb_in_mon extends uvm_monitor;
       item = apb_sequence_item::type_id::create("item", this);
       @(vif.mon_cb)
       begin
-        item.i_ptransfer = vif.mon_cb.i_ptransfer;
-        item.i_pwrite = vif.mon_cb.i_pwrite;
-        item.i_pwaddr = vif.mon_cb.i_pwaddr;
-        item.i_pwdata = vif.mon_cb.i_pwdata;
-        item.i_praddr = vif.mon_cb.i_praddr;
+        item.transfer = vif.mon_cb.transfer;
+        item.read_write = vif.mon_cb.read_write;
+        item.apb_write_paddr = vif.mon_cb.apb_write_paddr;
+        item.apb_write_data = vif.mon_cb.apb_write_data;
+        item.apb_read_paddr = vif.mon_cb.apb_read_paddr;
        end
         `uvm_info("input mon", $sformatf("---Input mon---"), UVM_LOW);
         item.print();
