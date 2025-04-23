@@ -8,8 +8,7 @@ class apb_env extends uvm_env;
 
   apb_active_agent a_agent;
   apb_passive_agent p_agent;
-//  apb_cov cov;
-//  apb_scb sb;
+  apb_scoreboard sb;
 
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
