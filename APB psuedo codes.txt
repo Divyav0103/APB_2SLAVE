@@ -1,0 +1,527 @@
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_interface.sv
+// Developer    : Divya V
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
+// Interface module declaration
+interface apb_if(input bit pclk,input bit presetn);
+
+// APB transaction signals
+  logic transfer;
+  logic [`AW-1:0]apb_write_paddr;
+  logic [`DW-1:0]apb_write_data;
+  logic [`AW-1:0]apb_read_paddr;
+  logic [`DW-1:0]apb_read_data_out;
+  logic READ_WRITE;
+  
+  // Driver clocking block 
+  clocking drv_cb@(posedge pclk or negedge presetn);
+    default input #0 output #0;
+    output transfer, READ_WRITE, apb_write_paddr, apb_write_data, apb_read_paddr;
+    input presetn;
+  endclocking
+  
+  // Monitor clocking block
+  clocking mon_cb@(posedge pclk) or negedge presetn);
+    default input #0 output #0;
+    input apb_read_data_out;
+  endclocking
+    
+  // Modports for driver and monitor 
+  modport DRV(clocking drv_cb);
+  modport MON(clocking apb_mon);
+endinterface
+
+
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_sequence_item.sv
+// Developer    : Divya V 
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
+//Class for APB transaction
+class apb_sequence_item extends uvm_sequence_item;
+
+ //APB Transaction fields as random variables
+  rand bit transfer;
+  rand logic [`AW-1:0]apb_write_paddr;
+  rand logic [`DW-1:0]apb_write_data;
+  rand logic [`AW-1:0]apb_read_paddr;
+  rand logic [`DW-1:0]apb_read_data_out;
+  rand bit READ_WRITE;
+  
+ //Factory registration and field automation
+  `uvm_object_utils_begin(apb_sequence_item)
+  `uvm_field_int(transfer, UVM_ALL_ON)
+  `uvm_field_int(apb_write_paddr, UVM_ALL_ON)
+  `uvm_field_int(apb_write_data, UVM_ALL_ON)
+  `uvm_field_int(apb_read_paddr, UVM_ALL_ON)
+  `uvm_field_int(apb_read_data_out, UVM_ALL_ON)
+  `uvm_field_int(READ_WRITE, UVM_ALL_ON)
+  `uvm_object_utils_end
+  
+ //Constructor
+  function new(string name = "apb_sequence_item");
+    super.new(name); 
+  endfunction: new
+  
+endclass
+
+ 
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_sequence.sv
+// Developer    : Divya V 
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
+//APB class sequence 
+class apb_sequence extends uvm_sequence;
+
+  //Factory registration
+  `uvm_object_utils(apb_sequence)
+
+
+  //Constructor  
+  function new(string name = "apb_sequence");
+    super.new(name);
+  endfunction
+  
+ //Sequence Body
+  virtual task body();
+    req = apb_sequence_item::type_id::create("req");
+    wait_for_grant();
+    req.randomize();
+    send_request(req);
+    wait_for_item_done();
+  endtask
+endclass
+
+ 
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_sequencer.sv
+// Developer    : Divya V 
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
+class apb_sequencer extends uvm_sequencer;
+
+  //Factory registration
+  `uvm_component_utils(apb_sequencer)
+ 
+  //Constructor
+  function new(string name = "apb_sequencer",uvm_component parent);
+    super.new(name, parent);
+  endfunction
+endclass
+ 
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_driver.sv
+// Developer    : Divya V
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
+class apb_driver extends uvm_driver;
+
+  //Factory Registration
+  `uvm_component_utils(apb_driver)
+  
+  //Virtual interface handle
+  virtual apb_if vif;
+  uvm_analysis_port #(apb_sequence_item) item_collect_port;
+
+  //Constructor  
+  function new(string name = "apb_driver", uvm_component parent);
+    super.new(name, parent);
+  endfunction
+  
+  //Build phase to get interface from config DB
+  function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    if(!uvm_config_db #(virtual apb_if)::get(this, "*", "vif", vif))
+      `uvm_fatal(get_type_name(), "cant get virtual interface");
+  endfunction
+  
+  //Run phase 
+  task run_phase(uvm_phase phase);
+    super.run_phase(phase);
+    forever begin
+      wait(vif.presetn);
+      seq_item_port.get_next_item(req);
+      drive();
+      seq_item_port.item_done();
+    end
+  endtask
+  
+  //Drive task 
+  virtual task drive();
+   //body
+  endtask
+endclass
+
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_active_agent.sv
+// Developer    : Divya V
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
+
+class apb_active_agent extends uvm_agent;
+
+  //Factory registration
+  `uvm_component_utils(apb_active_agent)
+
+  //sequencer driver and input monitor class handle
+  apb_sequencer seqr;
+  apb_driver drv;
+  apb_in_mon input_mon;
+
+  //Constructor  
+  function new(string name = "apb_active_agent" ,uvm_component parent);
+    super.new(name, parent);
+  endfunction
+  
+  //Build phase to create components if the agnet is active
+  function void build_phase(uvm_phase phase);
+    `uvm_info("ACTIVE_AGENT","Inside Build_phase apb_active_agent", UVM_HIGH);
+    super.build_phase(phase);
+    if(get_is_active() == UVM_ACTIVE) begin
+      seqr = apb_sequencer::type_id::create("seqr",this);
+      drv = apb_driver::type_id::create("drv",this);
+    end
+    input_mon = apb_in_mon::type_id::create("input_mon",this);
+  endfunction: build_phase
+ 
+  //Connect phase to connect sequencer and driver if agent is active 
+  function void connect_phase(uvm_phase phase);
+    super.connect_phase(phase);
+    if(get_is_active() == UVM_ACTIVE) begin
+      drv.seq_item_port.connect(seqr.seq_item_export);
+    end
+  endfunction
+endclass
+
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_passive_agent.sv
+// Developer    : Divya V
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
+class apb_passive_agent extends uvm_agent;
+  
+  //Factory registration
+  `uvm_component_utils(apb_passive_agent)
+
+  //Hnadle to output monitor
+  apb_out_monitor output_mon;
+  
+  //Constructor
+  function new(string name = "apb_passive_agent", uvm_component parent);
+    super.new(name, parent);
+  endfunction
+  
+  //Build Phase to create output monitor
+  function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    output_mon = apb_out_monitor::type_id::create("output_mon", this);
+  endfunction: build_phase
+endclass: apb_passive_agent
+
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_in_mon.sv
+// Developer    : Divya V
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
+class apb_in_mon extends uvm_monitor;
+
+  //Factory registration
+  `uvm_component_utils(apb_in_mon)
+
+  //Virtual interface handle
+  virtual apb_if vif;
+  
+  //Analysis port 
+  uvm_analysis_port#(apb_sequence_item) mon_in;
+
+  //Handle for monitored sequence item
+  apb_sequence_item item;
+  
+  //Constructor
+  function new(string name = "apb_in_mon", uvm_component parent);
+    super.new(name, parent);
+  endfunction
+  
+  //Build Phase 
+  function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    mon_in = new("mon_in",this);
+    item_collect_port = new("item_collect_port", this);
+    if(!uvm_config_db#(virtual apb_if)::get(this,"*","vif",vif))
+      `uvm_fatal(get_type_name(),"cant get virtual interface");
+  endfunction
+  
+  //Run phase 
+  task run_phase(uvm_phase phase);
+   //body
+  endtask
+endclass
+
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_out_mon.sv
+// Developer    : Divya V
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
+ class apb_out_monitor extends uvm_monitor;
+
+   //Factory registration
+   `uvm_component_utils(apb_out_monitor)
+   
+   //Virtual interface handle
+   virtual apb_if.out_mon vif;
+
+   //Analysis port 
+   uvm_analysis_port#(apb_sequence_item) item_collected_port2;
+   apb_sequence_item item;
+   
+   //Constructor
+   function new(string name = "apb_out_mon", uvm_component parent);
+     super.new(name, parent);
+   endfunction: new
+   
+   //Build phase 
+   function void build_phase(uvm_phase phase);
+     super.build_phase(phase);
+     item_collected_port2 = new("mon_out", this);
+     if(!uvm_config_db#(virtual apb_if)::get(this, "*", "vif", vif))
+       `uvm_fatal(get_type_name(),"cant get virtual interface")
+   endfunction: build_phase
+      
+   //Run phase
+   task run_phase(uvm_phase phase);
+   //body
+   endtask
+endclass
+
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_scoreboard.sv
+// Developer    : Divya V
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
+
+class apb_scoreboard extends uvm_scoreboard;
+  
+  //Resgister component with factory
+  `uvm_compoment_utils(apb_scoreboard)
+  
+  //Virtual interface handle 
+  virtual apb_if inf;
+  
+  //Analysis port
+  uvm_analysis_imp_ip #(apb_sequence_item, apb_scoreboard) aport_ip;
+  uvm_analysis_imp_op #(apb_sequence_sequence_item, apb_scoreboard) aport_op;
+  
+  //TLM FIFOs
+  uvm_tlm_fifo #(apb_sequence_item) exp_op_fifo;
+  uvm_tlm_fifo #(apb_sequence_item) act_op_fifo;
+  
+  //External function decalartions
+  extern function void compare(apb_sequence_item exp_tr, apb_sequence_item act_tr);
+  extern function void display(apb_sequence_item exp_tr, apb_sequence_item act_tr);
+  
+  
+  //Constructor
+  function new(string name = "apb_scoreboard", uvm_component parent);
+    super.new(name, parent);
+  endfunction: new
+  
+  //Build phase
+  function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    aport_ip = new("aport_ip", this);
+    aport_op = new("aport_op", this);
+    exp_op_fifo = new("exp_op_fifo", this);
+    act_op_fifo = new("act_op_fifo", this);
+  endfunction
+    
+  //Input port write method 
+    function void write_ip(apb_sequnece_item tr);
+      //put tx in expected fifo
+    endfunction
+    
+//Output port write method
+    function void write_op(apb_sequence_item tr);
+      //put tx in actual fifo
+    endfunction
+    
+    //Run phase
+    task run_phase(uvm_phase phase);
+      //compare logic
+    endtask
+  
+endclass
+
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_env.sv
+// Developer    : Divya V
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
+
+class apb_env extends uvm_env;
+
+   //Factory registration
+   `uvm_component_utils(apb_env)
+
+  //Constructor
+  function new(string name="",uvm_component parent);
+    super.new(name,parent);
+  endfunction
+
+  //Handles of agents and scoreboard
+  apb_active_agent a_agent;
+  apb_passive_agent p_agent;
+  apb_scoreboard sb;
+
+  //Build phase
+  function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    a_agent = apb_active_agent::type_id::create("a_agent",this);
+    p_agent = apb_passive_agent::type_id::create("p_agent",this);
+//    sb = apb_scb::type_id::create("sb",this);
+  endfunction
+
+  //Connect phase
+  function void connect_phase(uvm_phase phase);
+    super.connect_phase(phase);
+//    a_agent.in_mon.in_mon2sb_cov.connect(sb.mon_in2sc_export);
+//    p_agent.out_mon.out_mon2sb_cov.connect(sb.mon_out2sc_export);
+//    a_agent.in_mon.in_mon2sb_cov.connect(cov.mon_in2cv_export);
+//    p_agent.out_mon.out_mon2sb_cov.connect(cov.mon_out2cv_export);
+    
+  endfunction
+
+endclass
+
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_test.sv
+// Developer    : Divya V
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
+import uvm_pkg::*;
+`include "uvm_macros.svh"
+
+class apb_test extends uvm_test;
+   //Factory registration
+  `uvm_component_utils(apb_test)
+  
+  //Handle to environment and sequence
+  apb_env env;
+  apb_sequence seq;
+  
+  //Constructor
+  function new(string name = "apb_test", uvm_component parent);
+    super.new(name, parent);
+  endfunction	
+  
+  //Build phase
+  function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    env = apb_env::type_id::create("env", this);
+  endfunction
+
+  //Run Phase
+  task run_phase(uvm_phase phase);
+    super.run_phase(phase);
+    phase.raise_objection(this);
+    seq = apb_sequence::type_id::create("seq", this);
+    seq.start(env.a_agent.seqr);
+    
+    `uvm_info(get_type_name(), $sformatf("Inside APB_TEST"), UVM_LOW);
+    `uvm_info(get_type_name(), $sformatf("Done APB_TEST"), UVM_LOW);
+    
+    phase.drop_objection(this);
+  endtask
+endclass
+//------------------------------------------------------------------------------
+// Project      : APB
+// File Name    : apb_top.sv
+// Developer    : Divya V
+//------------------------------------------------------------------------------
+// Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
+//------------------------------------------------------------------------------
+
+module top();
+  
+  //Clock and reset signals
+  logic presetn;
+  logic pclk;
+  
+  initial begin
+    presetn = 0;
+    #10 presetn = 1;
+  end
+  
+  //Instantiate virtual interface
+  apb_if inf(.pclk(pclk),.presetn(presetn));
+  
+  //DUT instantiation
+  apb_slave#(.AW(`AW),.DW(`DW))
+  dut(
+    .pclk(inf.pclk),
+    .presetn(inf.presetn),
+    .transfer(inf.trasnfer),
+    .READ_WRITE(inf.READ_WRITE),
+    .apb_write_paddr(inf.apb_write_paddr),
+    .apb_write_data(inf.apb_write_data),
+    .apb_read_paddr(inf.apb_read_paddr)
+    .apb_read_data_out(inf.apb_read_data_out)
+  );
+  
+  //Clock generation
+  initial begin
+    pclk = 0;
+    forever #5 pclk = ~pclk
+  end
+
+  initial begin
+   `uvm_config_db#(virtual apb_if)::set(null, "*", "vif",inf);
+  end
+  
+  //Start the UVM test
+  initial begin
+    run_test();
+  end
+endmodule
+
+
+
+
+
