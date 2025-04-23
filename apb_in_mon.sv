@@ -35,9 +35,9 @@ class apb_in_mon extends uvm_monitor;
       begin
         item.i_ptransfer = vif.mon_cb.i_ptransfer;
         item.i_pwrite = vif.mon_cb.i_pwrite;
-	    item.i_pwaddr = vif.mon_cb.i_pwaddr;
-		item.i_pwdata = vif.mon_cb.i_pwdata;
-		item.i_praddr = vif.mon_cb.i_praddr;
+	item.i_pwaddr = vif.mon_cb.i_pwaddr;
+	item.i_pwdata = vif.mon_cb.i_pwdata;
+	item.i_praddr = vif.mon_cb.i_praddr;
         `uvm_info("input mon", $sformatf("---Input mon---"), UVM_LOW);
         item.print();
         `uvm_info("input mon", $sformatf("-------------------"), UVM_LOW);	
