@@ -14,7 +14,6 @@ class apb_env extends uvm_env;
     super.build_phase(phase);
     a_agent = apb_active_agent::type_id::create("a_agent",this);
     p_agent = apb_passive_agent::type_id::create("p_agent",this);
-//    cov = apb_cov::type_id::create("cov",this);
 //    sb = apb_scb::type_id::create("sb",this);
   endfunction
 
