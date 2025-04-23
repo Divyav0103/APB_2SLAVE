@@ -28,7 +28,7 @@ class apb_out_monitor extends uvm_monitor;
    task run_phase(uvm_phase phase);
      repeat(4) @(vif.mon_cb)
        forever begin
-         item = apb_sequnce_item::type_id::create("item", this);
+         item = apb_sequence_item::type_id::create("item", this);
          @(vif.mon_cb)
          begin
            item.o_prdata = vif.mon_cb.o_prdata;
@@ -39,5 +39,6 @@ class apb_out_monitor extends uvm_monitor;
            
            mon_out2sb.write(item);
          end
+       end
    endtask
 endclass

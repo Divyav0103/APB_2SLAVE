@@ -5,16 +5,17 @@
 //------------------------------------------------------------------------------
 // Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
 //------------------------------------------------------------------------------
-
+`include "uvm_macros.svh"
+import uvm_pkg::*;
 
 class apb_scoreboard extends uvm_scoreboard;
 
-  `uvm_compoment_utils(apb_scoreboard)
+  `uvm_component_utils(apb_scoreboard)
   
   virtual apb_if inf;
   
-  uvm_analysis_imp_ip #(apb_sequence_item, apb_scoreboard) aport_ip;
-  uvm_analysis_imp_op #(apb_sequence_sequence_item, apb_scoreboard) aport_op;
+  uvm_analysis_imp_ip#(apb_sequence_item, apb_scoreboard) aport_ip;
+  uvm_analysis_imp_op#(apb_sequence_item, apb_scoreboard) aport_op;
   
   uvm_tlm_fifo #(apb_sequence_item) exp_op_fifo;
   uvm_tlm_fifo #(apb_sequence_item) act_op_fifo;

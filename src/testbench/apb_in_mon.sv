@@ -38,11 +38,14 @@ class apb_in_mon extends uvm_monitor;
         item.i_pwaddr = vif.mon_cb.i_pwaddr;
         item.i_pwdata = vif.mon_cb.i_pwdata;
         item.i_praddr = vif.mon_cb.i_praddr;
-        
+       end
         `uvm_info("input mon", $sformatf("---Input mon---"), UVM_LOW);
         item.print();
         `uvm_info("input mon", $sformatf("-------------------"), UVM_LOW);	
         
+
         mon_in2sb.write(item);
+      end
   endtask
+
 endclass

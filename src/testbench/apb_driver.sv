@@ -5,12 +5,16 @@
 //------------------------------------------------------------------------------
 // Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
 //------------------------------------------------------------------------------
+//`include "uvm_macros.svh"
+//import uvm_pkg::*;
+//`include "apb_sequence_item"
 
 class apb_driver extends uvm_driver#(apb_sequence_item);
   
   `uvm_component_utils(apb_driver)
   
   virtual apb_if vif;
+  apb_sequence_item item;
   
   function new(string name = "apb_driver", uvm_component parent);
     super.new(name, parent);
@@ -22,6 +26,7 @@ class apb_driver extends uvm_driver#(apb_sequence_item);
       begin
       `uvm_fatal(get_type_name(), "cant get virtual interface");
       end
+   item = apb_sequence_item :: type_id :: create("item", this);
   endfunction
   
   task run_phase(uvm_phase phase);
@@ -39,14 +44,14 @@ class apb_driver extends uvm_driver#(apb_sequence_item);
     @(vif.drv_cb)
     begin
       if(req.i_ptransfer == 1) begin
-        vif.drv_cb.i_prwrite <= req.i_prwrite;
-        vif.drv_cb.i_pwaddr <= req.i_prwaddr;
-        vif.drv_cb.i_pwdata <= req.i_pwdata;
-        vif.drv_cb.i_praddr <= req.i_praddr;
+        vif.drv_cb.i_prwrite <= item.i_prwrite;
+        vif.drv_cb.i_pwaddr <= item.i_prwaddr;
+        vif.drv_cb.i_pwdata <= item.i_pwdata;
+        vif.drv_cb.i_praddr <= item.i_praddr;
       end
        `uvm_info("driver", $sformatf("----Driver----"), UVM_LOW);
        pkt.print();
        `uvm_info("driver", $sformatf("----Driver----"), UVM_LOW);
-  
+  end
   endtask
 endclass

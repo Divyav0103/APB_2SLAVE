@@ -5,7 +5,8 @@
 //------------------------------------------------------------------------------
 // Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
 //------------------------------------------------------------------------------
-
+`include "uvm_macros.svh"
+import uvm_pkg::*;
 class apb_sequence_item extends uvm_sequence_item;
   rand bit i_ptransfer;
   rand logic [`AW-1:0]i_prwaddr;
