@@ -22,7 +22,7 @@ class apb_in_mon extends uvm_monitor;
   
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    mon_in = new("mon_in",this);
+	  mon_in2sb = new("mon_in2sb",this);
     if(!uvm_config_db#(virtual apb_if)::get(this,"*","vif",vif))
       `uvm_fatal("Input Monitor","cant get virtual interface");
   endfunction
