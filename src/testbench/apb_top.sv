@@ -13,7 +13,7 @@ import uvm_pkg::*;
 
 module top();
   
- // logic presetn;
+  logic presetn;
   logic pclk;
   
   initial begin

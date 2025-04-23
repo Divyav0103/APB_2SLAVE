@@ -8,6 +8,9 @@
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 
+`uvm_analysis_imp_decl(_ip)
+`uvm_analysis_imp_decl(_op)
+
 class apb_scoreboard extends uvm_scoreboard;
 
   `uvm_component_utils(apb_scoreboard)
@@ -35,7 +38,7 @@ class apb_scoreboard extends uvm_scoreboard;
     act_op_fifo = new("act_op_fifo", this);
   endfunction
     
-    function void write_ip(apb_sequnece_item tr);
+    function void write_ip(apb_sequence_item tr);
       //put tx in expected fifo
     endfunction
     
