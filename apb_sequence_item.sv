@@ -8,7 +8,7 @@
 
 class apb_sequence_item extends uvm_sequence_item;
   rand bit i_ptransfer;
-  rand logic [`AW-1:0]i_pwaddr;
+  rand logic [`AW-1:0]i_prwaddr;
   rand logic [`DW-1:0]i_pwdata;
   rand logic [`AW-1:0]i_praddr;
   rand logic [`DW-1:0]o_prdata;
@@ -16,7 +16,7 @@ class apb_sequence_item extends uvm_sequence_item;
   
   `uvm_object_utils_begin(apb_sequence_item)
   `uvm_field_int(i_ptransfer, UVM_ALL_ON)
-  `uvm_field_int(i_pwaddr, UVM_ALL_ON)
+  `uvm_field_int(i_prwaddr, UVM_ALL_ON)
   `uvm_field_int(i_pwdata, UVM_ALL_ON)
   `uvm_field_int(i_praddr, UVM_ALL_ON)
   `uvm_field_int(i_pwrite, UVM_ALL_ON)
