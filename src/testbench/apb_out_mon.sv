@@ -31,7 +31,7 @@ class apb_out_monitor extends uvm_monitor;
          item = apb_sequence_item::type_id::create("item", this);
          @(vif.mon_cb)
          begin
-           item.o_prdata = vif.mon_cb.o_prdata;
+           item.apb_read_data_out = vif.mon_cb.apb_read_data_out;
            
            `uvm_info("output monitor", $sformatf("---Output monitor---"), UVM_LOW);	
            item.print();
