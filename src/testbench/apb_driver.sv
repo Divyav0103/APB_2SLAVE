@@ -43,11 +43,11 @@ class apb_driver extends uvm_driver#(apb_sequence_item);
   virtual task drive();
     @(vif.drv_cb)
     begin
-      if(req.i_ptransfer == 1) begin
-        vif.drv_cb.i_prwrite <= item.i_prwrite;
-        vif.drv_cb.i_pwaddr <= item.i_prwaddr;
-        vif.drv_cb.i_pwdata <= item.i_pwdata;
-        vif.drv_cb.i_praddr <= item.i_praddr;
+      if(item.transfer == 1) begin
+        vif.drv_cb.read_write <= item.read_write;
+        vif.drv_cb.apb_write_paddr <= item.apb_write_paddr;
+        vif.drv_cb.apb_write_data <= item.apb_write_data;
+        vif.drv_cb.apb_read_paddr <= item.apb_read_paddr;
       end
        `uvm_info("driver", $sformatf("----Driver----"), UVM_LOW);
        pkt.print();
