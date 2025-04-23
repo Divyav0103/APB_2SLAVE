@@ -6,7 +6,7 @@
 // Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
 //------------------------------------------------------------------------------
 
-class apb_driver extends uvm_driver;
+class apb_driver extends uvm_driver#(apb_sequence_item);
   `uvm_component_utils(apb_driver)
   
   virtual apb_if vif;
@@ -19,7 +19,9 @@ class apb_driver extends uvm_driver;
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
     if(!uvm_config_db #(virtual apb_if)::get(this, "*", "vif", vif))
+      begin
       `uvm_fatal(get_type_name(), "cant get virtual interface");
+      end
   endfunction
   
   task run_phase(uvm_phase phase);
@@ -33,6 +35,17 @@ class apb_driver extends uvm_driver;
   endtask
   
   virtual task drive();
+    @(vif.DRV)
+    begin
+      if(i_ptransfer) begin
+        vif.DRV.i_prwrite <= req.i_prwrite;
+        vif.DRV.i_pwaddr <= req.i_prwaddr;
+        vif.DRV.i_pwdata <= req.i_pwdata;
+        vif.DRV.i_praddr <= req.i_praddr;
+      end
+       `uvm_info("driver", $sformatf("----Driver----"), UVM_LOW);
+	  pkt.print();
+	  `uvm_info("driver", $sformatf("----Driver----"), UVM_LOW);
   
   endtask
 endclass
