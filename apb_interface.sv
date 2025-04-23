@@ -16,16 +16,15 @@ interface apb_if(input bit pclk,input bit presetn);
   
   clocking drv_cb@(posedge pclk or negedge presetn);
     default input #0 output #0;
-    output i_ptransfer, i_prwrite, i_pwaddr, i_wdata, i_praddr;
+    inout i_ptransfer, i_prwrite, i_pwaddr, i_wdata, i_praddr;
     input presetn;
   endclocking
   
   clocking mon_cb@(posedge pclk) or negedge presetn);
     default input #0 output #0;
-    input o_prdata;
+    input i_ptransfer, i_prwrite, i_pwaddr, i_wdata, i_praddr, o_prdata;
   endclocking
     
-  
   modport DRV(clocking drv_cb);
     modport MON(clocking mon_cb);
 endinterface
