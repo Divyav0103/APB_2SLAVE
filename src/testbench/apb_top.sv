@@ -27,12 +27,12 @@ module top();
   dut(
     .pclk(inf.pclk),
     .presetn(inf.presetn),
-    .i_transfer(inf.i_ptrasnfer),
-    .i_prwrite(inf.i_prwrite),
-    .i_pwaddr(inf.i_pwaddr),
-    .i_pwdata(inf.i_pwdata),
-    .i_praddr(inf.i_praddr),
-    .o_prdata(inf.o_prdata)
+    .transfer(inf.trasnfer),
+    .read_write(inf.read_write),
+    .apb_write_paddr(inf.apb_write_paddr),
+    .apb_write_data(inf.apb_write_data),
+    .apb_read_paddr(inf.apb_read_paddr),
+    .apb_read_data_out(inf.apb_read_data_out)
   );
 */
 
