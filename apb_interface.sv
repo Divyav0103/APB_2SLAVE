@@ -7,22 +7,22 @@
 //------------------------------------------------------------------------------
 
 interface apb_if(input bit pclk,input bit presetn);
-  logic transfer;
-  logic [`AW-1:0]apb_write_paddr;
-  logic [`DW-1:0]apb_write_data;
-  logic [`AW-1:0]apb_read_paddr;
-  logic [`DW-1:0]apb_read_data_out;
-  logic READ_WRITE;
+  logic i_ptransfer;
+  logic [`AW-1:0]i_pwaddr;
+  logic [`DW-1:0]i_pwdata;
+  logic [`AW-1:0]i_praddr;
+  logic [`DW-1:0]o_prdata;
+  logic i_pwrite;
   
   clocking drv_cb@(posedge pclk or negedge presetn);
     default input #0 output #0;
-    output transfer, READ_WRITE, apb_write_paddr, apb_write_data, apb_read_paddr;
+    output i_ptransfer, i_pwrite, i_pwaddr, i_wdata, i_praddr;
     input presetn;
   endclocking
   
   clocking mon_cb@(posedge pclk) or negedge presetn);
     default input #0 output #0;
-    input apb_read_data_out;
+    input o_prdata;
   endclocking
     
   
