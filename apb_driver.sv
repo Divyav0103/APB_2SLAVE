@@ -7,6 +7,7 @@
 //------------------------------------------------------------------------------
 
 class apb_driver extends uvm_driver#(apb_sequence_item);
+  
   `uvm_component_utils(apb_driver)
   
   virtual apb_if vif;
@@ -24,9 +25,10 @@ class apb_driver extends uvm_driver#(apb_sequence_item);
   endfunction
   
   task run_phase(uvm_phase phase);
+    repeat(1) #(vif.drv_sb);
     super.run_phase(phase);
+    
     forever begin
-      wait(vif.presetn);
       seq_item_port.get_next_item(req);
       drive();
       seq_item_port.item_done();
@@ -34,17 +36,17 @@ class apb_driver extends uvm_driver#(apb_sequence_item);
   endtask
   
   virtual task drive();
-    @(vif.DRV)
+    @(vif.drv_cb)
     begin
-      if(i_ptransfer) begin
-        vif.DRV.i_prwrite <= req.i_prwrite;
-        vif.DRV.i_pwaddr <= req.i_prwaddr;
-        vif.DRV.i_pwdata <= req.i_pwdata;
-        vif.DRV.i_praddr <= req.i_praddr;
+      if(req.i_ptransfer == 1) begin
+        vif.drv_cb.i_prwrite <= req.i_prwrite;
+        vif.drv_cb.i_pwaddr <= req.i_prwaddr;
+        vif.drv_cb.i_pwdata <= req.i_pwdata;
+        vif.drv_cb.i_praddr <= req.i_praddr;
       end
        `uvm_info("driver", $sformatf("----Driver----"), UVM_LOW);
-	  pkt.print();
-	  `uvm_info("driver", $sformatf("----Driver----"), UVM_LOW);
+       pkt.print();
+       `uvm_info("driver", $sformatf("----Driver----"), UVM_LOW);
   
   endtask
 endclass
