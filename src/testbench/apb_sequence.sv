@@ -23,7 +23,7 @@ class apb_sequence extends uvm_sequence;
 endclass
 
 class apb_write0 extends uvm_sequence;
-  `uvm_object_utils(apb_write)
+  `uvm_object_utils(apb_write0)
   
   function new(string name = "apb_write0");
     super.new(name);
@@ -36,7 +36,7 @@ class apb_write0 extends uvm_sequence;
 endclass
 
 class apb_write1 extends uvm_sequence;
-  `uvm_object_utils(apb_write)
+  `uvm_object_utils(apb_write1)
   
   function new(string name = "apb_write1");
     super.new(name);
@@ -49,7 +49,7 @@ class apb_write1 extends uvm_sequence;
 endclass
 
 class apb_read0 extends uvm_sequence;
-  `uvm_object_utils(apb_read)
+  `uvm_object_utils(apb_read0)
   
   function new(string name = "apb_read0");
     super.new(name);
@@ -63,9 +63,9 @@ endclass
 
 
 class apb_read1 extends uvm_sequence;
-  `uvm_object_utils(apb_read)
+  `uvm_object_utils(apb_read1)
   
-  function new(string name = "apb_read0");
+  function new(string name = "apb_read1");
     super.new(name);
   endfunction
   

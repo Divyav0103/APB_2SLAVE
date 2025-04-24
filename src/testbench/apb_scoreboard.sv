@@ -17,7 +17,7 @@ class apb_scoreboard extends uvm_scoreboard;
   
   bit [7:0] mem[0:255];
   
-  virtual apb_if.DRV inf;
+  virtual apb_if.DRV vif;
   
   uvm_analysis_imp_ip#(apb_sequence_item, apb_scoreboard) aport_ip;
   uvm_analysis_imp_op#(apb_sequence_item, apb_scoreboard) aport_op;
@@ -36,8 +36,8 @@ class apb_scoreboard extends uvm_scoreboard;
     super.build_phase(phase);
     aport_ip = new("aport_ip", this);
     aport_op = new("aport_op", this);
-    if(!uvm_config_db#(virtual apb_if.MON)::get(this, "*", "vif",vif);
-       `uvm_fatal("Scoreboard", "Unable to get the voirtual interface");
+    if(!uvm_config_db#(virtual apb_if.MON)::get(this, "*", "vif",vif))
+       `uvm_fatal("Scoreboard", "Unable to get the virtual interface")
   endfunction
 
     
@@ -54,7 +54,7 @@ class apb_scoreboard extends uvm_scoreboard;
       endfunction
     
          
-       extern function void compare(apb_sequence_item exp_pkt, apb_sequence_item act_pkt);
+       function void compare(apb_sequence_item exp_pkt, apb_sequence_item act_pkt);
          if(exp_pkt.apb_write_data == act_pkt.apb_write_data && exp_pkt.apb_read_data_out == act_pkt.apb_read_data_out)
            begin
              exp_pkt.print();
@@ -68,7 +68,7 @@ class apb_scoreboard extends uvm_scoreboard;
          end
        endfunction
        
-       task run_phase(uvm_pahse phase);
+       task run_phase(uvm_phase phase);
          forever begin
            if(exp_q.size() > 0 && act_q.size() > 0) begin
              exp_pkt = exp_q.pop_front();
