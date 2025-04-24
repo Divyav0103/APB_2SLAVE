@@ -15,44 +15,79 @@ class apb_scoreboard extends uvm_scoreboard;
 
   `uvm_component_utils(apb_scoreboard)
   
-  virtual apb_if inf;
+  bit [7:0] mem[0:255];
+  
+  virtual apb_if.DRV inf;
   
   uvm_analysis_imp_ip#(apb_sequence_item, apb_scoreboard) aport_ip;
   uvm_analysis_imp_op#(apb_sequence_item, apb_scoreboard) aport_op;
   
-  uvm_tlm_fifo #(apb_sequence_item) exp_op_fifo;
-  uvm_tlm_fifo #(apb_sequence_item) act_op_fifo;
+  apb_sequence_item exp_pkt;
+  apb_sequence_item act_pkt;
   
-  extern function void compare(apb_sequence_item exp_tr, apb_sequence_item act_tr);
-  extern function void display(apb_sequence_item exp_tr, apb_sequence_item act_tr);
+  apb_sequence_item exp_q[$];
+  apb_sequence_item act_q[$];
   
-  function new(string name = "apb_scoreboard", uvm_component parent);
+    function new(string name = "apb_scoreboard", uvm_component parent);
     super.new(name, parent);
   endfunction: new
   
-  function void build_phase(uvm_phase phase);
+    function void build_phase(uvm_phase phase);
     super.build_phase(phase);
     aport_ip = new("aport_ip", this);
     aport_op = new("aport_op", this);
-    exp_op_fifo = new("exp_op_fifo", this);
-    act_op_fifo = new("act_op_fifo", this);
+    if(!uvm_config_db#(virtual apb_if.MON)::get(this, "*", "vif",vif);
+       `uvm_fatal("Scoreboard", "Unable to get the voirtual interface");
   endfunction
+
     
-    function void write_ip(apb_sequence_item tr);
-      //put tx in expected fifo
-    endfunction
+     virtual function void write_ip(apb_sequence_item i_tr);
+       exp_q.push_back(i_tr);
+       `uvm_info("Input Queue",$sformatf("Expected tx: queue size = %d, transfer = %b, apb_write_paddr = %0h, apb_write_data = %b, apb_read_paddr = %0h, read_write = %b, apb_read_data_out = %0h", exp_q.size(), i_tr.transfer, i_tr.apb_write_paddr, i_tr.apb_write_data, i_tr.apb_read_paddr, i_tr.read_write, i_trapb_read_data_out), UVM_LOW);
+       $display("------------------------------------------------------------------------------------");
+     endfunction
+
+       virtual function void write_out(apb_sequence_item o_tr);
+         act_q.push_back(o_tr);
+         `uvm_info("Output Queue",$sformatf("Actual tx: queue size = %d, transfer = %b, apb_write_paddr = %0h, apb_write_data = %b, apb_read_paddr = %0h, read_write = %b, apb_read_data_out = %0h", act_q.size(), o_tr.transfer, o_tr.apb_write_paddr, o_tr.apb_write_data, o_tr.apb_read_paddr, o_tr.read_write, o_trapb_read_data_out), UVM_LOW);
+         $display("------------------------------------------------------------------------------------");
+      endfunction
     
-    function void write_op(apb_sequence_item tr);
-      //put tx in actual fifo
-    endfunction
-    
-    //Run phase
-    task run_phase(uvm_phase phase);
-      //compare logic
-    endtask
-  
-endclass
-
-
-
-
+         
+       extern function void compare(apb_sequence_item exp_pkt, apb_sequence_item act_pkt);
+         if(exp_pkt.apb_write_data == act_pkt.apb_write_data && exp_pkt.apb_read_data_out == act_pkt.apb_read_data_out)
+           begin
+             exp_pkt.print();
+             `uvm_info("MATCH","",UVM_LOW)
+             act_pkt.print();
+           end
+         else begin
+           exp_pkt.print();
+           `uvm_info("MISMATCH","",UVM_LOW)
+           act_pkt.print();
+         end
+       endfunction
+       
+       task run_phase(uvm_pahse phase);
+         forever begin
+           if(exp_q.size() > 0 && act_q.size() > 0) begin
+             exp_pkt = exp_q.pop_front();
+             act_pkt = act_q.pop_front();
+             
+             if(exp_pkt.transfer) begin
+               if(exp_pkt.read_write) begin
+                 mem[exp_pkt.apb_write_paddr] = exp_pkt.apb_write_data;
+                 compare(exp_pkt, act_pkt);
+               end
+               else begin
+                 exp_pkt.apb_read_data_out = mem[exp_pkt.apb_read_paddr];
+                 compare(exp_pkt, act_pkt);
+               end
+             end
+           end
+         end
+       endtask
+  endclass
+         
+         
+         
