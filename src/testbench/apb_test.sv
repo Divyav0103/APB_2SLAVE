@@ -5,7 +5,7 @@ class apb_test extends uvm_test;
   `uvm_component_utils(apb_test)
   
   apb_env env;
-  apb_sequence seq;
+  apb_write0 seq;
   
   function new(string name = "apb_test", uvm_component parent);
     super.new(name, parent);
@@ -22,8 +22,8 @@ class apb_test extends uvm_test;
     seq = apb_sequence::type_id::create("seq", this);
     seq.start(env.a_agent.seqr);
     
-    `uvm_info(get_type_name(), $sformatf("Inside APB_TEST"), UVM_LOW);
-    `uvm_info(get_type_name(), $sformatf("Done APB_TEST"), UVM_LOW);
+    `uvm_info(get_type_name(), $sformatf("Inside apb_wite0"), UVM_LOW);
+    `uvm_info(get_type_name(), $sformatf("Done apb_write0"), UVM_LOW);
     
     phase.drop_objection(this);
   endtask
