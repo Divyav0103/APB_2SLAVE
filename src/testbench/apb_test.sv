@@ -1,6 +1,3 @@
-import uvm_pkg::*;
-`include "uvm_macros.svh"
-
 class apb_test extends uvm_test;
   `uvm_component_utils(apb_test)
   
@@ -19,7 +16,7 @@ class apb_test extends uvm_test;
   task run_phase(uvm_phase phase);
     super.run_phase(phase);
     phase.raise_objection(this);
-    seq = apb_sequence::type_id::create("seq", this);
+    seq = apb_write0::type_id::create("seq");
     seq.start(env.a_agent.seqr);
     
     `uvm_info(get_type_name(), $sformatf("Inside apb_wite0"), UVM_LOW);

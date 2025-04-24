@@ -5,9 +5,6 @@
 //------------------------------------------------------------------------------
 // Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
 //------------------------------------------------------------------------------
-`include "uvm_macros.svh"
-import uvm_pkg::*;
-
 `uvm_analysis_imp_decl(_ip)
 `uvm_analysis_imp_decl(_op)
 
@@ -17,10 +14,10 @@ class apb_scoreboard extends uvm_scoreboard;
   
   bit [7:0] mem[0:255];
   
-  virtual apb_if.DRV vif;
+  virtual apb_if.MON vif;
   
-  uvm_analysis_imp_ip#(apb_sequence_item, apb_scoreboard) aport_ip;
-  uvm_analysis_imp_op#(apb_sequence_item, apb_scoreboard) aport_op;
+  uvm_analysis_imp_ip#(apb_sequence_item, apb_scoreboard)aport_ip;
+  uvm_analysis_imp_op#(apb_sequence_item, apb_scoreboard)aport_op;
   
   apb_sequence_item exp_pkt;
   apb_sequence_item act_pkt;
@@ -28,11 +25,11 @@ class apb_scoreboard extends uvm_scoreboard;
   apb_sequence_item exp_q[$];
   apb_sequence_item act_q[$];
   
-    function new(string name = "apb_scoreboard", uvm_component parent);
+  function new(string name = "apb_scoreboard", uvm_component parent);
     super.new(name, parent);
   endfunction: new
   
-    function void build_phase(uvm_phase phase);
+  function void build_phase(uvm_phase phase);
     super.build_phase(phase);
     aport_ip = new("aport_ip", this);
     aport_op = new("aport_op", this);
@@ -43,13 +40,13 @@ class apb_scoreboard extends uvm_scoreboard;
     
      virtual function void write_ip(apb_sequence_item i_tr);
        exp_q.push_back(i_tr);
-       `uvm_info("Input Queue",$sformatf("Expected tx: queue size = %d, transfer = %b, apb_write_paddr = %0h, apb_write_data = %b, apb_read_paddr = %0h, read_write = %b, apb_read_data_out = %0h", exp_q.size(), i_tr.transfer, i_tr.apb_write_paddr, i_tr.apb_write_data, i_tr.apb_read_paddr, i_tr.read_write, i_trapb_read_data_out), UVM_LOW);
+       `uvm_info("Input Queue",$sformatf("Expected tx: queue size = %d, transfer = %b, apb_write_paddr = %0h, apb_write_data = %b, apb_read_paddr = %0h, read_write = %b, apb_read_data_out = %0h", exp_q.size(), i_tr.transfer, i_tr.apb_write_paddr, i_tr.apb_write_data, i_tr.apb_read_paddr, i_tr.read_write, i_tr.apb_read_data_out), UVM_LOW);
        $display("------------------------------------------------------------------------------------");
      endfunction
 
        virtual function void write_out(apb_sequence_item o_tr);
          act_q.push_back(o_tr);
-         `uvm_info("Output Queue",$sformatf("Actual tx: queue size = %d, transfer = %b, apb_write_paddr = %0h, apb_write_data = %b, apb_read_paddr = %0h, read_write = %b, apb_read_data_out = %0h", act_q.size(), o_tr.transfer, o_tr.apb_write_paddr, o_tr.apb_write_data, o_tr.apb_read_paddr, o_tr.read_write, o_trapb_read_data_out), UVM_LOW);
+         `uvm_info("Output Queue",$sformatf("Actual tx: queue size = %d, transfer = %b, apb_write_paddr = %0h, apb_write_data = %b, apb_read_paddr = %0h, read_write = %b, apb_read_data_out = %0h", act_q.size(), o_tr.transfer, o_tr.apb_write_paddr, o_tr.apb_write_data, o_tr.apb_read_paddr, o_tr.read_write, o_tr.apb_read_data_out), UVM_LOW);
          $display("------------------------------------------------------------------------------------");
       endfunction
     

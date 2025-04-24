@@ -22,7 +22,7 @@ class apb_driver extends uvm_driver#(apb_sequence_item);
   
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    if(!uvm_config_db #(virtual apb_if)::get(this, "*", "vif", vif))
+    if(!uvm_config_db #(virtual apb_if)::get(this, " ", "vif", vif))
       begin
       `uvm_fatal(get_type_name(), "cant get virtual interface");
       end
@@ -30,9 +30,9 @@ class apb_driver extends uvm_driver#(apb_sequence_item);
   endfunction
   
   task run_phase(uvm_phase phase);
-    repeat(1) #(vif.drv_sb);
-    super.run_phase(phase);
     
+    super.run_phase(phase);
+    repeat(1) @(vif.drv_cb);
     forever begin
       seq_item_port.get_next_item(req);
       drive();
@@ -50,7 +50,7 @@ class apb_driver extends uvm_driver#(apb_sequence_item);
         vif.drv_cb.apb_read_paddr <= item.apb_read_paddr;
       end
        `uvm_info("driver", $sformatf("----Driver----"), UVM_LOW);
-       pkt.print();
+       // pkt.print();
        `uvm_info("driver", $sformatf("----Driver----"), UVM_LOW);
   end
   endtask

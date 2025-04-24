@@ -34,7 +34,7 @@ class apb_write0 extends uvm_sequence;
                        apb_write_paddr[8] == 1'b0;})
   endtask
 endclass
-
+/*
 class apb_write1 extends uvm_sequence;
   `uvm_object_utils(apb_write1)
   
@@ -73,4 +73,4 @@ class apb_read1 extends uvm_sequence;
     `uvm_do_with(req, {read_write == 1'b0;
                        apb_write_paddr[8] == 1'b1;})
   endtask
-endclass
+endclass*/

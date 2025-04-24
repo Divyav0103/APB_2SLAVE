@@ -45,9 +45,9 @@ module top();
    uvm_config_db#(virtual apb_if)::set(null, "*", "vif",inf);
   end
   
-//  initial begin
-  //  run_test();
- // end
+  initial begin
+   run_test("apb_test");
+  end
 endmodule
 
 

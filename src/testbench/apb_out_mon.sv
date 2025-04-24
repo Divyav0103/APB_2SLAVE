@@ -10,7 +10,7 @@ class apb_out_monitor extends uvm_monitor;
   
    `uvm_component_utils(apb_out_monitor)
   
-  virtual apb_if.out_mon vif;
+  virtual apb_if.MON vif;
   uvm_analysis_port#(apb_sequence_item) mon_out2sb;
   apb_sequence_item item;
    
