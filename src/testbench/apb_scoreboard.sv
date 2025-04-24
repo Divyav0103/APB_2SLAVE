@@ -9,7 +9,8 @@
 `uvm_analysis_imp_decl(_op)
 
 class apb_scoreboard extends uvm_scoreboard;
-
+  `uvm_analysis_imp_decl(_ip)
+  `uvm_analysis_imp_decl(_op)
   `uvm_component_utils(apb_scoreboard)
   
   bit [7:0] mem[0:255];
