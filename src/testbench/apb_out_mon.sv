@@ -32,6 +32,11 @@ class apb_out_monitor extends uvm_monitor;
          @(vif.mon_cb)
          begin
            item.apb_read_data_out = vif.mon_cb.apb_read_data_out;
+           item.transfer = vif.mon_cb.transfer;
+           item.read_write = vif.mon_cb.read_write;
+           item.apb_write_paddr = vif.mon_cb.apb_write_paddr;
+           item.apb_write_data = vif.mon_cb.apb_write_data;
+           item.apb_read_paddr = vif.mon_cb.apb_read_paddr;
            
            `uvm_info("output monitor", $sformatf("---Output monitor---"), UVM_LOW);	
            item.print();
