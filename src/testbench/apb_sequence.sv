@@ -24,7 +24,7 @@ endclass
 
 class apb_write0 extends uvm_sequence;
   `uvm_object_utils(apb_write0)
-  
+ apb_sequence_item req; 
   function new(string name = "apb_write0");
     super.new(name);
   endfunction

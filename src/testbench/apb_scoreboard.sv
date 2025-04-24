@@ -9,8 +9,7 @@
 `uvm_analysis_imp_decl(_op)
 
 class apb_scoreboard extends uvm_scoreboard;
-  `uvm_analysis_imp_decl(_ip)
-  `uvm_analysis_imp_decl(_op)
+ 
   `uvm_component_utils(apb_scoreboard)
   
   bit [7:0] mem[0:255];
@@ -45,7 +44,7 @@ class apb_scoreboard extends uvm_scoreboard;
        $display("------------------------------------------------------------------------------------");
      endfunction
 
-       virtual function void write_out(apb_sequence_item o_tr);
+       virtual function void write_op(apb_sequence_item o_tr);
          act_q.push_back(o_tr);
          `uvm_info("Output Queue",$sformatf("Actual tx: queue size = %d, transfer = %b, apb_write_paddr = %0h, apb_write_data = %b, apb_read_paddr = %0h, read_write = %b, apb_read_data_out = %0h", act_q.size(), o_tr.transfer, o_tr.apb_write_paddr, o_tr.apb_write_data, o_tr.apb_read_paddr, o_tr.read_write, o_tr.apb_read_data_out), UVM_LOW);
          $display("------------------------------------------------------------------------------------");

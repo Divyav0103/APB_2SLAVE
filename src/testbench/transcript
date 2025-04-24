@@ -1,5 +1,5 @@
 # vsim -c top 
-# Start time: 13:41:41 on Apr 24,2025
+# Start time: 14:10:03 on Apr 24,2025
 # ** Note: (vsim-8009) Loading existing optimized design _opt
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
@@ -21,15 +21,44 @@
 # Loading work.top(fast)
 # Loading mtiUvm.questa_uvm_pkg(fast)
 # Loading work.apb_if(fast)
-# ** Error: (vsim-3043) Unresolved reference to 'read_write'.
-#    Time: 0 ns  Iteration: 0  Region: /apb_top_sv_unit::apb_write0 File: apb_sequence.sv Line: 34
-# ** Error: (vsim-3043) Unresolved reference to 'apb_write_paddr'.
-#    Time: 0 ns  Iteration: 0  Region: /apb_top_sv_unit::apb_write0 File: apb_sequence.sv Line: 34
-# ** Error: (vsim-3567) apb_scoreboard.sv(9): No field named 'write_op'.
-#    Time: 0 ns  Iteration: 0  Region: /apb_top_sv_unit::uvm_analysis_imp_op #(apb_top_sv_unit::apb_sequence_item, apb_top_sv_unit::apb_scoreboard) File: apb_top.sv
-# ** Error: (vsim-3567) apb_scoreboard.sv(9): No field named 'write_op'.
-#    Time: 0 ns  Iteration: 0  Region: /apb_top_sv_unit::uvm_analysis_imp_op #(apb_top_sv_unit::apb_sequence_item, apb_top_sv_unit::apb_scoreboard) File: apb_top.sv
 # Loading /tools/mentor/questasim_10.6c/questasim/uvm-1.1d/linux/uvm_dpi.so
-# Error loading design
-# End time: 13:41:42 on Apr 24,2025, Elapsed time: 0:00:01
-# Errors: 4, Warnings: 0
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
+# UVM_INFO @ 0: reporter [RNTST] Running test apb_test...
+# UVM_FATAL apb_out_mon.sv(25) @ 0: uvm_test_top.env.p_agent.output_mon [Output_Moniotr] cant get virtual interface
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :    3
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    1
+# ** Report counts by id
+# [Output_Moniotr]     1
+# [Questa UVM]     2
+# [RNTST]     1
+# ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh(292)
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# End time: 14:10:06 on Apr 24,2025, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 0
