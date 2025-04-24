@@ -30,7 +30,7 @@ class apb_write0 extends uvm_sequence;
   endfunction
   
   virtual task body();
-    `uvm_do_with(req, {read_write == 1'b1;
+    `uvm_do_with(req, {transfer ==1;read_write == 1'b1;
                        apb_write_paddr[8] == 1'b0;})
   endtask
 endclass

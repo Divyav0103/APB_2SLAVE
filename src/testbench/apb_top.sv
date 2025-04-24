@@ -42,7 +42,8 @@ module top();
   end
 
   initial begin
-   uvm_config_db#(virtual apb_if)::set(null, "*", "vif",inf);
+   uvm_config_db#(virtual apb_if.DRV)::set(null, "*", "vif",inf);
+   uvm_config_db#(virtual apb_if.MON)::set(null, "*", "vif", inf);
   end
   
   initial begin

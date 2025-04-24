@@ -14,7 +14,7 @@ class apb_scoreboard extends uvm_scoreboard;
   
   bit [7:0] mem[0:255];
   
-  virtual apb_if.MON vif;
+//  virtual apb_if vif;
   
   uvm_analysis_imp_ip#(apb_sequence_item, apb_scoreboard)aport_ip;
   uvm_analysis_imp_op#(apb_sequence_item, apb_scoreboard)aport_op;
@@ -33,8 +33,8 @@ class apb_scoreboard extends uvm_scoreboard;
     super.build_phase(phase);
     aport_ip = new("aport_ip", this);
     aport_op = new("aport_op", this);
-    if(!uvm_config_db#(virtual apb_if.MON)::get(this, "*", "vif",vif))
-       `uvm_fatal("Scoreboard", "Unable to get the virtual interface")
+  /*  if(!uvm_config_db#(virtual apb_if)::get(this, "*", "vif",vif))
+       `uvm_fatal("Scoreboard", "Unable to get the virtual interface")*/
   endfunction
 
     
@@ -67,7 +67,7 @@ class apb_scoreboard extends uvm_scoreboard;
        
        task run_phase(uvm_phase phase);
          forever begin
-           if(exp_q.size() > 0 && act_q.size() > 0) begin
+           wait(exp_q.size() > 0 && act_q.size() > 0) begin
              exp_pkt = exp_q.pop_front();
              act_pkt = act_q.pop_front();
              

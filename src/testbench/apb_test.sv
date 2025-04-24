@@ -12,6 +12,11 @@ class apb_test extends uvm_test;
     super.build_phase(phase);
     env = apb_env::type_id::create("env", this);
   endfunction
+ 
+  function void end_of_elaboration_phase(uvm_phase phase);
+    super.end_of_elaboration_phase(phase);
+    uvm_top.print_topology();
+  endfunction
 
   task run_phase(uvm_phase phase);
     super.run_phase(phase);
