@@ -21,3 +21,56 @@ class apb_sequence extends uvm_sequence;
     wait_for_item_done();
   endtask
 endclass
+
+class apb_write0 extends uvm_sequence;
+  `uvm_object_utils(apb_write)
+  
+  function new(string name = "apb_write0");
+    super.new(name);
+  endfunction
+  
+  virtual task body();
+    `uvm_do_with(req, {read_write == 1'b1;
+                       apb_write_paddr[8] == 1'b0;})
+  endtask
+endclass
+
+class apb_write1 extends uvm_sequence;
+  `uvm_object_utils(apb_write)
+  
+  function new(string name = "apb_write1");
+    super.new(name);
+  endfunction
+  
+  virtual task body();
+    `uvm_do_with(req, {read_write == 1'b1;
+                       apb_write_paddr[8] == 1'b1;})
+  endtask
+endclass
+
+class apb_read0 extends uvm_sequence;
+  `uvm_object_utils(apb_read)
+  
+  function new(string name = "apb_read0");
+    super.new(name);
+  endfunction
+  
+  virtual task body();
+    `uvm_do_with(req, {read_write == 1'b0;
+                       apb_write_paddr[8] == 1'b0;})
+  endtask
+endclass
+
+
+class apb_read1 extends uvm_sequence;
+  `uvm_object_utils(apb_read)
+  
+  function new(string name = "apb_read0");
+    super.new(name);
+  endfunction
+  
+  virtual task body();
+    `uvm_do_with(req, {read_write == 1'b0;
+                       apb_write_paddr[8] == 1'b1;})
+  endtask
+endclass
