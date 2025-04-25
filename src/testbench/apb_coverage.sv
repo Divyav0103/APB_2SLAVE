@@ -9,7 +9,7 @@
 //`uvm_analysis_imp_decl(_ip)
 //`uvm_analysis_imp_decl(_op)
  
-class apb_coverage extends uvm_subscriber#(apb_sequence_item);
+class apb_coverage extends uvm_subscriber #(apb_sequence_item);
  
 `uvm_component_utils(apb_coverage)
  
@@ -25,7 +25,7 @@ class apb_coverage extends uvm_subscriber#(apb_sequence_item);
    covergroup input_cg;
       coverpoint in_pkt.transfer{
         bins transfer0 = {1'b0};
-        bins transfer1 = {1'b1};}
+        bins transfer1 = {1'b1};
                    }
      coverpoint in_pkt.read_write{
        bins read_write0 = {1'b0};
@@ -38,9 +38,10 @@ class apb_coverage extends uvm_subscriber#(apb_sequence_item);
      coverpoint in_pkt.apb_read_paddr{
        bins apb_read_data[] = {[8'h00:8'hFF]};
                   }
-     
+     endgroup
+
    covergroup output_cg;
-       coverpoint out_pkt.apb_read_data_out
+       coverpoint out_pkt.apb_read_data_out{
         bins apb_read_data_out[] = {[8'h00:8'hFF]};
                   } 
     
@@ -69,6 +70,9 @@ endfunction
      out_pkt = pkt;
      output_cg.sample();
      endfunction
+
+   virtual function write(apb_sequence_item t);
+   endfunction
      
    function void report_phase(uvm_phase phase);
       super.report_phase(phase);

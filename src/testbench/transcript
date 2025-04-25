@@ -1,5 +1,5 @@
 # vsim -c top 
-# Start time: 16:53:38 on Apr 24,2025
+# Start time: 11:38:49 on Apr 25,2025
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
@@ -79,9 +79,9 @@
 # req                            apb_sequence_item  -     @705                             
 #   transfer                     integral           1     'h1                              
 #   read_write                   integral           1     'h1                              
-#   apb_write_paddr              integral           9     'h62                             
+#   apb_write_paddr              integral           8     'h6f                             
 #   apb_write_data               integral           8     'he6                             
-#   apb_read_paddr               integral           9     'h1bd                            
+#   apb_read_paddr               integral           8     'hee                             
 #   apb_read_data_out            integral           8     'h0xx                            
 #   begin_time                   time               64    5                                
 #   depth                        int                32    'd2                              
@@ -91,17 +91,17 @@
 # -----------------------------------------------------------------------------------------
 # UVM_INFO apb_driver.sv(54) @ 15: uvm_test_top.env.a_agent.drv [driver] ----Driver----
 # UVM_INFO apb_out_mon.sv(41) @ 15: uvm_test_top.env.p_agent.output_mon [output monitor] ---Output monitor---
-# ----------------------------------------------------
-# Name                 Type               Size  Value 
-# ----------------------------------------------------
-# item                 apb_sequence_item  -     @733  
-#   transfer           integral           1     'h0   
-#   read_write         integral           1     'h0   
-#   apb_write_paddr    integral           9     'h0Xxx
-#   apb_write_data     integral           8     'h0xx 
-#   apb_read_paddr     integral           9     'h0Xxx
-#   apb_read_data_out  integral           8     'h0xx 
-# ----------------------------------------------------
+# ---------------------------------------------------
+# Name                 Type               Size  Value
+# ---------------------------------------------------
+# item                 apb_sequence_item  -     @733 
+#   transfer           integral           1     'h0  
+#   read_write         integral           1     'h0  
+#   apb_write_paddr    integral           8     'h0xx
+#   apb_write_data     integral           8     'h0xx
+#   apb_read_paddr     integral           8     'h0xx
+#   apb_read_data_out  integral           8     'h0xx
+# ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(43) @ 15: uvm_test_top.env.p_agent.output_mon [output monitor] --------------------
 # UVM_INFO apb_scoreboard.sv(49) @ 15: uvm_test_top.env.sb [Output Queue] Actual tx: queue size =           1, transfer = 0, apb_write_paddr = x, apb_write_data = xxxxxxxx, apb_read_paddr = x, read_write = 0, apb_read_data_out = x
 # ------------------------------------------------------------------------------------
@@ -127,5 +127,5 @@
 # [output monitor]     2
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
 #    Time: 15 ns  Iteration: 62  Instance: /top
-# End time: 16:53:45 on Apr 24,2025, Elapsed time: 0:00:07
+# End time: 11:38:58 on Apr 25,2025, Elapsed time: 0:00:09
 # Errors: 0, Warnings: 0
