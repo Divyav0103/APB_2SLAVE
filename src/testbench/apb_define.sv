@@ -1,2 +1,2 @@
 `define DW 8
-`define AW 9
+`define AW 8

@@ -27,5 +27,7 @@ class apb_sequence_item extends uvm_sequence_item;
   function new(string name = "apb_sequence_item");
     super.new(name); 
   endfunction: new
+
+  constraint c0{apb_write_paddr[7] dist {0:=1, 1:=1};}
   
 endclass
