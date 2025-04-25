@@ -1,6 +1,6 @@
 # vsim -c top 
-# Start time: 16:30:22 on Apr 24,2025
-# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Start time: 16:53:38 on Apr 24,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
 # //
@@ -127,5 +127,5 @@
 # [output monitor]     2
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
 #    Time: 15 ns  Iteration: 62  Instance: /top
-# End time: 16:33:32 on Apr 24,2025, Elapsed time: 0:03:10
+# End time: 16:53:45 on Apr 24,2025, Elapsed time: 0:00:07
 # Errors: 0, Warnings: 0
