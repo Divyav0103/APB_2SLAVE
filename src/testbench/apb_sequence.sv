@@ -31,7 +31,7 @@ class apb_write0 extends uvm_sequence;
   
   virtual task body();
     `uvm_do_with(req, {transfer ==1;read_write == 1'b1;
-                       apb_write_paddr[8] == 1'b0;})
+                       apb_write_paddr[7] == 1'b0;})
   endtask
 endclass
 /*
@@ -44,7 +44,7 @@ class apb_write1 extends uvm_sequence;
   
   virtual task body();
     `uvm_do_with(req, {read_write == 1'b1;
-                       apb_write_paddr[8] == 1'b1;})
+                       apb_write_paddr[7] == 1'b1;})
   endtask
 endclass
 
@@ -57,7 +57,7 @@ class apb_read0 extends uvm_sequence;
   
   virtual task body();
     `uvm_do_with(req, {read_write == 1'b0;
-                       apb_write_paddr[8] == 1'b0;})
+                       apb_write_paddr[7] == 1'b0;})
   endtask
 endclass
 
@@ -71,6 +71,6 @@ class apb_read1 extends uvm_sequence;
   
   virtual task body();
     `uvm_do_with(req, {read_write == 1'b0;
-                       apb_write_paddr[8] == 1'b1;})
+                       apb_write_paddr[7] == 1'b1;})
   endtask
 endclass*/
