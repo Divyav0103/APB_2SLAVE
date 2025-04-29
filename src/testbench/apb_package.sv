@@ -11,4 +11,3 @@
 //`include "apb_coverage.sv"
 `include "apb_env.sv"
 `include "apb_test.sv"
-`include "../design/design.v"
