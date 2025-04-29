@@ -1,0 +1,16 @@
+QuestaSim vlog 10.6c Compiler 2017.07 Jul 25 2017
+Start time: 10:23:03 on Apr 25,2025
+vlog -l compile.log ../src/testbench/apb_top.sv 
+** Note: (vlog-2286) ../src/testbench/apb_top.sv(10): Using implicit +incdir+/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling package apb_top_sv_unit
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Compiling interface apb_if
+-- Compiling module apb_dut
+** Warning: ../src/testbench/../design/design.v(18): (vlog-2182) 'mem' might be read before written in always_comb or always @* block.
+-- Compiling module top
+
+Top level modules:
+	apb_dut
+	top
+End time: 10:23:03 on Apr 25,2025, Elapsed time: 0:00:00
+Errors: 0, Warnings: 1
