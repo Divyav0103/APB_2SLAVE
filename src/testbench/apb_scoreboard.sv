@@ -39,14 +39,12 @@ class apb_scoreboard extends uvm_scoreboard;
 
     
      virtual function void write_ip(apb_sequence_item i_tr);
-       exp_q.push_back(i_tr);
-       `uvm_info("Input Queue",$sformatf("Expected tx: queue size = %d, transfer = %b, apb_write_paddr = %0h, apb_write_data = %b, apb_read_paddr = %0h, read_write = %b, apb_read_data_out = %0h", exp_q.size(), i_tr.transfer, i_tr.apb_write_paddr, i_tr.apb_write_data, i_tr.apb_read_paddr, i_tr.read_write, i_tr.apb_read_data_out), UVM_LOW);
+      exp_q.push_back(i_tr);
        $display("------------------------------------------------------------------------------------");
      endfunction
 
        virtual function void write_op(apb_sequence_item o_tr);
-         act_q.push_back(o_tr);
-         `uvm_info("Output Queue",$sformatf("Actual tx: queue size = %d, transfer = %b, apb_write_paddr = %0h, apb_write_data = %b, apb_read_paddr = %0h, read_write = %b, apb_read_data_out = %0h", act_q.size(), o_tr.transfer, o_tr.apb_write_paddr, o_tr.apb_write_data, o_tr.apb_read_paddr, o_tr.read_write, o_tr.apb_read_data_out), UVM_LOW);
+        act_q.push_back(o_tr);
          $display("------------------------------------------------------------------------------------");
       endfunction
     
@@ -55,13 +53,13 @@ class apb_scoreboard extends uvm_scoreboard;
          if(exp_pkt.apb_write_data == act_pkt.apb_write_data && exp_pkt.apb_read_data_out == act_pkt.apb_read_data_out)
            begin
              `uvm_info("MATCH","",UVM_LOW)
-             exp_pkt.print();
-             act_pkt.print();
+             `uvm_info("Input Queue",$sformatf("Expected tx: queue size = %d, transfer = %b, apb_write_paddr = %0h, apb_write_data = %b, apb_read_paddr = %0h, read_write = %b, apb_read_data_out = %0h", exp_q.size(), i_tr.transfer, i_tr.apb_write_paddr, i_tr.apb_write_data, i_tr.apb_read_paddr, i_tr.read_write, i_tr.apb_read_data_out), UVM_LOW);
+             `uvm_info("Output Queue",$sformatf("Actual tx: queue size = %d, transfer = %b, apb_write_paddr = %0h, apb_write_data = %b, apb_read_paddr = %0h, read_write = %b, apb_read_data_out = %0h", act_q.size(), o_tr.transfer, o_tr.apb_write_paddr, o_tr.apb_write_data, o_tr.apb_read_paddr, o_tr.read_write, o_tr.apb_read_data_out), UVM_LOW);
            end
          else begin
             `uvm_info("MISMATCH","",UVM_LOW)
-           exp_pkt.print();
-           act_pkt.print();
+            `uvm_info("Input Queue",$sformatf("Expected tx: queue size = %d, transfer = %b, apb_write_paddr = %0h, apb_write_data = %b, apb_read_paddr = %0h, read_write = %b, apb_read_data_out = %0h", exp_q.size(), i_tr.transfer, i_tr.apb_write_paddr, i_tr.apb_write_data, i_tr.apb_read_paddr, i_tr.read_write, i_tr.apb_read_data_out), UVM_LOW);
+            `uvm_info("Output Queue",$sformatf("Actual tx: queue size = %d, transfer = %b, apb_write_paddr = %0h, apb_write_data = %b, apb_read_paddr = %0h, read_write = %b, apb_read_data_out = %0h", act_q.size(), o_tr.transfer, o_tr.apb_write_paddr, o_tr.apb_write_data, o_tr.apb_read_paddr, o_tr.read_write, o_tr.apb_read_data_out), UVM_LOW);
          end
        endfunction
        
