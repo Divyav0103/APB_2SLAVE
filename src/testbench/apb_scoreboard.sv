@@ -51,16 +51,16 @@ class apb_scoreboard extends uvm_scoreboard;
       endfunction
     
          
-       function void compare(apb_sequence_item exp_pkt, apb_sequence_item act_pkt);
+       function void value_display(apb_sequence_item exp_pkt, apb_sequence_item act_pkt);
          if(exp_pkt.apb_write_data == act_pkt.apb_write_data && exp_pkt.apb_read_data_out == act_pkt.apb_read_data_out)
            begin
-             exp_pkt.print();
              `uvm_info("MATCH","",UVM_LOW)
+             exp_pkt.print();
              act_pkt.print();
            end
          else begin
+            `uvm_info("MISMATCH","",UVM_LOW)
            exp_pkt.print();
-           `uvm_info("MISMATCH","",UVM_LOW)
            act_pkt.print();
          end
        endfunction
@@ -74,11 +74,11 @@ class apb_scoreboard extends uvm_scoreboard;
              if(exp_pkt.transfer) begin
                if(exp_pkt.read_write) begin
                  mem[exp_pkt.apb_write_paddr] = exp_pkt.apb_write_data;
-                 compare(exp_pkt, act_pkt);
+                 value_display(exp_pkt, act_pkt);
                end
                else begin
                  exp_pkt.apb_read_data_out = mem[exp_pkt.apb_read_paddr];
-                 compare(exp_pkt, act_pkt);
+                 value_display(exp_pkt, act_pkt);
                end
              end
            end
