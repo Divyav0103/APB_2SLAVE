@@ -22,8 +22,9 @@ class apb_test extends uvm_test;
     super.run_phase(phase);
     phase.raise_objection(this);
     seq = apb_write0::type_id::create("seq");
+    repeat(5) begin
     seq.start(env.a_agent.seqr);
-    
+    end
     `uvm_info(get_type_name(), $sformatf("Inside apb_wite0"), UVM_LOW);
     `uvm_info(get_type_name(), $sformatf("Done apb_write0"), UVM_LOW);
     
