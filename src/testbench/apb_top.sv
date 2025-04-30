@@ -32,19 +32,6 @@ module top();
                .READ_WRITE(inf.read_write),
                .apb_read_data_out(inf.apb_read_data_out));
                
-  
- /* apb_slave#(.AW(`AW),.DW(`DW))
-  dut(
-    .pclk(inf.pclk),
-    .presetn(inf.presetn),
-    .transfer(inf.trasnfer),
-    .read_write(inf.read_write),
-    .apb_write_paddr(inf.apb_write_paddr),
-    .apb_write_data(inf.apb_write_data),
-    .apb_read_paddr(inf.apb_read_paddr),
-    .apb_read_data_out(inf.apb_read_data_out)
-  );
-*/
 
   initial begin
     pclk = 0;
