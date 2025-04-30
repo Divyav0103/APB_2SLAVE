@@ -23,7 +23,7 @@ module top();
   end
   
   apb_if inf(.pclk(pclk),.presetn(presetn));
-  APB_Protocol(.PCLK(inf.pclk),
+  APB_Protocol dut(.PCLK(inf.pclk),
                .PRESETn(inf.presetn),
                .transfer(inf.transfer),
                .apb_write_data(inf.apb_write_data),
