@@ -66,6 +66,7 @@ class apb_scoreboard extends uvm_scoreboard;
        endfunction
        
        task run_phase(uvm_phase phase);
+       `uvm_info("sb","Entering uvm_scoreboard",UVM_LOW);
          forever begin
            wait(exp_q.size() > 0 && act_q.size() > 0) begin
              exp_pkt = exp_q.pop_front();
