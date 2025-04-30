@@ -10,6 +10,7 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 `include "apb_define.sv"
 `include "apb_package.sv"
+`include "apbtop.v"
 
 module top();
   
@@ -22,6 +23,15 @@ module top();
   end
   
   apb_if inf(.pclk(pclk),.presetn(presetn));
+  APB_Protocol(.PCLK(inf.pclk),
+               .PRESETn(inf.presetn),
+               .transfer(inf.transfer),
+               .apb_write_data(inf.apb_write_data),
+               .apb_write_paddr(inf.apb_write_paddr),
+               .apb_read_paddr(inf.apb_read_paddr),
+               .READ_WRITE(inf.read_write),
+               .apb_read_data_out(inf.apb_read_data_out));
+               
   
  /* apb_slave#(.AW(`AW),.DW(`DW))
   dut(
