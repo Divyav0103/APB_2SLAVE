@@ -16,16 +16,16 @@ class apb_scoreboard extends uvm_scoreboard;
   //bit [7:0] mem2[0:255];
 
   // Changed class name to match the declared class
-  uvm_analysis_imp_ip #(apb_seq_item, apb_scoreboard) aport_ip;
-  uvm_analysis_imp_op #(apb_seq_item, apb_scoreboard) aport_op;
+  uvm_analysis_imp_ip #(apb_sequence_item, apb_scoreboard) aport_ip;
+  uvm_analysis_imp_op #(apb_sequence_item, apb_scoreboard) aport_op;
 
   virtual apb_if vif;
 
-  apb_seq_item exp_pkt;
-  apb_seq_item act_pkt;
+  apb_sequence_item exp_pkt;
+  apb_sequence_item act_pkt;
 
-  apb_seq_item exp_q[$];
-  apb_seq_item act_q[$];
+  apb_sequence_item exp_q[$];
+  apb_sequence_item act_q[$];
 
   int mat = 0;
   int mis = 0;
@@ -42,21 +42,21 @@ class apb_scoreboard extends uvm_scoreboard;
       `uvm_fatal("Scoreboard", "Unable to get virtual interface");
   endfunction
 
-  virtual function void write_ip(apb_seq_item in_txn);
+  virtual function void write_ip(apb_sequence_item in_txn);
     exp_q.push_back(in_txn);
     $display("### Expected transaction pushed to queue ###");
     $display("---------------------------------------------------------------------------------------");
   endfunction
 
-  virtual function void write_op(apb_seq_item out_txn);
+  virtual function void write_op(apb_sequence_item out_txn);
     act_q.push_back(out_txn);
     $display("### Actual transaction pushed to queue ###");
     $display("---------------------------------------------------------------------------------------");
   endfunction
 
-  virtual function void compare(apb_seq_item exp_pkt, apb_seq_item act_pkt);
+  virtual function void compare(apb_sequence_item exp_pkt, apb_sequence_item act_pkt);
     if(exp_pkt.read_write) begin
-      if (exp_pkt.apb_write_data == act_pkt.apb_write_data) && (exp_pkt.apb_write_paddr == act_pkt.apb_rwrite_paddr)) begin
+      if ((exp_pkt.apb_write_data == act_pkt.apb_write_data) && (exp_pkt.apb_write_paddr == act_pkt.apb_write_paddr)) begin
       //exp_pkt.print();
         `uvm_info("MATCH",$sformatf( "----------------------MATCH------------------------\n Expected apb_write_data = %0h |  Actual apb_write_data = %0h |  Expected apb_write_paddr =%0h |  Actual apb_write_apddr = %0h ", exp_pkt.apb_write_data, act_pkt.apb_write_data, exp_pkt.apb_write_paddr, act_pkt.apb_write_paddr), UVM_LOW);
       //act_pkt.print();
@@ -68,7 +68,7 @@ class apb_scoreboard extends uvm_scoreboard;
     end
 
     else begin
-      if ((exp_pkt.apb_read_data_Out == act_pkt.apb_read_data_Out) && (exp_pkt.apb_read_paddr == act_pkt.apb_read_paddr)) begin 
+      if ((exp_pkt.apb_read_data_out == act_pkt.apb_read_data_out) && (exp_pkt.apb_read_paddr == act_pkt.apb_read_paddr)) begin 
         `uvm_info("MATCH",$sformatf( "----------------------MATCH------------------------\n Expected apb_write_data = %0h |  Actual apb_write_data = %0h |  Expected apb_write_paddr =%0h |  Actual apb_write_apddr = %0h ", exp_pkt.apb_write_data, act_pkt.apb_write_data, exp_pkt.apb_write_paddr, act_pkt.apb_write_paddr), UVM_LOW);
       //act_pkt.print();
         mat++;
@@ -94,7 +94,7 @@ class apb_scoreboard extends uvm_scoreboard;
         if (exp_pkt.read_write == 0) begin
           mem[exp_pkt.apb_write_paddr] = exp_pkt.apb_write_data;
           end else begin
-            exp_pkt.apb_read_out = mem[exp_pkt.apb_read_paddr];
+            exp_pkt.apb_read_data_out = mem[exp_pkt.apb_read_paddr];
           end
       end
           compare(exp_pkt, act_pkt);

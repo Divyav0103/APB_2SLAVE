@@ -10,7 +10,7 @@ class apb_env extends uvm_env;
 
    `uvm_component_utils(apb_env)
 
-  function new(string name="",uvm_component parent);
+  function new(string name="apb_env",uvm_component parent);
     super.new(name,parent);
   endfunction
 

@@ -1,3 +1,8 @@
+//import uvm_pkg::*;
+//`include "uvm_macros.svh"
+`include "apb_define.sv"
+`include "apbtop.v"
+
 `include "apb_interface.sv"
 `include "apb_sequence_item.sv"
 `include "apb_sequence.sv"

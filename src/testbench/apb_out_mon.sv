@@ -44,7 +44,7 @@ class apb_out_monitor extends uvm_monitor;
            item.print();
            `uvm_info("output monitor", $sformatf("------------------------------------------------"), UVM_LOW);
            repeat(2)@(vif.mon_cb);
-      
+         end      
        end
    endtask
 endclass

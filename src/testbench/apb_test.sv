@@ -42,3 +42,4 @@ class apb_write0_slave0 extends apb_test;
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
   endfunction
+endclass

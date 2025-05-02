@@ -5,12 +5,9 @@
 //------------------------------------------------------------------------------
 // Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
 //------------------------------------------------------------------------------
-//import uvm_pkg::*;
-
-//`include "uvm_macros.svh"
-`include "apb_define.sv"
+import uvm_pkg::*;
+`include "uvm_macros.svh"
 `include "apb_package.sv"
-`include "apbtop.v"
 
 module top();
   

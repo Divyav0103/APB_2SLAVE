@@ -1,6 +1,8 @@
 # vsim -c top 
-# Start time: 10:21:10 on May 02,2025
-# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Start time: 23:20:29 on May 02,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: apb_top.sv(24): (vopt-2685) [TFMPC] - Too few port connections for 'dut'.  Expected 9, found 8.
+# ** Warning: apb_top.sv(24): (vopt-2718) [TFMPC] - Missing connection for port 'PSLVERR'.
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
 # //
@@ -44,21 +46,229 @@
 # 
 # UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
 # UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
-# UVM_INFO @ 0: reporter [RNTST] Running test apb_test...
-# UVM_FATAL apb_scoreboard.sv(38) @ 0: uvm_test_top.env.sb [Scoreboard] Unable to get the virtual interface
+# UVM_INFO @ 0: reporter [RNTST] Running test apb_write0_slave0...
+# UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
+# --------------------------------------------------------------
+# Name                       Type                    Size  Value
+# --------------------------------------------------------------
+# uvm_test_top               apb_write0_slave0       -     @471 
+#   env                      apb_env                 -     @478 
+#     a_agent                apb_active_agent        -     @489 
+#       drv                  apb_driver              -     @620 
+#         rsp_port           uvm_analysis_port       -     @635 
+#         seq_item_port      uvm_seq_item_pull_port  -     @627 
+#       input_mon            apb_in_mon              -     @643 
+#         mon_in2sb          uvm_analysis_port       -     @651 
+#       seqr                 apb_sequencer           -     @511 
+#         rsp_export         uvm_analysis_export     -     @518 
+#         seq_item_export    uvm_seq_item_pull_imp   -     @612 
+#         arbitration_queue  array                   0     -    
+#         lock_queue         array                   0     -    
+#         num_last_reqs      integral                32    'd1  
+#         num_last_rsps      integral                32    'd1  
+#     p_agent                apb_passive_agent       -     @496 
+#       output_mon           apb_out_monitor         -     @666 
+#         mon_out            uvm_analysis_port       -     @673 
+#     sb                     apb_scoreboard          -     @503 
+#       aport_ip             uvm_analysis_imp_ip     -     @682 
+#       aport_op             uvm_analysis_imp_op     -     @690 
+# --------------------------------------------------------------
+# 
+# ** Warning: (vsim-PLI-3070) apb_driver.sv(55): $sformatf : Too many arguments.
+#    Time: 5 ns  Iteration: 4  Region: /uvm_pkg::uvm_task_phase::execute
+# UVM_INFO apb_driver.sv(55) @ 5: uvm_test_top.env.a_agent.drv [DRIVER] [5] presetn = 1 |  Transfer = 1 | READ_WRITE = 0 | apb_write_paddr = 16f | apb_write_data = b0 | apb_read_paddr = 1f8 
+# UVM_INFO apb_driver.sv(57) @ 5: uvm_test_top.env.a_agent.drv [driver] ----Driver----
+# ---------------------------------------------------
+# Name                 Type               Size  Value
+# ---------------------------------------------------
+# req                  apb_sequence_item  -     @710 
+#   transfer           integral           1     'h1  
+#   read_write         integral           1     'h0  
+#   apb_write_paddr    integral           9     'h16f
+#   apb_write_data     integral           8     'hb0 
+#   apb_read_paddr     integral           9     'h1f8
+#   apb_read_data_out  integral           8     'h0xx
+# ---------------------------------------------------
+# UVM_INFO apb_driver.sv(59) @ 5: uvm_test_top.env.a_agent.drv [driver] ----Driver----
+# ** Warning: (vsim-PLI-3070) apb_driver.sv(55): $sformatf : Too many arguments.
+#    Time: 15 ns  Iteration: 2  Region: /uvm_pkg::uvm_task_phase::execute
+# UVM_INFO apb_driver.sv(55) @ 15: uvm_test_top.env.a_agent.drv [DRIVER] [15] presetn = 1 |  Transfer = 0 | READ_WRITE = 1 | apb_write_paddr = 78 | apb_write_data = d3 | apb_read_paddr = b4 
+# UVM_INFO apb_driver.sv(57) @ 15: uvm_test_top.env.a_agent.drv [driver] ----Driver----
+# ---------------------------------------------------
+# Name                 Type               Size  Value
+# ---------------------------------------------------
+# req                  apb_sequence_item  -     @747 
+#   transfer           integral           1     'h0  
+#   read_write         integral           1     'h1  
+#   apb_write_paddr    integral           9     'h78 
+#   apb_write_data     integral           8     'hd3 
+#   apb_read_paddr     integral           9     'hb4 
+#   apb_read_data_out  integral           8     'h0xx
+# ---------------------------------------------------
+# UVM_INFO apb_driver.sv(59) @ 15: uvm_test_top.env.a_agent.drv [driver] ----Driver----
+### Actual transaction pushed to queue ###
+# ---------------------------------------------------------------------------------------
+# UVM_INFO apb_out_mon.sv(43) @ 15: uvm_test_top.env.p_agent.output_mon [output monitor] -----------------Output monitor--------------
+# ---------------------------------------------------
+# Name                 Type               Size  Value
+# ---------------------------------------------------
+# item                 apb_sequence_item  -     @742 
+#   transfer           integral           1     'h1  
+#   read_write         integral           1     'h0  
+#   apb_write_paddr    integral           9     'h16f
+#   apb_write_data     integral           8     'hb0 
+#   apb_read_paddr     integral           9     'h1f8
+#   apb_read_data_out  integral           8     'h0xx
+# ---------------------------------------------------
+# UVM_INFO apb_out_mon.sv(45) @ 15: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------
+### Expected transaction pushed to queue ###
+# ---------------------------------------------------------------------------------------
+# UVM_INFO apb_in_mon.sv(45) @ 15: uvm_test_top.env.a_agent.input_mon [input mon] --------------Input mon-----------------
+# ---------------------------------------------------
+# Name                 Type               Size  Value
+# ---------------------------------------------------
+# item                 apb_sequence_item  -     @738 
+#   transfer           integral           1     'h1  
+#   read_write         integral           1     'h0  
+#   apb_write_paddr    integral           9     'h16f
+#   apb_write_data     integral           8     'hb0 
+#   apb_read_paddr     integral           9     'h1f8
+#   apb_read_data_out  integral           8     'h0xx
+# ---------------------------------------------------
+# UVM_INFO apb_in_mon.sv(47) @ 15: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------------------------
+# UVM_INFO apb_scoreboard.sv(76) @ 15: uvm_test_top.env.sb [MISMATCH] ----------------------MISMATCH------------------------
+#  Expected apb_write_data = b0 |  Actual apb_write_data = b0 |  Expected apb_write_paddr =16f |  Actual apb_write_apddr = 16f 
+# ** Warning: (vsim-PLI-3070) apb_driver.sv(55): $sformatf : Too many arguments.
+#    Time: 25 ns  Iteration: 4  Region: /uvm_pkg::uvm_task_phase::execute
+# UVM_INFO apb_driver.sv(55) @ 25: uvm_test_top.env.a_agent.drv [DRIVER] [25] presetn = 1 |  Transfer = 1 | READ_WRITE = 0 | apb_write_paddr = 57 | apb_write_data = 7d | apb_read_paddr = 1ed 
+# UVM_INFO apb_driver.sv(57) @ 25: uvm_test_top.env.a_agent.drv [driver] ----Driver----
+# ---------------------------------------------------
+# Name                 Type               Size  Value
+# ---------------------------------------------------
+# req                  apb_sequence_item  -     @759 
+#   transfer           integral           1     'h1  
+#   read_write         integral           1     'h0  
+#   apb_write_paddr    integral           9     'h57 
+#   apb_write_data     integral           8     'h7d 
+#   apb_read_paddr     integral           9     'h1ed
+#   apb_read_data_out  integral           8     'h0xx
+# ---------------------------------------------------
+# UVM_INFO apb_driver.sv(59) @ 25: uvm_test_top.env.a_agent.drv [driver] ----Driver----
+### Expected transaction pushed to queue ###
+# ---------------------------------------------------------------------------------------
+# UVM_INFO apb_in_mon.sv(45) @ 25: uvm_test_top.env.a_agent.input_mon [input mon] --------------Input mon-----------------
+# ---------------------------------------------------
+# Name                 Type               Size  Value
+# ---------------------------------------------------
+# item                 apb_sequence_item  -     @738 
+#   transfer           integral           1     'h0  
+#   read_write         integral           1     'h1  
+#   apb_write_paddr    integral           9     'h78 
+#   apb_write_data     integral           8     'hd3 
+#   apb_read_paddr     integral           9     'hb4 
+#   apb_read_data_out  integral           8     'h0xx
+# ---------------------------------------------------
+# UVM_INFO apb_in_mon.sv(47) @ 25: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------------------------
+# ** Warning: (vsim-PLI-3070) apb_driver.sv(55): $sformatf : Too many arguments.
+#    Time: 35 ns  Iteration: 3  Region: /uvm_pkg::uvm_task_phase::execute
+# UVM_INFO apb_driver.sv(55) @ 35: uvm_test_top.env.a_agent.drv [DRIVER] [35] presetn = 1 |  Transfer = 0 | READ_WRITE = 1 | apb_write_paddr = 81 | apb_write_data = 88 | apb_read_paddr = 17a 
+# UVM_INFO apb_driver.sv(57) @ 35: uvm_test_top.env.a_agent.drv [driver] ----Driver----
+# ---------------------------------------------------
+# Name                 Type               Size  Value
+# ---------------------------------------------------
+# req                  apb_sequence_item  -     @763 
+#   transfer           integral           1     'h0  
+#   read_write         integral           1     'h1  
+#   apb_write_paddr    integral           9     'h81 
+#   apb_write_data     integral           8     'h88 
+#   apb_read_paddr     integral           9     'h17a
+#   apb_read_data_out  integral           8     'h0xx
+# ---------------------------------------------------
+# UVM_INFO apb_driver.sv(59) @ 35: uvm_test_top.env.a_agent.drv [driver] ----Driver----
+### Expected transaction pushed to queue ###
+# ---------------------------------------------------------------------------------------
+# UVM_INFO apb_in_mon.sv(45) @ 35: uvm_test_top.env.a_agent.input_mon [input mon] --------------Input mon-----------------
+# ---------------------------------------------------
+# Name                 Type               Size  Value
+# ---------------------------------------------------
+# item                 apb_sequence_item  -     @738 
+#   transfer           integral           1     'h1  
+#   read_write         integral           1     'h0  
+#   apb_write_paddr    integral           9     'h57 
+#   apb_write_data     integral           8     'h7d 
+#   apb_read_paddr     integral           9     'h1ed
+#   apb_read_data_out  integral           8     'h0xx
+# ---------------------------------------------------
+# UVM_INFO apb_in_mon.sv(47) @ 35: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------------------------
+# ** Warning: (vsim-PLI-3070) apb_driver.sv(55): $sformatf : Too many arguments.
+#    Time: 45 ns  Iteration: 3  Region: /uvm_pkg::uvm_task_phase::execute
+# UVM_INFO apb_driver.sv(55) @ 45: uvm_test_top.env.a_agent.drv [DRIVER] [45] presetn = 1 |  Transfer = 0 | READ_WRITE = 0 | apb_write_paddr = 1d9 | apb_write_data = 0 | apb_read_paddr = 2f 
+# UVM_INFO apb_driver.sv(57) @ 45: uvm_test_top.env.a_agent.drv [driver] ----Driver----
+# ---------------------------------------------------
+# Name                 Type               Size  Value
+# ---------------------------------------------------
+# req                  apb_sequence_item  -     @771 
+#   transfer           integral           1     'h0  
+#   read_write         integral           1     'h0  
+#   apb_write_paddr    integral           9     'h1d9
+#   apb_write_data     integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2f 
+#   apb_read_data_out  integral           8     'h0xx
+# ---------------------------------------------------
+# UVM_INFO apb_driver.sv(59) @ 45: uvm_test_top.env.a_agent.drv [driver] ----Driver----
+### Expected transaction pushed to queue ###
+# ---------------------------------------------------------------------------------------
+# UVM_INFO apb_in_mon.sv(45) @ 45: uvm_test_top.env.a_agent.input_mon [input mon] --------------Input mon-----------------
+# ---------------------------------------------------
+# Name                 Type               Size  Value
+# ---------------------------------------------------
+# item                 apb_sequence_item  -     @738 
+#   transfer           integral           1     'h0  
+#   read_write         integral           1     'h1  
+#   apb_write_paddr    integral           9     'h81 
+#   apb_write_data     integral           8     'h88 
+#   apb_read_paddr     integral           9     'h17a
+#   apb_read_data_out  integral           8     'h0xx
+# ---------------------------------------------------
+# UVM_INFO apb_in_mon.sv(47) @ 45: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------------------------
+### Actual transaction pushed to queue ###
+# ---------------------------------------------------------------------------------------
+# UVM_INFO apb_out_mon.sv(43) @ 45: uvm_test_top.env.p_agent.output_mon [output monitor] -----------------Output monitor--------------
+# ---------------------------------------------------
+# Name                 Type               Size  Value
+# ---------------------------------------------------
+# item                 apb_sequence_item  -     @767 
+#   transfer           integral           1     'h0  
+#   read_write         integral           1     'h1  
+#   apb_write_paddr    integral           9     'h81 
+#   apb_write_data     integral           8     'h88 
+#   apb_read_paddr     integral           9     'h17a
+#   apb_read_data_out  integral           8     'h0xx
+# ---------------------------------------------------
+# UVM_INFO apb_out_mon.sv(45) @ 45: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------
+# UVM_INFO apb_scoreboard.sv(61) @ 45: uvm_test_top.env.sb [MATCH] ----------------------MATCH------------------------
+#  Expected apb_write_data = 88 |  Actual apb_write_data = 88 |  Expected apb_write_paddr =81 |  Actual apb_write_apddr = 81 
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 45: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
 # 
 # --- UVM Report Summary ---
 # 
 # ** Report counts by severity
-# UVM_INFO :    3
+# UVM_INFO :   34
 # UVM_WARNING :    0
 # UVM_ERROR :    0
-# UVM_FATAL :    1
+# UVM_FATAL :    0
 # ** Report counts by id
+# [DRIVER]     5
+# [MATCH]     1
+# [MISMATCH]     1
 # [Questa UVM]     2
 # [RNTST]     1
-# [Scoreboard]     1
-# ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh(292)
-#    Time: 0 ns  Iteration: 9  Region: /uvm_pkg::uvm_phase::m_run_phases
-# End time: 10:21:14 on May 02,2025, Elapsed time: 0:00:04
-# Errors: 0, Warnings: 0
+# [TEST_DONE]     1
+# [UVMTOP]     1
+# [driver]    10
+# [input mon]     8
+# [output monitor]     4
+# ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 45 ns  Iteration: 63  Instance: /top
+# End time: 23:20:38 on May 02,2025, Elapsed time: 0:00:09
+# Errors: 0, Warnings: 7

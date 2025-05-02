@@ -45,7 +45,7 @@ class apb_in_mon extends uvm_monitor;
         `uvm_info("input mon", $sformatf("--------------Input mon-----------------"), UVM_LOW);
         item.print();
         `uvm_info("input mon", $sformatf("-----------------------------------------------------"), UVM_LOW);	
-        
+        end
       end
   endtask
 

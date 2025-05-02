@@ -6,7 +6,7 @@
 // Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
 //------------------------------------------------------------------------------
 
-class apb_sequence extends uvm_sequence;
+class apb_sequence extends uvm_sequence#(apb_sequence_item);
   `uvm_object_utils(apb_sequence)
 
   virtual apb_if vif;
@@ -32,7 +32,7 @@ class apb_write0 extends apb_sequence;
   endfunction
   
   virtual task body();
-     item = apb_seq_item::type_id::create("item");
+     item = apb_sequence_item::type_id::create("item");
     `uvm_do_with(req, {transfer ==1;read_write == 1'b0;
                        apb_write_paddr[8] == 1'b0;})
   endtask
