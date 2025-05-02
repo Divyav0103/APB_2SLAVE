@@ -17,8 +17,8 @@ class apb_scoreboard extends uvm_scoreboard;
   uvm_analysis_imp_ip#(apb_sequence_item, apb_scoreboard)aport_ip;
   uvm_analysis_imp_op#(apb_sequence_item, apb_scoreboard)aport_op;
   
-  apb_sequence_item exp_pkt;
-  apb_sequence_item act_pkt;
+ // apb_sequence_item exp_pkt;
+  //apb_sequence_item act_pkt;
   
   apb_sequence_item exp_q[$];
   apb_sequence_item act_q[$];
@@ -39,13 +39,13 @@ class apb_scoreboard extends uvm_scoreboard;
   endfunction
 
     
-     virtual function void write_ip(apb_sequence_item i_tr);
-      exp_q.push_back(i_tr);
+    virtual function void write_ip(apb_sequence_item in_mon);
+	  exp_q.push_back(in_mon);
       $display("------------------------------------------------------------------------------------");
      endfunction
 
-       virtual function void write_op(apb_sequence_item o_tr);
-        act_q.push_back(o_tr);
+    virtual function void write_op(apb_sequence_item out_mon);
+		act_q.push_back(out_mon);
          $display("------------------------------------------------------------------------------------");
       endfunction
     
@@ -82,8 +82,8 @@ class apb_scoreboard extends uvm_scoreboard;
        endfunction
        
        task run_phase(uvm_phase phase);
-         apb_sequence_item in;
-         apb_sequence_item out;
+         apb_sequence_item in_mon;
+         apb_sequence_item out_mon;
          bit [7:0] mem[0:255];
       
         //super.run_phase(phase);
@@ -94,28 +94,28 @@ class apb_scoreboard extends uvm_scoreboard;
 
             `uvm_info("scb", $sformatf("##############EXPECTED_OP_SIZE=%0d#####ACTUAL_OP_SIZE=%0d####################",exp_q.size, act_q.size), UVM_LOW)
 
-            exp_pkt = apb_sequence_item::type_id::create("exp_pkt", this);
-            act_pkt = apb_sequence_item::type_id::create("act_pkt", this);
+            //exp_pkt = apb_sequence_item::type_id::create("exp_pkt", this);
+            //act_pkt = apb_sequence_item::type_id::create("act_pkt", this);
         
             wait(exp_q.size() > 0 && act_q.size() > 0);
 		begin
-            		in = exp_q.pop_front();
-            		out = act_q.pop_front();
+            		in_mon = exp_q.pop_front();
+            		out_mon = act_q.pop_front();
 		end
          
         if(!vif.presetn) begin
-            in.transfer = 0;
-            out.read_write = 0;
-            value_display(in, out);
+            in_mon.transfer = 0;
+            out_mon.read_write = 0;
+            value_display(in_mon, out_mon);
         end
           
          else begin
-            if(in.read_write) begin
-              mem[in.apb_write_paddr] = in.apb_write_data;
+		 if(in_mon.read_write) begin
+			 mem[in_mon.apb_write_paddr] = in_mon.apb_write_data;
             end
          else begin
-            // if(in.apb_read_paddr == in.apb_write_paddr)
-              in.apb_read_data_out = mem[in.apb_read_paddr];
+              in_mon.apb_read_paddr == in_mon.apb_write_paddr
+		 in_mon.apb_read_data_out = mem[in_mon.apb_read_paddr];
             end
           end
         end
