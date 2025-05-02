@@ -5,22 +5,19 @@
 //------------------------------------------------------------------------------
 // Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
 //------------------------------------------------------------------------------
-`uvm_analysis_imp_decl(_in_mon)
-`uvm_analysis_imp_decl(_out_mon)
+`uvm_analysis_imp_decl(_ip)
+`uvm_analysis_imp_decl(_op)
 
-class apb_scb extends uvm_scoreboard;
-  //Factory registration
-  `uvm_component_utils(apb_scb)
+class apb_scoreboard extends uvm_scoreboard;
+  `uvm_component_utils(apb_scoreboard)
 
   bit [7:0]mem1[0:255];
   bit [7:0]mem2[0:255];
-
-  //Declare analysis ports
+  
   uvm_analysis_imp_in_mon#(apb_seq_item, apb_scb)sb2in_mon;
   uvm_analysis_imp_out_mon#(apb_seq_item, apb_scb)sb2out_mon;
 
-  // Declare virtual interface
-  virtual apb_interface.mp_mon vif;
+  virtual apb_if vif;
 
   //Declaring handles for the transaction
   apb_seq_item exp_pkt;
