@@ -5,8 +5,8 @@
 //------------------------------------------------------------------------------
 // Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
 //------------------------------------------------------------------------------
-`include "uvm_macros.svh"
-import uvm_pkg::*;
+//`include "uvm_macros.svh"
+//import uvm_pkg::*;
 class apb_sequence_item extends uvm_sequence_item;
   rand bit transfer;
   rand bit read_write;
@@ -28,6 +28,12 @@ class apb_sequence_item extends uvm_sequence_item;
     super.new(name); 
   endfunction: new
 
-  constraint c0{apb_write_paddr[7] dist {0:=1, 1:=1};}
+  constraint c0{apb_write_paddr[8] dist {0:=1, 1:=1};}
+
+  constraint c1{if(transfer == 1 && read_write == 1)
+                                 apb_write_paddr inside {[0:511]};}
+ 
+  constraint c2{if(transfer == 1 && read_write == 1)
+                                apb_read_paddr inside {[0:511]};}
   
 endclass
