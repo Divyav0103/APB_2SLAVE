@@ -1,10 +1,6 @@
 # vsim -c top 
-# Start time: 16:46:07 on Apr 30,2025
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# ** Warning: apb_top.sv(26): (vopt-2241) Connection width does not match width of port 'apb_write_paddr'. The port definition is at: apbtop.v(9).
-# ** Warning: apb_top.sv(26): (vopt-2241) Connection width does not match width of port 'apb_read_paddr'. The port definition is at: apbtop.v(11).
-# ** Warning: apb_top.sv(26): (vopt-2685) [TFMPC] - Too few port connections for 'dut'.  Expected 9, found 8.
-# ** Warning: apb_top.sv(26): (vopt-2718) [TFMPC] - Missing connection for port 'PSLVERR'.
+# Start time: 10:21:10 on May 02,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
 # //
@@ -64,5 +60,5 @@
 # [Scoreboard]     1
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh(292)
 #    Time: 0 ns  Iteration: 9  Region: /uvm_pkg::uvm_phase::m_run_phases
-# End time: 16:46:21 on Apr 30,2025, Elapsed time: 0:00:14
-# Errors: 0, Warnings: 4
+# End time: 10:21:14 on May 02,2025, Elapsed time: 0:00:04
+# Errors: 0, Warnings: 0

@@ -114,7 +114,7 @@ class apb_scoreboard extends uvm_scoreboard;
 			 mem[in_mon.apb_write_paddr] = in_mon.apb_write_data;
             end
          else begin
-              in_mon.apb_read_paddr == in_mon.apb_write_paddr
+              in_mon.apb_read_paddr = in_mon.apb_write_paddr;
 		 in_mon.apb_read_data_out = mem[in_mon.apb_read_paddr];
             end
           end
