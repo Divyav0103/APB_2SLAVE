@@ -48,7 +48,7 @@ module top();
   end
   
   initial begin
-    run_test("apb_write_s0");
+    run_test("apb_write0_slave0");
   end
 endmodule
 
