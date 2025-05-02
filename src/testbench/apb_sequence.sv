@@ -8,6 +8,9 @@
 
 class apb_sequence extends uvm_sequence;
   `uvm_object_utils(apb_sequence)
+
+  virtual apb_if vif;
+  apb_sequence_item item;
   
   function new(string name = "apb_sequence");
     super.new(name);
@@ -22,16 +25,16 @@ class apb_sequence extends uvm_sequence;
   endtask
 endclass
 
-class apb_write0 extends uvm_sequence;
+class apb_write0 extends apb_sequence;
   `uvm_object_utils(apb_write0)
- apb_sequence_item req; 
   function new(string name = "apb_write0");
     super.new(name);
   endfunction
   
   virtual task body();
-    `uvm_do_with(req, {transfer ==1;read_write == 1'b1;
-                       apb_write_paddr[7] == 1'b0;})
+     item = apb_seq_item::type_id::create("item");
+    `uvm_do_with(req, {transfer ==1;read_write == 1'b0;
+                       apb_write_paddr[8] == 1'b0;})
   endtask
 endclass
 /*
