@@ -23,11 +23,10 @@ class apb_active_agent extends uvm_agent;
       seqr = apb_sequencer::type_id::create("seqr",this);
       drv = apb_driver::type_id::create("drv",this);
     end
-    input_mon = apb_in_mon::type_id::create("input_mon",this);
+      input_mon = apb_in_mon::type_id::create("input_mon",this);
   endfunction
   
   function void connect_phase(uvm_phase phase);
-      //super.connect_phase(phase);
-      drv.seq_item_port.connect(seqr.seq_item_export);
+    drv.seq_item_port.connect(seqr.seq_item_export);
   endfunction
 endclass
