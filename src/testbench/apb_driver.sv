@@ -58,6 +58,6 @@ class apb_driver extends uvm_driver#(apb_sequence_item);
        `uvm_info("driver", $sformatf("--------------------------------------------Driver--------------------------------------------"), UVM_LOW);
        req.print();
        `uvm_info("driver", $sformatf("-------------------------------------------Driver---------------------------------------------"), UVM_LOW);
-  end
+    end
   endtask
 endclass
