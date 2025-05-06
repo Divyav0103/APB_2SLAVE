@@ -5,9 +5,6 @@
 //------------------------------------------------------------------------------
 // Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
 //------------------------------------------------------------------------------
-//`include "uvm_macros.svh"
-//import uvm_pkg::*;
-//`include "apb_sequence_item"
 
 class apb_driver extends uvm_driver#(apb_sequence_item);
   
@@ -45,19 +42,19 @@ class apb_driver extends uvm_driver#(apb_sequence_item);
           vif.drv_cb.read_write <= 0;
           vif.drv_cb.apb_write_data <= 0;
           vif.drv_cb.apb_read_paddr <= 0;
+       
+       end else begin
+         
+         vif.drv_cb.transfer <= req.transfer;
+         vif.drv_cb.read_write <= req.read_write;
+         vif.drv_cb.apb_write_paddr <= req.apb_write_paddr;
+         vif.drv_cb.apb_write_data <= req.apb_write_data;
+         vif.drv_cb.apb_read_paddr <= req.apb_read_paddr;
        end
-       else begin
-
-        vif.drv_cb.transfer <= req.transfer;
-        vif.drv_cb.read_write <= req.read_write;
-        vif.drv_cb.apb_write_paddr <= req.apb_write_paddr;
-        vif.drv_cb.apb_write_data <= req.apb_write_data;
-        vif.drv_cb.apb_read_paddr <= req.apb_read_paddr;
-      end
-
-       `uvm_info("driver", $sformatf("--------------------------------------------Driver--------------------------------------------"), UVM_LOW);
-       req.print();
-       `uvm_info("driver", $sformatf("-------------------------------------------Driver---------------------------------------------"), UVM_LOW);
+      
+      `uvm_info("driver", $sformatf("--------------------------------------------Driver--------------------------------------------"), UVM_LOW);
+      req.print();
+      `uvm_info("driver", $sformatf("-------------------------------------------Driver---------------------------------------------"), UVM_LOW);
     end
   endtask
 endclass
