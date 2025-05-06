@@ -8,7 +8,7 @@
 
 class apb_out_monitor extends uvm_monitor;
   
-   `uvm_component_utils(apb_out_monitor)
+  `uvm_component_utils(apb_out_monitor)
   
   virtual apb_if vif;
   uvm_analysis_port#(apb_sequence_item) mon_out2sb;
@@ -29,22 +29,21 @@ class apb_out_monitor extends uvm_monitor;
      repeat(3) @(vif.mon_cb);
        forever begin
          @(vif.mon_cb)
-
+         
          item = apb_sequence_item::type_id::create("item", this);
-         //begin
-           item.apb_read_data_out = vif.mon_cb.apb_read_data_out;
-           item.transfer = vif.mon_cb.transfer;
-           item.read_write = vif.mon_cb.read_write;
-           item.apb_write_paddr = vif.mon_cb.apb_write_paddr;
-           item.apb_write_data = vif.mon_cb.apb_write_data;
-           item.apb_read_paddr = vif.mon_cb.apb_read_paddr;
-
-           
-           `uvm_info("output monitor", $sformatf("----------------------------------Output monitor-----------------------------"), UVM_LOW);             
-            item.print();
-           `uvm_info("output monitor", $sformatf("------------------------------------------------------------------------------"), UVM_LOW);
-            mon_out2sb.write(item);
-        
+         item.apb_read_data_out = vif.mon_cb.apb_read_data_out;
+         item.transfer = vif.mon_cb.transfer;
+         item.read_write = vif.mon_cb.read_write;
+         item.apb_write_paddr = vif.mon_cb.apb_write_paddr;
+         item.apb_write_data = vif.mon_cb.apb_write_data;
+         item.apb_read_paddr = vif.mon_cb.apb_read_paddr;
+         
+         `uvm_info("output monitor", $sformatf("----------------------------------Output monitor-----------------------------"), UVM_LOW);
+         item.print();
+         `uvm_info("output monitor", $sformatf("------------------------------------------------------------------------------"), UVM_LOW);
+         
+         mon_out2sb.write(item);
+       
        end
    endtask
 endclass
