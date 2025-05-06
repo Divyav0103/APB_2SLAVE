@@ -19,19 +19,15 @@ class apb_active_agent extends uvm_agent;
   endfunction
   
   function void build_phase(uvm_phase phase);
-    `uvm_info("ACTIVE_AGENT","Inside Build_phase apb_active_agent", UVM_HIGH);
-    super.build_phase(phase);
-    //if(get_is_active() == UVM_ACTIVE) begin
+    if(get_is_active() == UVM_ACTIVE) begin
       seqr = apb_sequencer::type_id::create("seqr",this);
       drv = apb_driver::type_id::create("drv",this);
-    //end
+    end
     input_mon = apb_in_mon::type_id::create("input_mon",this);
   endfunction
   
   function void connect_phase(uvm_phase phase);
-  //  super.connect_phase(phase);
-   // if(get_is_active() == UVM_ACTIVE) begin
+      //super.connect_phase(phase);
       drv.seq_item_port.connect(seqr.seq_item_export);
-    //end
   endfunction
 endclass

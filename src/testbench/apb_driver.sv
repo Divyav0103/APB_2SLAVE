@@ -26,13 +26,9 @@ class apb_driver extends uvm_driver#(apb_sequence_item);
       begin
       `uvm_fatal(get_type_name(), "cant get virtual interface");
       end
-   //item = apb_sequence_item :: type_id :: create("item", this);
   endfunction
   
   task run_phase(uvm_phase phase);
-    
-    super.run_phase(phase);
-   // repeat(1) @(vif.drv_cb);
     forever begin
       seq_item_port.get_next_item(req);
       drive();
@@ -41,22 +37,27 @@ class apb_driver extends uvm_driver#(apb_sequence_item);
   endtask
   
   virtual task drive();
-    //if(vif.presetn)
     @(vif.drv_cb)
     begin
-    //  @(vif.PCL)
+       if(!vif.presetn) begin
+          vif.drv_cb.transfer <= 0;
+          vif.drv_cb.apb_write_paddr <= 0;
+          vif.drv_cb.read_write <= 0;
+          vif.drv_cb.apb_write_data <= 0;
+          vif.drv_cb.apb_read_paddr <= 0;
+       end
+       else begin
+
         vif.drv_cb.transfer <= req.transfer;
         vif.drv_cb.read_write <= req.read_write;
         vif.drv_cb.apb_write_paddr <= req.apb_write_paddr;
         vif.drv_cb.apb_write_data <= req.apb_write_data;
         vif.drv_cb.apb_read_paddr <= req.apb_read_paddr;
-      //end
+      end
 
-      `uvm_info("DRIVER",$sformatf("[%0t] presetn = %0h |  Transfer = %0h | READ_WRITE = %0h | apb_write_paddr = %0h | apb_write_data = %0h | apb_read_paddr = %0h",$time,vif.presetn,  req.transfer, req.read_write, req.apb_write_paddr, req.apb_write_data, req.apb_read_paddr,),UVM_LOW)
-       
-       `uvm_info("driver", $sformatf("----Driver----"), UVM_LOW);
+       `uvm_info("driver", $sformatf("--------------------------------------------Driver--------------------------------------------"), UVM_LOW);
        req.print();
-       `uvm_info("driver", $sformatf("----Driver----"), UVM_LOW);
+       `uvm_info("driver", $sformatf("-------------------------------------------Driver---------------------------------------------"), UVM_LOW);
   end
   endtask
 endclass

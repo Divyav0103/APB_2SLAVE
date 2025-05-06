@@ -33,7 +33,7 @@ class apb_write0_slave0 extends apb_test;
 
   `uvm_component_utils(apb_write0_slave0)
 
-  apb_write0_slave0 write0_slave0;
+  apb_write0 write0_slave0;
     
   function new(string name = " apb_write0_slave0", uvm_component parent);
     super.new(name,parent);
@@ -41,5 +41,41 @@ class apb_write0_slave0 extends apb_test;
 
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
+    write0_slave0 = apb_write0::type_id::create("write0_slave0",this);
   endfunction
 endclass
+
+
+class apb_read0_slave0 extends apb_test;
+
+  `uvm_component_utils(apb_read0_slave0)
+
+  apb_read0 read0_slave0;
+    
+  function new(string name = " apb_read0_slave0", uvm_component parent);
+    super.new(name,parent);
+  endfunction
+
+  function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    read0_slave0 = apb_read0::type_id::create("read0_slave0",this);
+  endfunction
+endclass
+
+class apb_write_read0_slave0 extends apb_test;
+
+  `uvm_component_utils(apb_write_read0_slave0)
+
+  apb_write_read0 write_read0_slave0;
+    
+  function new(string name = " apb_write_read0_slave0", uvm_component parent);
+    super.new(name,parent);
+  endfunction
+
+  function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    write_read0_slave0 = apb_write_read0::type_id::create("write_read0_slave0",this);
+  endfunction
+endclass
+
+

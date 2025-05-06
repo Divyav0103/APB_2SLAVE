@@ -28,25 +28,25 @@ class apb_in_mon extends uvm_monitor;
   endfunction
   
   task run_phase(uvm_phase phase);
-    repeat(1) @(vif.mon_cb);
-     item = apb_sequence_item::type_id::create("item");
+    repeat(2) @(vif.mon_cb);
+     item = apb_sequence_item::type_id::create("item",this);
     forever begin
       @(vif.mon_cb)
-      begin
+  //    begin
         item.transfer = vif.mon_cb.transfer;
         item.read_write = vif.mon_cb.read_write;
         item.apb_write_paddr = vif.mon_cb.apb_write_paddr;
         item.apb_write_data = vif.mon_cb.apb_write_data;
         item.apb_read_paddr = vif.mon_cb.apb_read_paddr;
-       //end
-
-        mon_in2sb.write(item);
         
-        `uvm_info("input mon", $sformatf("--------------Input mon-----------------"), UVM_LOW);
+        `uvm_info("input mon", $sformatf("-----------------------------------Input mon----------------------------------------"), UVM_LOW);
         item.print();
-        `uvm_info("input mon", $sformatf("-----------------------------------------------------"), UVM_LOW);	
-        end
+        `uvm_info("input mon", $sformatf("--------------------------------------------------------------------------------------"), UVM_LOW);	
+        
+        mon_in2sb.write(item);
+
+    //    end
+//repeat(2)@(vif.mon_cb);
       end
   endtask
-
 endclass
