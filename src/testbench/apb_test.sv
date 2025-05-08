@@ -22,7 +22,7 @@ class apb_test extends uvm_test;
   task run_phase(uvm_phase phase);
     super.run_phase(phase);
     phase.raise_objection(this);
-    repeat(5) begin
+    repeat(10) begin
     seq.start(env.a_agent.seqr);
     end
     phase.drop_objection(this);
