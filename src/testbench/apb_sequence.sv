@@ -96,14 +96,17 @@ class apb_write_read0 extends uvm_sequence;
     super.new(name);
   endfunction
   
-  virtual task body();
+  task body();
+  repeat(10) begin
   read_item = apb_sequence_item::type_id::create("read_item");
   write_item = apb_sequence_item::type_id::create("write_item");
   `uvm_do_with(write_item, {transfer == 1;read_write == 1'b0;
-                       apb_write_paddr[8] == 1'b0;})
+                       apb_write_paddr[7:0] == 8'hA;})
+  `uvm_send(write_item)
   `uvm_do_with(read_item, {transfer == 1;read_write == 1'b1;
-                       apb_write_paddr[8] == 1'b0;})
- 
+                       apb_read_paddr == write_item.apb_write_paddr;})
+  `uvm_send(read_item)
+ end
   endtask
 endclass
 

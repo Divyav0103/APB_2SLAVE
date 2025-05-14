@@ -76,6 +76,19 @@ class apb_write_read0_slave0 extends apb_test;
     super.build_phase(phase);
     write_read0_slave0 = apb_write_read0::type_id::create("write_read0_slave0",this);
   endfunction
+
+    function void end_of_elaboration();
+    super.end_of_elaboration();
+    print(); 
+  endfunction
+
+  task run_phase(uvm_phase phase);
+    super.run_phase(phase);
+    phase.raise_objection(this);
+    write_read0_slave0.start(env.a_agent.seqr);
+    phase.drop_objection(this);
+    phase.phase_done.set_drain_time(this, 200);
+  endtask
 endclass
 
 
