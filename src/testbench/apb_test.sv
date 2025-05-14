@@ -22,9 +22,7 @@ class apb_test extends uvm_test;
   task run_phase(uvm_phase phase);
     super.run_phase(phase);
     phase.raise_objection(this);
-    repeat(10) begin
     seq.start(env.a_agent.seqr);
-    end
     phase.drop_objection(this);
   endtask
 endclass
@@ -39,10 +37,17 @@ class apb_write0_slave0 extends apb_test;
     super.new(name,parent);
   endfunction
 
-  function void build_phase(uvm_phase phase);
+  virtual function void build_phase(uvm_phase phase);
     super.build_phase(phase);
     write0_slave0 = apb_write0::type_id::create("write0_slave0",this);
   endfunction
+
+  task run_phase(uvm_phase phase);
+   phase.raise_objection(this);
+   write0_slave0.start(env.a_agent.seqr);
+   phase.drop_objection(this);
+   phase.phase_done.set_drain_time(this, 30);
+ endtask
 endclass
 
 
@@ -56,10 +61,17 @@ class apb_read0_slave0 extends apb_test;
     super.new(name,parent);
   endfunction
 
-  function void build_phase(uvm_phase phase);
+  virtual function void build_phase(uvm_phase phase);
     super.build_phase(phase);
     read0_slave0 = apb_read0::type_id::create("read0_slave0",this);
   endfunction
+
+  task run_phase(uvm_phase phase);
+   phase.raise_objection(this);
+   read0_slave0.start(env.a_agent.seqr);
+   phase.drop_objection(this);
+   phase.phase_done.set_drain_time(this, 30);
+ endtask
 endclass
 
 class apb_write_read0_slave0 extends apb_test;
@@ -77,17 +89,12 @@ class apb_write_read0_slave0 extends apb_test;
     write_read0_slave0 = apb_write_read0::type_id::create("write_read0_slave0",this);
   endfunction
 
-    function void end_of_elaboration();
-    super.end_of_elaboration();
-    print(); 
-  endfunction
-
   task run_phase(uvm_phase phase);
     super.run_phase(phase);
     phase.raise_objection(this);
     write_read0_slave0.start(env.a_agent.seqr);
     phase.drop_objection(this);
-    phase.phase_done.set_drain_time(this, 200);
+    phase.phase_done.set_drain_time(this, 100);
   endtask
 endclass
 

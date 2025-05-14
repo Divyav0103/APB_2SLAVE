@@ -34,9 +34,12 @@ class apb_write0 extends apb_sequence;
   endfunction
   
   virtual task body();
+   repeat(5) begin
      item = apb_sequence_item::type_id::create("item");
     `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
                        apb_write_paddr[8] == 1'b0;})
+    `uvm_send(item);
+     end
   endtask
 endclass
 
@@ -50,10 +53,13 @@ class apb_write1 extends uvm_sequence;
   endfunction
   
   virtual task body();
+   repeat(5) begin
      item = apb_sequence_item::type_id::create("item");
     `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
                        apb_write_paddr[8] == 1'b1;})
-  endtask
+     `uvm_send(item);
+  end 
+ endtask
 endclass
 
 class apb_read0 extends uvm_sequence;
@@ -66,9 +72,12 @@ class apb_read0 extends uvm_sequence;
   endfunction
   
   virtual task body();
-//  req = apb_sequence_item::type_id::create("req");    
+  repeat(10) begin
+   req = apb_sequence_item::type_id::create("req");    
   `uvm_do_with(req, {transfer == 1;read_write == 1'b1;
                        apb_write_paddr[8] == 1'b0;})
+   `uvm_send(req);
+   end
   endtask
 endclass
 
@@ -82,15 +91,20 @@ class apb_read1 extends uvm_sequence;
   endfunction
   
   virtual task body();
+   repeat(10) begin
     `uvm_do_with(req, {transfer == 1; read_write == 1'b1;
                        apb_write_paddr[8] == 1'b1;})
+    `uvm_send(req); 
+   end
   endtask
 endclass
 
 class apb_write_read0 extends uvm_sequence;
   
 `uvm_object_utils(apb_write_read0)
-  apb_sequence_item read_item,write_item;
+  apb_sequence_item wr_item;
+
+ bit[8:0] addr;
 
   function new(string name = "apb_write_read0");
     super.new(name);
@@ -98,14 +112,15 @@ class apb_write_read0 extends uvm_sequence;
   
   task body();
   repeat(10) begin
-  read_item = apb_sequence_item::type_id::create("read_item");
-  write_item = apb_sequence_item::type_id::create("write_item");
-  `uvm_do_with(write_item, {transfer == 1;read_write == 1'b0;
-                       apb_write_paddr[7:0] == 8'hA;})
-  `uvm_send(write_item)
-  `uvm_do_with(read_item, {transfer == 1;read_write == 1'b1;
-                       apb_read_paddr == write_item.apb_write_paddr;})
-  `uvm_send(read_item)
+  wr_item = apb_sequence_item::type_id::create("wr_item");
+  `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b0;
+                       wr_item.apb_write_paddr[8] == 1'b0;})
+  `uvm_send(wr_item);
+   addr = wr_item.apb_write_paddr;
+
+  `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b1;
+                       wr_item.apb_read_paddr == addr;})
+  `uvm_send(wr_item);
  end
   endtask
 endclass

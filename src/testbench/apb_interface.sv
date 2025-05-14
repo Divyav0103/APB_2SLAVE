@@ -26,6 +26,6 @@ interface apb_if(input bit pclk,input bit presetn);
     input transfer, apb_write_paddr, apb_write_data, apb_read_paddr, read_write, apb_read_data_out;
   endclocking
     
-  modport DRV(clocking drv_cb, input pclk, presetn);
-  modport MON(clocking mon_cb, input pclk, presetn);
+  modport DRV(clocking drv_cb);
+  modport MON(clocking mon_cb);
 endinterface

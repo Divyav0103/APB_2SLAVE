@@ -32,13 +32,13 @@ class apb_sequence_item extends uvm_sequence_item;
  
   constraint c1{if(transfer == 1 && read_write == 0)
     {
-    apb_write_paddr inside {[0:511]};
-    apb_write_data inside{[0:255]};
+    apb_write_paddr inside {[0:8]};
+//    apb_write_data inside{[0:255]};
     }}
 
   constraint c2{if(transfer == 1 && read_write == 1)
                   {
-                   apb_read_paddr inside {[0:511]};
+                   apb_read_paddr inside {[0:8]};
     }}
 
 endclass
