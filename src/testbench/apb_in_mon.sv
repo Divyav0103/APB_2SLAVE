@@ -23,20 +23,15 @@ class apb_in_mon extends uvm_monitor;
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
     mon_in2sb = new("mon_in2sb",this);
-    item = apb_sequence_item::type_id::create("item",this);
     if(!uvm_config_db#(virtual apb_if)::get(this,"","vif",vif))
       `uvm_fatal("Input Monitor","cant get virtual interface");
   endfunction
   
   task run_phase(uvm_phase phase);
-<<<<<<< HEAD
     //repeat(2) @(vif.mon_cb);
     item = apb_sequence_item::type_id::create("item",this);
-=======
-    repeat(2) @(vif.mon_cb);
->>>>>>> c46c2ff87661a26936734a8889e8e8b962a2bd96
     forever begin
-      @(vif.mon_cb) begin
+      @(vif.mon_cb)
       item.transfer = vif.mon_cb.transfer;
       item.read_write = vif.mon_cb.read_write;
       item.apb_write_paddr = vif.mon_cb.apb_write_paddr;
@@ -48,7 +43,7 @@ class apb_in_mon extends uvm_monitor;
       `uvm_info("input mon", $sformatf("--------------------------------------------------------------------------------------"), UVM_LOW);
     
       mon_in2sb.write(item);
-      end
+    
     end
   endtask
 endclass

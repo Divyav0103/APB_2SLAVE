@@ -21,19 +21,16 @@ class apb_out_monitor extends uvm_monitor;
    function void build_phase(uvm_phase phase);
      super.build_phase(phase);
      mon_out2sb = new("mon_out", this);
-     item = apb_sequence_item::type_id::create("item", this);
      if(!uvm_config_db#(virtual apb_if)::get(this, "", "vif", vif))
        `uvm_fatal("Output_Moniotr","cant get virtual interface")
    endfunction: build_phase
        
    task run_phase(uvm_phase phase);
-<<<<<<< HEAD
      repeat(2) @(vif.mon_cb);
-=======
-     repeat(4) @(vif.mon_cb);
->>>>>>> c46c2ff87661a26936734a8889e8e8b962a2bd96
        forever begin
-         @(vif.mon_cb) begin
+         @(vif.mon_cb)
+         
+         item = apb_sequence_item::type_id::create("item", this);
          item.apb_read_data_out = vif.mon_cb.apb_read_data_out;
          item.transfer = vif.mon_cb.transfer;
          item.read_write = vif.mon_cb.read_write;
@@ -46,7 +43,7 @@ class apb_out_monitor extends uvm_monitor;
          `uvm_info("output monitor", $sformatf("------------------------------------------------------------------------------"), UVM_LOW);
          
          mon_out2sb.write(item);
-         end
+       
        end
    endtask
 endclass
