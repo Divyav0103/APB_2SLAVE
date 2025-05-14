@@ -28,8 +28,17 @@ class apb_in_mon extends uvm_monitor;
   endfunction
   
   task run_phase(uvm_phase phase);
+<<<<<<< HEAD
     //repeat(2) @(vif.mon_cb);
     item = apb_sequence_item::type_id::create("item",this);
+=======
+
+    //repeat(2) @(vif.mon_cb);
+    item = apb_sequence_item::type_id::create("item",this);
+
+    repeat(2) @(vif.mon_cb);
+
+>>>>>>> 1be830f13d52fd586f2ab1e7e58dc8b54693263b
     forever begin
       @(vif.mon_cb)
       item.transfer = vif.mon_cb.transfer;
