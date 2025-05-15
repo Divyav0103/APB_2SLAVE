@@ -2,7 +2,11 @@
 `include "slave1.v"
 `include "slave2.v"
 
+
+
 `timescale 1ns/1ns
+
+
 
 module APB_Protocol(
                  input PCLK,PRESETn,transfer,READ_WRITE,
