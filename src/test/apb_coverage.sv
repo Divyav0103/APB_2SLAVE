@@ -17,10 +17,9 @@ class apb_cov extends uvm_subscriber#(apb_sequence_item);
   apb_sequence_item in_pkt;
   apb_sequence_item out_pkt;
 
-  uvm_analysis_imp_in_mon:w #(apb_seq_item, apb_cov) cov2in_mon;
-  uvm_analysis_imp_out_mon #(apb_seq_item, apb_cov) cov2out_mon;
+ uvm_analysis_imp_ip#(apb_sequence_item, apb_coverage) cov2in_mon;
+ uvm_analysis_imp_op#(apb_sequence_item, apb_coverage) cov2out_mon;
 
-  //declaring variables to store input and output coverage percentage
   real in_cov;
   real out_cov;
 
