@@ -147,7 +147,7 @@ class apb_write_read1 extends uvm_sequence;
   `uvm_send(wr_item);
    addr = wr_item.apb_write_paddr;
 
-  `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b1;
+      `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b0;
                        wr_item.apb_read_paddr == addr;})
   `uvm_send(wr_item);
    end
