@@ -31,7 +31,7 @@ interface apb_if(input bit pclk,input bit presetn);
 
   property check_transfer;
   @(posedge pclk) disable iff (!presetn)
-  transfer |-> (READ_WRITE ? !$isunknown(apb_read_paddr) : !$isunknown(apb_write_paddr));
+  transfer |-> (read_write ? !$isunknown(apb_read_paddr) : !$isunknown(apb_write_paddr));
 endproperty
 
 assert property(check_transfer)
@@ -40,7 +40,7 @@ assert property(check_transfer)
 
   property check_valid_write_addr;
   @(posedge pclk) disable iff (!presetn)
-  (!READ_WRITE && transfer) |-> !$isunknown(apb_write_paddr);
+  (!read_write && transfer) |-> !$isunknown(apb_write_paddr);
 endproperty
 
 assert property(check_valid_write_addr)
@@ -50,7 +50,7 @@ assert property(check_valid_write_addr)
   
 property check_valid_read_addr;
   @(posedge pclk) 
-  (READ_WRITE && transfer) |-> !$isunknown(apb_read_paddr);
+  (read_write && transfer) |-> !$isunknown(apb_read_paddr);
 endproperty
 
 assert property(check_valid_read_addr)
@@ -59,7 +59,7 @@ assert property(check_valid_read_addr)
 
   property stable_write_addr;
   @(posedge pclk) disable iff (!presetn)
-  (!READ_WRITE && transfer) |-> $stable(apb_write_paddr);
+  (!read_write && transfer) |-> $stable(apb_write_paddr);
 endproperty
 
 assert property(stable_write_addr)
@@ -68,7 +68,7 @@ assert property(stable_write_addr)
 
   property stable_read_addr;
   @(posedge pclk) disable iff (!presetn)
-  (READ_WRITE && transfer) |-> $stable(apb_read_paddr);
+  (read_write && transfer) |-> $stable(apb_read_paddr);
 endproperty
 
 assert property(stable_read_addr)

@@ -1,0 +1,17 @@
+QuestaSim vlog 10.6c Compiler 2017.07 Jul 25 2017
+Start time: 11:35:25 on May 22,2025
+vlog -sv "+acc" "+cover" "+fcover" -l apb_top.log apb_top.sv 
+** Note: (vlog-2286) apb_top.sv(9): Using implicit +incdir+/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling package apb_top_sv_unit
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Compiling module master_bridge
+-- Compiling module slave1
+-- Compiling module slave2
+-- Compiling module APB_Protocol
+-- Compiling interface apb_if
+-- Compiling module top
+
+Top level modules:
+	top
+End time: 11:35:26 on May 22,2025, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0

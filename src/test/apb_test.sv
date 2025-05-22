@@ -156,7 +156,7 @@ class apb_write_read1_slave1 extends apb_test;
 
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    write_read1_slave1 = apb_write_read0::type_id::create("write_read1_slave1",this);
+    write_read1_slave1 = apb_write_read1::type_id::create("write_read1_slave1",this);
   endfunction
 
   task run_phase(uvm_phase phase);
