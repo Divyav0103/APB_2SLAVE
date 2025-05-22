@@ -25,22 +25,34 @@ class apb_cov extends uvm_subscriber#(apb_sequence_item);
 
   //defining covergroup for input signals
   covergroup input_cg;
-    coverpoint in_pkt.transfer{
+    transfer_cp:coverpoint in_pkt.transfer{
       bins transfer_0 = {1'b0};
       bins transfer_1 = {1'b1};
     }
-    coverpoint in_pkt.READ_WRITE{
-      bins READ_WRITE_0 = {1'b0};
-      bins READ_WRITE_1 = {1'b1};
+   read_write_cp:coverpoint in_pkt.read_write{
+      bins read_write_0 = {1'b0};
+      bins read_write_1 = {1'b1};
     }
-    coverpoint in_pkt.apb_write_data{
-      bins pwdata[] = {[8'h00:8'hFF]};
+     apb_write_paddr_cp:coverpoint in_pkt.apb_write_paddr{
+      bins apb_write_paddr = {[9'h000:9'h1FF]};
     }
+   apb_write_slave_select_cp:coverpoint in_pkt.apb_write_paddr[8]{
+      bins apb_write_paddr_0 = {1'b0};
+      bins apb_write_paddr_1 = {1'b1};
+    }
+    apb_write_data_cp:coverpoint in_pkt.apb_write_data{
+      bins pwdata = {[8'h00:8'hFF]};
+    }
+
+   apb_write_data_cp_x_apb_write_paddr_cp:cross apb_write_data_cp, apb_write_paddr_cp;
   endgroup
 
   covergroup output_cg;
-    coverpoint out_pkt.apb_read_data_out{
-      bins prdata[] = {[8'h00:8'hFF]};
+    apb_read_data_out_cp:coverpoint out_pkt.apb_read_data_out{
+      bins prdata = {[8'h00:8'hFF]};
+    }
+    apb_read_paddr_cp:coverpoint in_pkt.apb_read_paddr{
+      bins apb_read_paddr = {[9'h000:9'h1FF]};
     }
   endgroup
 
@@ -54,7 +66,7 @@ class apb_cov extends uvm_subscriber#(apb_sequence_item);
 
 
   //defining extract phase
-  function void extract_phase(uvm_phase phase);
+ virtual function void extract_phase(uvm_phase phase);
     super.extract_phase(phase);	
     in_cov = input_cg.get_coverage();
     out_cov = output_cg.get_coverage();
@@ -62,13 +74,13 @@ class apb_cov extends uvm_subscriber#(apb_sequence_item);
 
   //defining write method for input monitor port
   virtual function void write_in_mon(apb_seq_item pkt);
-    in_pkt = pkt;
+    this.in_pkt = pkt;
     input_cg.sample();
   endfunction
 
   //defining write method for output monitor port
   virtual function void write_out_mon(apb_seq_item pkt);
-    out_pkt = pkt;
+    this.out_pkt = pkt;
     output_cg.sample();
   endfunction
 
