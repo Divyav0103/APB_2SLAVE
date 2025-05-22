@@ -179,12 +179,18 @@ class reg_test extends apb_test;
    apb_write_read0 pkt5;
    apb_write_read1 pkt6;
 
-  function new(string name = "apb_write_read0_slave0",uvm_component parent);
+  function new(string name = "reg_test",uvm_component parent);
     super.new(name,parent);
   endfunction
 
   virtual function void build_phase(uvm_phase phase);
    super.build_phase(phase);
+    pkt1 = apb_write0::type_id::create("pkt1", this);
+    pkt2 = apb_write1::type_id::create("pkt2", this);
+    pkt3 = apb_read0::type_id::create("pkt3",this);
+    pkt4 = apb_read1::type_id::create("pkt4", this);
+    pkt5 = apb_write_read0::type_id::create("pkt5", this);
+    pkt6 = apb_write_read1::type_id::create("pkt6", this);
   endfunction
 
   virtual function void end_of_elaboration();
@@ -193,49 +199,51 @@ class reg_test extends apb_test;
 
 
   task run_phase (uvm_phase phase);
-
-    write_read0_slave0 = apb_write_read0::create("write_read0_slave0");
-    pkt1 = apb_write0::type_id::create("pkt1");
-    pkt2 = apb_write1::type_id::create("pkt2");
-    pkt3 = apb_read0::type_id::create("pkt3");
-    pkt4 = apb_read1::type_id::create("pkt4");
-    pkt5 = apb_write_read0::type_id::create("pkt5");
-    pkt6 = apb_write_read1::type_id::create("pkt6");
-
-    phase.raise_objection (this);
+    super.run_phase(phase);
     repeat(5)begin
+    phase.raise_objection (this);
     pkt1.start(env.a_agent.seqr); 
     phase.drop_objection (this);
+        end
     phase.phase_done.set_drain_time(this,100);
-    end
 
   repeat(5)begin
+   phase.raise_objection (this);
    pkt2.start(env.a_agent.seqr); 
    phase.drop_objection (this);
+      end
    phase.phase_done.set_drain_time(this,100);
-    end
+    
  repeat(5)begin
+  phase.raise_objection (this);
    pkt3.start(env.a_agent.seqr); 
    phase.drop_objection (this);
+     end
    phase.phase_done.set_drain_time(this,100);
-    end
+    
 
 repeat(5)begin
+    phase.raise_objection (this);
     pkt4.start(env.a_agent.seqr); 
    phase.drop_objection (this);
-   phase.phase_done.set_drain_time(this,100);
     end
+   phase.phase_done.set_drain_time(this,100);
+    
 
  repeat(5)begin
+    phase.raise_objection (this);
     pkt5.start(env.a_agent.seqr); 
    phase.drop_objection (this);
+     end
    phase.phase_done.set_drain_time(this,100);
-    end
+
+    
  repeat(5)begin
+    phase.raise_objection (this);
     pkt6.start(env.a_agent.seqr); 
    phase.drop_objection (this);
-   phase.phase_done.set_drain_time(this,100);
     end
+   phase.phase_done.set_drain_time(this,100);
   endtask
 
 endclass
