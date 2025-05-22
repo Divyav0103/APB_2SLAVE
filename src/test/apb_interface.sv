@@ -28,4 +28,53 @@ interface apb_if(input bit pclk,input bit presetn);
     
   modport DRV(clocking drv_cb);
   modport MON(clocking mon_cb);
+
+  property check_transfer;
+  @(posedge pclk) disable iff (!presetn)
+  transfer |-> (READ_WRITE ? !$isunknown(apb_read_paddr) : !$isunknown(apb_write_paddr));
+endproperty
+
+assert property(check_transfer)
+       $display("TRANSFER CHECK: ASSERTION PASS");
+  else $error("TRANSFER CHECK: ASSERTION FAIL");
+
+  property check_valid_write_addr;
+  @(posedge pclk) disable iff (!presetn)
+  (!READ_WRITE && transfer) |-> !$isunknown(apb_write_paddr);
+endproperty
+
+assert property(check_valid_write_addr)
+       $display("VALID WRITE ADDRESS: ASSERTION PASS");
+  else $error("VALID WRITE ADDRESS: ASSERTION FAIL");
+
+  
+property check_valid_read_addr;
+  @(posedge pclk) 
+  (READ_WRITE && transfer) |-> !$isunknown(apb_read_paddr);
+endproperty
+
+assert property(check_valid_read_addr)
+       $display("VALID READ ADDRESS: ASSERTION PASS");
+  else $error("VALID READ ADDRESS ASSERTION FAIL");
+
+  property stable_write_addr;
+  @(posedge pclk) disable iff (!presetn)
+  (!READ_WRITE && transfer) |-> $stable(apb_write_paddr);
+endproperty
+
+assert property(stable_write_addr)
+       $display("STABLE WRITE ADDRESS: ASSERTION PASS");
+  else $error("STABLE WRITE ADDRESS: ASSERTION FAIL");
+
+  property stable_read_addr;
+  @(posedge pclk) disable iff (!presetn)
+  (READ_WRITE && transfer) |-> $stable(apb_read_paddr);
+endproperty
+
+assert property(stable_read_addr)
+       $display("STABLE READ ADDRESS: ASSERTION PASS");
+  else $error("STABLE READ ADDRESS: ASSERTION FAIL");
+
 endinterface
+
+
