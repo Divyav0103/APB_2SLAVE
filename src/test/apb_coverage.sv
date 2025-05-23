@@ -34,7 +34,7 @@ class apb_cov extends uvm_subscriber#(apb_sequence_item);
       bins read_write_1 = {1'b1};
     }
      apb_write_paddr_cp:coverpoint in_pkt.apb_write_paddr{
-      bins apb_write_paddr = {[9'h000:9'h1FF]};
+      bins apb_write_paddr = {[`AW'h000:`AW'h1FF]};
     }
    apb_write_slave_select_cp:coverpoint in_pkt.apb_write_paddr[8]{
       bins apb_write_paddr_0 = {1'b0};
@@ -52,7 +52,7 @@ class apb_cov extends uvm_subscriber#(apb_sequence_item);
       bins prdata = {[8'h00:8'hFF]};
     }
     apb_read_paddr_cp:coverpoint in_pkt.apb_read_paddr{
-      bins apb_read_paddr = {[9'h000:9'h1FF]};
+     bins apb_read_paddr = {[`AW'h000:`AW'h1FF]};
     }
   endgroup
 
