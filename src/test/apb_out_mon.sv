@@ -26,7 +26,7 @@ class apb_out_monitor extends uvm_monitor;
    endfunction: build_phase
        
    task run_phase(uvm_phase phase);
-     repeat(2) @(vif.mon_cb);
+    // repeat(2) @(vif.mon_cb);
        forever begin
          @(vif.mon_cb)
          
