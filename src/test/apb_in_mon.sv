@@ -31,7 +31,7 @@ class apb_in_mon extends uvm_monitor;
     //repeat(2) @(vif.mon_cb);
     item = apb_sequence_item::type_id::create("item",this);
     forever begin
-      @(vif.mon_cb)
+      @(vif.mon_cb) begin
       item.transfer = vif.mon_cb.transfer;
       item.read_write = vif.mon_cb.read_write;
       item.apb_write_paddr = vif.mon_cb.apb_write_paddr;
@@ -43,7 +43,7 @@ class apb_in_mon extends uvm_monitor;
       `uvm_info("input mon", $sformatf("--------------------------------------------------------------------------------------"), UVM_LOW);
     
       mon_in2sb.write(item);
-    
+      end
     end
   endtask
 endclass
