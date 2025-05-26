@@ -27,9 +27,9 @@ class apb_driver extends uvm_driver#(apb_sequence_item);
   
   task run_phase(uvm_phase phase);
     super.run_phase(phase);
-  //repeat(2) @(vif.drv_cb);
+    repeat(2) @(vif.drv_cb);
     forever begin
-      wait(vif.presetn);
+      //wait(vif.presetn);
       seq_item_port.get_next_item(req);
       drive();
       seq_item_port.item_done();
@@ -51,7 +51,7 @@ class apb_driver extends uvm_driver#(apb_sequence_item);
         
          vif.drv_cb.transfer <= req.transfer;
          vif.drv_cb.read_write <= req.read_write;
-         if(req.transfer)
+         if(req.transfer) 
          begin
          if(req.read_write)
          vif.drv_cb.apb_read_paddr <= req.apb_read_paddr;
