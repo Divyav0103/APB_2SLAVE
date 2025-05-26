@@ -187,7 +187,7 @@ class ApbTransferDisableTest extends apb_test;
     super.run_phase(phase);
     phase.raise_objection(this);
     repeat(5) begin
-      transfer_disable_seq.start(env.a_agent_h.sequencer_h);
+      transfer_disable_seq.start(env.a_agent.seqr);
     end
      #100;
     phase.drop_objection(this);

@@ -162,7 +162,7 @@ class apb_transfer_disable_sequence extends apb_sequence;
   endfunction
 
   virtual task body();
-    req = apb_seq_item::type_id::create("req");
+    req = apb_sequence_item::type_id::create("req");
     `uvm_do_with(req,{req.transfer == 0;})
     `uvm_send(req);
   endtask
