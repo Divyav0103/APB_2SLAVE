@@ -153,3 +153,17 @@ class apb_write_read1 extends uvm_sequence;
    end
   endtask
 endclass
+
+class apb_transfer_disable_sequence extends apb_sequence;
+  `uvm_object_utils(apb_transfer_disable_sequence)
+
+  function new(string name = "apb_transfer_disable_sequence");
+   super.new(name);
+  endfunction
+
+  virtual task body();
+    req = apb_seq_item::type_id::create("req");
+    `uvm_do_with(req,{req.transfer == 0;})
+    `uvm_send(req);
+  endtask
+endclass
