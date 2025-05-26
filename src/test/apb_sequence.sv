@@ -35,11 +35,12 @@ class apb_write0 extends apb_sequence;
   
   virtual task body();
     repeat(10) begin
+      $display("write to slave1");
      item = apb_sequence_item::type_id::create("item");
     `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
                        apb_write_paddr[8] == 1'b0;})
     `uvm_send(item);
-    $display("slave 1");
+      $display("write to slave1 done");
      end
   endtask
 endclass
