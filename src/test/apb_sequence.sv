@@ -127,7 +127,7 @@ class apb_write_read0 extends uvm_sequence;
 
   `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b1;
                        wr_item.apb_read_paddr == addr;})
-  `uvm_send(wr_item);
+ // `uvm_send(wr_item);
  end
   endtask
 endclass
@@ -193,9 +193,9 @@ class apb_continuous_write_by_read0 extends apb_sequence;
       `uvm_do_with(item, {item.transfer == 1;item.read_write == 1'b0;
                        item.apb_write_paddr[8] == 1'b0;})
       `uvm_do_with(item, {item.transfer == 1;item.read_write == 1'b0;
-                       item.apb_write_paddr[8] == 1'b0;})
+                       item.apb_write_paddr[8] == addr;})
       `uvm_do_with(item, {item.transfer == 1;item.read_write == 1'b0;
-                       item.apb_write_paddr[8] == 1'b0;})
+                       item.apb_write_paddr[8] == addr;})
        addr = item.apb_write_paddr;
       `uvm_do_with(item, {item.transfer == 1;item.read_write == 1'b1;
                        item.apb_read_paddr == addr;})
@@ -222,9 +222,9 @@ class apb_continuous_write_by_read1 extends apb_sequence;
       `uvm_do_with(item, {item.transfer == 1;item.read_write == 1'b0;
                           item.apb_write_paddr[8] == 1'b1;})
       `uvm_do_with(item, {item.transfer == 1;item.read_write == 1'b0;
-                          item.apb_write_paddr[8] == 1'b1;})
+                          item.apb_write_paddr[8] == addr;})
       `uvm_do_with(item, {item.transfer == 1;item.read_write == 1'b0;
-                          item.apb_write_paddr[8] == 1'b1;})
+                          item.apb_write_paddr[8] == addr;})
 
       addr = item.apb_write_paddr;
       `uvm_do_with(item, {item.transfer == 1;item.read_write == 1'b1;
