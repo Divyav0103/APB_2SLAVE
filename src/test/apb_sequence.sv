@@ -175,52 +175,62 @@ class apb_transfer_disable extends apb_sequence;
   endtask
 endclass
 
-//////////////////////////////////////////////////////////////Continuous write with read////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////Continuous write with read to slave 1////////////////////////////////////////////////////////////////////
 class apb_continuous_write_by_read_slave0 extends apb_sequence;
   `uvm_object_utils(apb_continuous_write_by_read_slave0)
 
-  ApbSeqItem txn;
+  apb_sequence_item item;
+  
   bit [8:0] addr;
-  function new(string name = "ApbContinuousWRSlave1Sequence");
+  
+  function new(string name = "apb_continuous_write_by_read_slave0");
     super.new(name);
   endfunction
-virtual task body();
+  
+ task body();
     repeat (4) begin
-      // WRITE transaction
-      `uvm_do_with(txn, {
-        transfer == 1;
-        READ_WRITE == 0;                // 0 = WRITE
-        apb_write_paddr[8] == 0;
-      })
-    //  `uvm_send(txn)
-      `uvm_do_with(txn, {
-        transfer == 1;
-        READ_WRITE == 0;                // 0 = WRITE
-        apb_write_paddr[8] == 0;
-      })
- `uvm_do_with(txn, {
-        transfer == 1;
-        READ_WRITE == 0;                // 0 = WRITE
-        apb_write_paddr[8] == 0;
-      })
-/* `uvm_do_with(txn, {
-        transfer == 1;
-        READ_WRITE == 0;                // 0 = WRITE
-        apb_write_paddr[8] == 1;
-      })
- 
-*/
+     item = apb_sequence_item::type_id::create("item");
+      `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
+                       apb_write_paddr[8] == 1'b0;})
+      `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
+                       apb_write_paddr[8] == 1'b0;})
+      `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
+                       apb_write_paddr[8] == 1'b0;})
+      `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
+                       apb_write_paddr[8] == 1'b0;})
+      
+      `uvm_do_with(item, {transfer == 1;read_write == 1'b1;
+                       apb_read_paddr == addr;})
+    end
+  endtask
+endclass
 
-//    `uvm_send(txn)
-      addr = txn.apb_write_paddr;
+//////////////////////////////////////////////////////////////Continuous write with read to slave 2////////////////////////////////////////////////////////////////////
+class apb_continuous_write_by_read_slave1 extends apb_sequence;
+  `uvm_object_utils(apb_continuous_write_by_read_slave1)
 
-      // READ transaction
-      `uvm_do_with(txn, {
-        transfer == 1;
-        READ_WRITE == 1;                // 1 = READ
-        apb_read_paddr == addr;
-      })
-  //    `uvm_send(txn)
+  apb_sequence_item item;
+  
+  bit [8:0] addr;
+  
+  function new(string name = "apb_continuous_write_by_read_slave1");
+    super.new(name);
+  endfunction
+  
+ task body();
+    repeat (4) begin
+     item = apb_sequence_item::type_id::create("item");
+      `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
+                          apb_write_paddr[8] == 1'b1;})
+      `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
+                          apb_write_paddr[8] == 1'b1;})
+      `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
+                          apb_write_paddr[8] == 1'b1;})
+      `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
+                          apb_write_paddr[8] == 1'b1;})
+      
+      `uvm_do_with(item, {transfer == 1;read_write == 1'b1;
+                       apb_read_paddr == addr;})
     end
   endtask
 endclass
