@@ -160,10 +160,10 @@ class apb_write_read1 extends uvm_sequence;
 endclass
 
 //////////////////////////////////////////////////////////////WHEN TRANSFER IS LOW////////////////////////////////////////////////////////////////////////
-class apb_transfer_disable_sequence extends apb_sequence;
-  `uvm_object_utils(apb_transfer_disable_sequence)
+class apb_transfer_disable extends apb_sequence;
+  `uvm_object_utils(apb_transfer_disable)
 
-  function new(string name = "apb_transfer_disable_sequence");
+  function new(string name = "apb_transfer_disable");
    super.new(name);
   endfunction
 
