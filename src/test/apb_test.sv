@@ -168,19 +168,19 @@ class apb_write_read1_slave1 extends apb_test;
   endtask
 endclass
 
-class ApbTransferDisableTest extends apb_test;
-  `uvm_component_utils(ApbTransferDisableTest)
+class apb_transfer_disable_test extends apb_test;
+  `uvm_component_utils(apb_transfer_disable_test)
 
-  apb_transfer_disable_sequence transfer_disable_seq;
+  apb_transfer_disable transfer_disable;
 
-  function new(string name = "ApbTransferDisableTest", uvm_component parent = null);
+  function new(string name = "apn_transfer_disable_test", uvm_component parent = null);
     super.new(name,parent);
   endfunction
 
   virtual function void build_phase(uvm_phase phase);
      super.build_phase(phase);
-    transfer_disable_seq = apb_transfer_disable_sequence::type_id::create("transfer_disable_seq");
-    `uvm_info("ApbTransferDisableTest","Inside wr_rd_test BULID_PHASE",UVM_HIGH);
+     transfer_disable = apb_transfer_disable::type_id::create(" transfer_disable");
+    `uvm_info("apb_transfer_disable","Inside build phase",UVM_HIGH);
   endfunction :build_phase
 
   task run_phase(uvm_phase phase);
