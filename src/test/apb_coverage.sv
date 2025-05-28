@@ -6,8 +6,8 @@
 // Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
 //------------------------------------------------------------------------------
 
-`uvm_analysis_imp_decl(_in_mon)
-`uvm_analysis_imp_decl(_out_mon)
+`uvm_analysis_imp_decl(_ip)
+`uvm_analysis_imp_decl(_op)
 
 class apb_coverage extends uvm_subscriber#(apb_sequence_item);
  `uvm_component_utils(apb_coverage)
