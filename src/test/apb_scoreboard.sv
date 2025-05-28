@@ -55,7 +55,7 @@ class apb_scoreboard extends uvm_scoreboard;
 
   function void compare(apb_sequence_item exp_pkt, apb_sequence_item act_pkt);
     if(exp_pkt.read_write == 0) begin
-      if (exp_pkt.apb_write_data == act_pkt.apb_write_data && exp_pkt,apb_write_paddr == act_pkt.apb_write_paddr) begin
+      if (exp_pkt.apb_write_data == act_pkt.apb_write_data && exp_pkt.apb_write_paddr == act_pkt.apb_write_paddr) begin
         match++;
         $display("_____________________________________WRITE_PASS__________________________________________________________");
         display_match(exp_pkt, act_pkt);
@@ -65,7 +65,7 @@ class apb_scoreboard extends uvm_scoreboard;
         display_mismatch(exp_pkt, act_pkt);
       end
     end else begin
-      if (exp_pkt.apb_read_data_out == act_pkt.apb_read_data_out && exp_pkt.apb_read_pddr == act_pkt.apb_read_paddr) begin
+      if (exp_pkt.apb_read_data_out == act_pkt.apb_read_data_out && exp_pkt.apb_read_paddr == act_pkt.apb_read_paddr) begin
         match++;
         $display("_____________________________________READ_PASS________________________________________________________________");
         display_match(exp_pkt, act_pkt);

@@ -31,8 +31,8 @@ class apb_env extends uvm_env;
     super.connect_phase(phase);
      a_agent.input_mon.mon_in2sb.connect(sb.aport_ip);
      p_agent.output_mon.mon_out2sb.connect(sb.aport_op);
-     a_agent.input_mon.mon_in2sb.connect(cov.cport_ip);
-     p_agent.output_mon.mon_out2sb.connect(cov.cport_op);
+     a_agent.input_mon.mon_in2sb.connect(cov.cov2in_mon);
+     p_agent.output_mon.mon_out2sb.connect(cov.cov2out_mon);
     
   endfunction
 

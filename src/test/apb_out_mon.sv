@@ -26,7 +26,7 @@ class apb_out_monitor extends uvm_monitor;
        `uvm_fatal("Output_Moniotr","cant get virtual interface")
    endfunction: build_phase
        
-   virrtual task run_phase(uvm_phase phase);
+   virtual task run_phase(uvm_phase phase);
      @(vif.mon_cb);
        forever begin
          @(vif.mon_cb);
