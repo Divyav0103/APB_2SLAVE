@@ -271,15 +271,13 @@ repeat(5)begin
    phase.drop_objection (this);
     end
    phase.phase_done.set_drain_time(this,100);
-  endtask
 
-   repeat(5)begin
+ repeat(5)begin
     phase.raise_objection (this);
     pkt7.start(env.a_agent.seqr); 
    phase.drop_objection (this);
     end
    phase.phase_done.set_drain_time(this,100);
-  endtask
-
-
+    
+endtask
 endclass
