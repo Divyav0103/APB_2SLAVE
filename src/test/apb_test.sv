@@ -195,25 +195,49 @@ class apb_transfer_disable_test extends apb_test;
 endclass
 
 
-class apb_write_read1_slave1 extends apb_test;
+class apb_continuous_write_by_read_slave0 extends apb_test;
 
-  `uvm_component_utils(apb_write_read1_slave1)
+  `uvm_component_utils(apb_continuous_write_by_read_slave0)
 
-  apb_write_read1 write_read1_slave1;
+  apb_continuous_write_by_read0 continuous_write_by_read0;
     
-  function new(string name = " apb_write_read1_slave1", uvm_component parent);
+  function new(string name = "apb_continuous_write_by_read_slave0", uvm_component parent);
     super.new(name,parent);
   endfunction
 
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    write_read1_slave1 = apb_write_read1::type_id::create("write_read1_slave1",this);
+    continuous_write_by_read0 = apb_continuous_write_by_read0::type_id::create("continuous_write_by_read0",this);
   endfunction
 
   task run_phase(uvm_phase phase);
     super.run_phase(phase);
     phase.raise_objection(this);
-    write_read1_slave1.start(env.a_agent.seqr);
+    continuous_write_by_read0.start(env.a_agent.seqr);
+    phase.drop_objection(this);
+    phase.phase_done.set_drain_time(this, 100);
+  endtask
+endclass
+
+class apb_continuous_write_by_read_slave1 extends apb_test;
+
+  `uvm_component_utils(apb_continuous_write_by_read_slave1)
+
+  apb_continuous_write_by_read1 continuous_write_by_read1;
+    
+  function new(string name = "apb_continuous_write_by_read_slave1", uvm_component parent);
+    super.new(name,parent);
+  endfunction
+
+  function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    continuous_write_by_read1 = apb_continuous_write_by_read1::type_id::create("continuous_write_by_read1",this);
+  endfunction
+
+  task run_phase(uvm_phase phase);
+    super.run_phase(phase);
+    phase.raise_objection(this);
+    continuous_write_by_read1.start(env.a_agent.seqr);
     phase.drop_objection(this);
     phase.phase_done.set_drain_time(this, 100);
   endtask
