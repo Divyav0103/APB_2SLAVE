@@ -16,34 +16,36 @@ class apb_out_monitor extends uvm_monitor;
    
    function new(string name = "apb_out_mon", uvm_component parent);
      super.new(name, parent);
+     mon_out2sb = new("mon_out", this);
    endfunction: new
    
    function void build_phase(uvm_phase phase);
      super.build_phase(phase);
-     mon_out2sb = new("mon_out", this);
+     item = apb_sequence_item::type_id::create("item", this);
      if(!uvm_config_db#(virtual apb_if)::get(this, "", "vif", vif))
        `uvm_fatal("Output_Moniotr","cant get virtual interface")
    endfunction: build_phase
        
-   task run_phase(uvm_phase phase);
-    // repeat(2) @(vif.mon_cb);
+   virrtual task run_phase(uvm_phase phase);
+     @(vif.mon_cb);
        forever begin
-         @(vif.mon_cb)
-         
-         item = apb_sequence_item::type_id::create("item", this);
-         item.apb_read_data_out = vif.mon_cb.apb_read_data_out;
+         @(vif.mon_cb);
          item.transfer = vif.mon_cb.transfer;
          item.read_write = vif.mon_cb.read_write;
+         if(vif.read_write) begin
+         item.apb_read_paddr = vif.mon_cb.apb_read_paddr;
+         item.apb_read_data_out = vif.mon_cb.apb_read_data_out;
+         end else begin
          item.apb_write_paddr = vif.mon_cb.apb_write_paddr;
          item.apb_write_data = vif.mon_cb.apb_write_data;
-         item.apb_read_paddr = vif.mon_cb.apb_read_paddr;
-         
+         end
+       
          `uvm_info("output monitor", $sformatf("----------------------------------Output monitor-----------------------------"), UVM_LOW);
          item.print();
          `uvm_info("output monitor", $sformatf("------------------------------------------------------------------------------"), UVM_LOW);
          
          mon_out2sb.write(item);
-       
+         repeat(1) @(vif.mon_cb);
        end
    endtask
 endclass
