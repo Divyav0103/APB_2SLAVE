@@ -203,6 +203,7 @@ class reg_test extends apb_test;
    apb_read1  pkt4;
    apb_write_read0 pkt5;
    apb_write_read1 pkt6;
+   apb_transfer_disable pkt7;
 
   function new(string name = "reg_test",uvm_component parent);
     super.new(name,parent);
@@ -216,6 +217,7 @@ class reg_test extends apb_test;
     pkt4 = apb_read1::type_id::create("pkt4", this);
     pkt5 = apb_write_read0::type_id::create("pkt5", this);
     pkt6 = apb_write_read1::type_id::create("pkt6", this);
+    pkt7 = apb_transfer_disable::type_id::create("pkt7", this);
   endfunction
 
   virtual function void end_of_elaboration();
@@ -270,5 +272,14 @@ repeat(5)begin
     end
    phase.phase_done.set_drain_time(this,100);
   endtask
+
+   repeat(5)begin
+    phase.raise_objection (this);
+    pkt7.start(env.a_agent.seqr); 
+   phase.drop_objection (this);
+    end
+   phase.phase_done.set_drain_time(this,100);
+  endtask
+
 
 endclass
