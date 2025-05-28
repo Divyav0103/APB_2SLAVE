@@ -1,6 +1,6 @@
 class apb_test extends uvm_test;
   `uvm_component_utils(apb_test)
-  
+
   apb_env env;
   apb_sequence seq;
   
