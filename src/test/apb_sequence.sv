@@ -145,16 +145,17 @@ class apb_write_read1 extends uvm_sequence;
   endfunction
   
   task body();
-    repeat(4) begin
+    repeat(4) begin  
   wr_item = apb_sequence_item::type_id::create("wr_item");
   `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b0;
-                         wr_item.apb_write_paddr[8] == 1'b1;})
+                       wr_item.apb_write_paddr[8] == 1'b1;})
  // `uvm_send(wr_item);
    addr = wr_item.apb_write_paddr;
 
-      `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b0;
+  `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b1;
                        wr_item.apb_read_paddr == addr;})
-  `uvm_send(wr_item);
+ // `uvm_send(wr_item);
+ 
    end
   endtask
 endclass
