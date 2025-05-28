@@ -174,3 +174,54 @@ class apb_transfer_disable extends apb_sequence;
    // `uvm_send(req);
   endtask
 endclass
+
+//////////////////////////////////////////////////////////////Continuous write with read////////////////////////////////////////////////////////////////////
+class apb_continuous_write_by_read_slave0 extends apb_sequence;
+  `uvm_object_utils(apb_continuous_write_by_read_slave0)
+
+  ApbSeqItem txn;
+  bit [8:0] addr;
+  function new(string name = "ApbContinuousWRSlave1Sequence");
+    super.new(name);
+  endfunction
+virtual task body();
+    repeat (4) begin
+      // WRITE transaction
+      `uvm_do_with(txn, {
+        transfer == 1;
+        READ_WRITE == 0;                // 0 = WRITE
+        apb_write_paddr[8] == 0;
+      })
+    //  `uvm_send(txn)
+      `uvm_do_with(txn, {
+        transfer == 1;
+        READ_WRITE == 0;                // 0 = WRITE
+        apb_write_paddr[8] == 0;
+      })
+ `uvm_do_with(txn, {
+        transfer == 1;
+        READ_WRITE == 0;                // 0 = WRITE
+        apb_write_paddr[8] == 0;
+      })
+/* `uvm_do_with(txn, {
+        transfer == 1;
+        READ_WRITE == 0;                // 0 = WRITE
+        apb_write_paddr[8] == 1;
+      })
+ 
+*/
+
+//    `uvm_send(txn)
+      addr = txn.apb_write_paddr;
+
+      // READ transaction
+      `uvm_do_with(txn, {
+        transfer == 1;
+        READ_WRITE == 1;                // 1 = READ
+        apb_read_paddr == addr;
+      })
+  //    `uvm_send(txn)
+    end
+  endtask
+endclass
+
