@@ -6,13 +6,11 @@
 // Copyright    : 2024(c) Manipal Center of Excellence. All rights reserved.
 //------------------------------------------------------------------------------
 
-//`uvm_analysis_imp_decl(_in_mon)
-//`uvm_analysis_imp_decl(_out_mon)
+`uvm_analysis_imp_decl(_in_mon)
+`uvm_analysis_imp_decl(_out_mon)
 
 class apb_cov extends uvm_subscriber#(apb_sequence_item);
-
  `uvm_component_utils(apb_coverage)
-
 
   apb_sequence_item in_pkt;
   apb_sequence_item out_pkt;
@@ -43,8 +41,10 @@ class apb_cov extends uvm_subscriber#(apb_sequence_item);
     apb_write_data_cp:coverpoint in_pkt.apb_write_data{
       bins pwdata = {[8'h00:8'hFF]};
     }
-
+   
+   //cross coverage
    apb_write_data_cp_x_apb_write_paddr_cp:cross apb_write_data_cp, apb_write_paddr_cp;
+   
   endgroup
 
   covergroup output_cg;
@@ -54,6 +54,10 @@ class apb_cov extends uvm_subscriber#(apb_sequence_item);
     apb_read_paddr_cp:coverpoint in_pkt.apb_read_paddr{
      bins apb_read_paddr = {[`AW'h000:`AW'h1FF]};
     }
+   
+   //cross coverage
+    apb_read_data_out_cp_x_apb_read_paddr_cp: cross apb_read_data_out_cp, apb_read_paddr_cp;
+   
   endgroup
 
   function new(string name = "apb_cov", uvm_component parent);
