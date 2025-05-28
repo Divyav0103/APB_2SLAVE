@@ -187,7 +187,7 @@ class apb_continuous_write_by_read0 extends apb_sequence;
     super.new(name);
   endfunction
   
- task body();
+ virtual ntask body();
     repeat (6) begin
      item = apb_sequence_item::type_id::create("item");
       `uvm_do_with(item, {item.transfer == 1;item.read_write == 1'b0;
@@ -196,9 +196,10 @@ class apb_continuous_write_by_read0 extends apb_sequence;
                        item.apb_write_paddr[8] == 1'b0;})
       `uvm_do_with(item, {item.transfer == 1;item.read_write == 1'b0;
                        item.apb_write_paddr[8] == 1'b0;})
-
+       addr = item.apb_wite_paddr;
       `uvm_do_with(item, {item.transfer == 1;item.read_write == 1'b1;
                        item.apb_read_paddr == addr;})
+      apb_read_paddr == addr;
     end
   endtask
 endclass
@@ -225,9 +226,10 @@ class apb_continuous_write_by_read1 extends apb_sequence;
       `uvm_do_with(item, {item.transfer == 1;item.read_write == 1'b0;
                           item.apb_write_paddr[8] == 1'b1;})
 
-      
+      addr = item.apb_write_paddr;
       `uvm_do_with(item, {item.transfer == 1;item.read_write == 1'b1;
                        item.apb_read_paddr == addr;})
+      apb_read_paddr == addr;
     end
   endtask
 endclass
