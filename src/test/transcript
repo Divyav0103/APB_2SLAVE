@@ -1,5 +1,5 @@
 # vsim -c top 
-# Start time: 14:47:16 on May 28,2025
+# Start time: 15:15:11 on May 28,2025
 # init_auxdbinfo(): INTERNAL ERROR: Cannot open page file "/fetools/work_area/frontend/divyavishwanath/APB_2SLAVE/src/test/work/@_opt/_lib1_0.qpg" in read mode
 # doVOpenFlatFile(): INTERNAL ERROR: Cannot obtain auxid to open /fetools/work_area/frontend/divyavishwanath/APB_2SLAVE/src/test/work/@_opt/_deps
 # ** Warning: (vsim-56) Problem with optimized design dependency file "/fetools/work_area/frontend/divyavishwanath/APB_2SLAVE/src/test/work/@_opt/_deps" - file open failed.
@@ -495,7 +495,7 @@
 #   read_write                   integral           1     'h1                                                    
 #   apb_write_paddr              integral           9     'h11a                                                  
 #   apb_write_data               integral           8     'hcb                                                   
-#   apb_read_paddr               integral           9     'h0                                                    
+#   apb_read_paddr               integral           9     'h2                                                    
 #   apb_read_data_out            integral           8     'h0                                                    
 #   begin_time                   time               64    95                                                     
 #   depth                        int                32    'd2                                                    
@@ -576,13 +576,13 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h2  
 #   apb_write_data     integral           8     'hb0 
-#   apb_read_paddr     integral           9     'h0  
+#   apb_read_paddr     integral           9     'h2  
 #   apb_read_data_out  integral           8     'h0  
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 125: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 125 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 7| transfer = 1|read_write = 1| apb_write_paddr = 2|apb_write_data = b0|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 7| transfer = 1|read_write = 1| apb_write_paddr = 2|apb_write_data = b0|apb_read_paddr = 2|apb_read_data_out = 2  0        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # ** Error: STABLE READ ADDRESS: ASSERTION FAIL
 #    Time: 125 ns Started: 125 ns  Scope: top.inf File: apb_interface.sv Line: 76
@@ -615,11 +615,11 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h2  
 #   apb_write_data     integral           8     'hb0 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 135: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 1| apb_write_paddr = 2|apb_write_data = b0|apb_read_paddr = 0|apb_read_data_out = 0        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 1| apb_write_paddr = 2|apb_write_data = b0|apb_read_paddr = 2|apb_read_data_out = b0        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 135: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -630,13 +630,13 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h2  
 #   apb_write_data     integral           8     'hb0 
-#   apb_read_paddr     integral           9     'h0  
+#   apb_read_paddr     integral           9     'h2  
 #   apb_read_data_out  integral           8     'h0  
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 135: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 135 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 8| transfer = 1|read_write = 1| apb_write_paddr = 2|apb_write_data = b0|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 8| transfer = 1|read_write = 1| apb_write_paddr = 2|apb_write_data = b0|apb_read_paddr = 2|apb_read_data_out = 2  0        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________READ_PASS________________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 135: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -649,8 +649,8 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h2  
 #   apb_write_data     integral           8     'hb0 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 135: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -661,8 +661,8 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h2  
 #   apb_write_data     integral           8     'hb0 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 135: uvm_test_top.env.sb [MATCH] Match count = 4
 # UVM_INFO apb_scoreboard.sv(108) @ 135: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -678,13 +678,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h59 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 145: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 145 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 8| transfer = 1|read_write = 0| apb_write_paddr = 7|apb_write_data = 59|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 8| transfer = 1|read_write = 0| apb_write_paddr = 7|apb_write_data = 59|apb_read_paddr = 2|apb_read_data_out = 2176        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # ** Error: STABLE WRITE ADDRESS: ASSERTION FAIL
 #    Time: 145 ns Started: 145 ns  Scope: top.inf File: apb_interface.sv Line: 67
@@ -717,11 +717,11 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h59 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 155: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 7|apb_write_data = 59|apb_read_paddr = 0|apb_read_data_out = 0        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 7|apb_write_data = 59|apb_read_paddr = 2|apb_read_data_out = b0        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 155: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -732,13 +732,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h59 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 155: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 155 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 9| transfer = 1|read_write = 0| apb_write_paddr = 7|apb_write_data = 59|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 9| transfer = 1|read_write = 0| apb_write_paddr = 7|apb_write_data = 59|apb_read_paddr = 2|apb_read_data_out = 2176        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________WRITE_PASS__________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 155: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -751,8 +751,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h59 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 155: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -763,8 +763,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h59 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 155: uvm_test_top.env.sb [MATCH] Match count = 5
 # UVM_INFO apb_scoreboard.sv(108) @ 155: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -780,13 +780,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'hd9 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 165: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 165 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 9| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = d9|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 9| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = d9|apb_read_paddr = 2|apb_read_data_out = 2176        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # ** Error: STABLE WRITE ADDRESS: ASSERTION FAIL
 #    Time: 165 ns Started: 165 ns  Scope: top.inf File: apb_interface.sv Line: 67
@@ -819,11 +819,11 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'hd9 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 175: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = d9|apb_read_paddr = 0|apb_read_data_out = 0        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = d9|apb_read_paddr = 2|apb_read_data_out = b0        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 175: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -834,13 +834,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'hd9 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 175: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 175 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 10| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = d9|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 10| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = d9|apb_read_paddr = 2|apb_read_data_out = 2176        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________WRITE_PASS__________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 175: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -853,8 +853,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'hd9 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 175: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -865,8 +865,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'hd9 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 175: uvm_test_top.env.sb [MATCH] Match count = 6
 # UVM_INFO apb_scoreboard.sv(108) @ 175: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -882,13 +882,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'h66 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 185: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 185 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 10| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = 66|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 10| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = 66|apb_read_paddr = 2|apb_read_data_out = 2176        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # STABLE WRITE ADDRESS: ASSERTION PASS
 # VALID WRITE ADDRESS: ASSERTION PASS
@@ -902,7 +902,7 @@
 #   read_write                   integral           1     'h1                                                    
 #   apb_write_paddr              integral           9     'h70                                                   
 #   apb_write_data               integral           8     'h28                                                   
-#   apb_read_paddr               integral           9     'h0                                                    
+#   apb_read_paddr               integral           9     'h8                                                    
 #   apb_read_data_out            integral           8     'h0                                                    
 #   begin_time                   time               64    175                                                    
 #   depth                        int                32    'd2                                                    
@@ -920,11 +920,11 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'h66 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 195: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = 66|apb_read_paddr = 0|apb_read_data_out = 0        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = 66|apb_read_paddr = 2|apb_read_data_out = b0        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 195: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -935,13 +935,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'h66 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 195: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 195 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 11| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = 66|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 11| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = 66|apb_read_paddr = 2|apb_read_data_out = 2176        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________WRITE_PASS__________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 195: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -954,8 +954,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'h66 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 195: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -966,8 +966,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'h66 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 195: uvm_test_top.env.sb [MATCH] Match count = 7
 # UVM_INFO apb_scoreboard.sv(108) @ 195: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -983,15 +983,16 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'h66 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 205: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 205 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 11| transfer = 1|read_write = 1| apb_write_paddr = 8|apb_write_data = 66|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 11| transfer = 1|read_write = 1| apb_write_paddr = 8|apb_write_data = 66|apb_read_paddr = 8|apb_read_data_out = 8176        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
-# STABLE READ ADDRESS: ASSERTION PASS
+# ** Error: STABLE READ ADDRESS: ASSERTION FAIL
+#    Time: 205 ns Started: 205 ns  Scope: top.inf File: apb_interface.sv Line: 76
 # VALID READ ADDRESS: ASSERTION PASS
 # TRANSFER CHECK: ASSERTION PASS
 # UVM_INFO apb_driver.sv(64) @ 215: uvm_test_top.env.a_agent.drv [driver] --------------------------------------------Driver--------------------------------------------
@@ -1021,11 +1022,11 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'h66 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 215: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 1| apb_write_paddr = 8|apb_write_data = 66|apb_read_paddr = 0|apb_read_data_out = 0        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 1| apb_write_paddr = 8|apb_write_data = 66|apb_read_paddr = 8|apb_read_data_out = 66        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 215: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -1036,13 +1037,13 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'h66 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'hb0 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 215: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 215 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 12| transfer = 1|read_write = 1| apb_write_paddr = 8|apb_write_data = 66|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 12| transfer = 1|read_write = 1| apb_write_paddr = 8|apb_write_data = 66|apb_read_paddr = 8|apb_read_data_out = 8176        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________READ_PASS________________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 215: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -1055,8 +1056,8 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'h66 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 215: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -1067,8 +1068,8 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'h66 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 215: uvm_test_top.env.sb [MATCH] Match count = 8
 # UVM_INFO apb_scoreboard.sv(108) @ 215: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -1084,13 +1085,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'ha  
 #   apb_write_data     integral           8     'h8b 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 225: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 225 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 12| transfer = 1|read_write = 0| apb_write_paddr = a|apb_write_data = 8b|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 12| transfer = 1|read_write = 0| apb_write_paddr = a|apb_write_data = 8b|apb_read_paddr = 8|apb_read_data_out = 8102        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # ** Error: STABLE WRITE ADDRESS: ASSERTION FAIL
 #    Time: 225 ns Started: 225 ns  Scope: top.inf File: apb_interface.sv Line: 67
@@ -1123,11 +1124,11 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'ha  
 #   apb_write_data     integral           8     'h8b 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 235: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = a|apb_write_data = 8b|apb_read_paddr = 0|apb_read_data_out = 0        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = a|apb_write_data = 8b|apb_read_paddr = 8|apb_read_data_out = 66        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 235: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -1138,13 +1139,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'ha  
 #   apb_write_data     integral           8     'h8b 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 235: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 235 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 13| transfer = 1|read_write = 0| apb_write_paddr = a|apb_write_data = 8b|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 13| transfer = 1|read_write = 0| apb_write_paddr = a|apb_write_data = 8b|apb_read_paddr = 8|apb_read_data_out = 8102        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________WRITE_PASS__________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 235: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -1157,8 +1158,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'ha  
 #   apb_write_data     integral           8     'h8b 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 235: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -1169,8 +1170,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'ha  
 #   apb_write_data     integral           8     'h8b 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 235: uvm_test_top.env.sb [MATCH] Match count = 9
 # UVM_INFO apb_scoreboard.sv(108) @ 235: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -1186,13 +1187,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h9  
 #   apb_write_data     integral           8     'h15 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 245: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 245 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 13| transfer = 1|read_write = 0| apb_write_paddr = 9|apb_write_data = 15|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 13| transfer = 1|read_write = 0| apb_write_paddr = 9|apb_write_data = 15|apb_read_paddr = 8|apb_read_data_out = 8102        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # ** Error: STABLE WRITE ADDRESS: ASSERTION FAIL
 #    Time: 245 ns Started: 245 ns  Scope: top.inf File: apb_interface.sv Line: 67
@@ -1225,11 +1226,11 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h9  
 #   apb_write_data     integral           8     'h15 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 255: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 9|apb_write_data = 15|apb_read_paddr = 0|apb_read_data_out = 0        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 9|apb_write_data = 15|apb_read_paddr = 8|apb_read_data_out = 66        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 255: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -1240,13 +1241,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h9  
 #   apb_write_data     integral           8     'h15 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 255: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 255 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 14| transfer = 1|read_write = 0| apb_write_paddr = 9|apb_write_data = 15|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 14| transfer = 1|read_write = 0| apb_write_paddr = 9|apb_write_data = 15|apb_read_paddr = 8|apb_read_data_out = 8102        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________WRITE_PASS__________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 255: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -1259,8 +1260,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h9  
 #   apb_write_data     integral           8     'h15 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 255: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -1271,8 +1272,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h9  
 #   apb_write_data     integral           8     'h15 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 255: uvm_test_top.env.sb [MATCH] Match count = 10
 # UVM_INFO apb_scoreboard.sv(108) @ 255: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -1288,13 +1289,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h5  
 #   apb_write_data     integral           8     'h91 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 265: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 265 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 14| transfer = 1|read_write = 0| apb_write_paddr = 5|apb_write_data = 91|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 14| transfer = 1|read_write = 0| apb_write_paddr = 5|apb_write_data = 91|apb_read_paddr = 8|apb_read_data_out = 8102        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # ** Error: STABLE WRITE ADDRESS: ASSERTION FAIL
 #    Time: 265 ns Started: 265 ns  Scope: top.inf File: apb_interface.sv Line: 67
@@ -1309,7 +1310,7 @@
 #   read_write                   integral           1     'h1                                                    
 #   apb_write_paddr              integral           9     'h27                                                   
 #   apb_write_data               integral           8     'hee                                                   
-#   apb_read_paddr               integral           9     'h0                                                    
+#   apb_read_paddr               integral           9     'h5                                                    
 #   apb_read_data_out            integral           8     'h0                                                    
 #   begin_time                   time               64    255                                                    
 #   depth                        int                32    'd2                                                    
@@ -1327,11 +1328,11 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h5  
 #   apb_write_data     integral           8     'h91 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 275: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 5|apb_write_data = 91|apb_read_paddr = 0|apb_read_data_out = 0        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 5|apb_write_data = 91|apb_read_paddr = 8|apb_read_data_out = 66        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 275: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -1342,13 +1343,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h5  
 #   apb_write_data     integral           8     'h91 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 275: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 275 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 15| transfer = 1|read_write = 0| apb_write_paddr = 5|apb_write_data = 91|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 15| transfer = 1|read_write = 0| apb_write_paddr = 5|apb_write_data = 91|apb_read_paddr = 8|apb_read_data_out = 8102        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________WRITE_PASS__________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 275: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -1361,8 +1362,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h5  
 #   apb_write_data     integral           8     'h91 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 275: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -1373,8 +1374,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h5  
 #   apb_write_data     integral           8     'h91 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h8  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 275: uvm_test_top.env.sb [MATCH] Match count = 11
 # UVM_INFO apb_scoreboard.sv(108) @ 275: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -1390,15 +1391,16 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h5  
 #   apb_write_data     integral           8     'h91 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 285: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 285 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 15| transfer = 1|read_write = 1| apb_write_paddr = 5|apb_write_data = 91|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 15| transfer = 1|read_write = 1| apb_write_paddr = 5|apb_write_data = 91|apb_read_paddr = 5|apb_read_data_out = 5102        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
-# STABLE READ ADDRESS: ASSERTION PASS
+# ** Error: STABLE READ ADDRESS: ASSERTION FAIL
+#    Time: 285 ns Started: 285 ns  Scope: top.inf File: apb_interface.sv Line: 76
 # VALID READ ADDRESS: ASSERTION PASS
 # TRANSFER CHECK: ASSERTION PASS
 # UVM_INFO apb_driver.sv(64) @ 295: uvm_test_top.env.a_agent.drv [driver] --------------------------------------------Driver--------------------------------------------
@@ -1428,11 +1430,11 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h5  
 #   apb_write_data     integral           8     'h91 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 295: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 1| apb_write_paddr = 5|apb_write_data = 91|apb_read_paddr = 0|apb_read_data_out = 0        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 1| apb_write_paddr = 5|apb_write_data = 91|apb_read_paddr = 5|apb_read_data_out = 91        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 295: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -1443,13 +1445,13 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h5  
 #   apb_write_data     integral           8     'h91 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h66 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 295: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 295 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 16| transfer = 1|read_write = 1| apb_write_paddr = 5|apb_write_data = 91|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 16| transfer = 1|read_write = 1| apb_write_paddr = 5|apb_write_data = 91|apb_read_paddr = 5|apb_read_data_out = 5102        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________READ_PASS________________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 295: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -1462,8 +1464,8 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h5  
 #   apb_write_data     integral           8     'h91 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 295: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -1474,8 +1476,8 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h5  
 #   apb_write_data     integral           8     'h91 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 295: uvm_test_top.env.sb [MATCH] Match count = 12
 # UVM_INFO apb_scoreboard.sv(108) @ 295: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -1491,13 +1493,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h9  
 #   apb_write_data     integral           8     'h42 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 305: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 305 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 16| transfer = 1|read_write = 0| apb_write_paddr = 9|apb_write_data = 42|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 16| transfer = 1|read_write = 0| apb_write_paddr = 9|apb_write_data = 42|apb_read_paddr = 5|apb_read_data_out = 5145        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # ** Error: STABLE WRITE ADDRESS: ASSERTION FAIL
 #    Time: 305 ns Started: 305 ns  Scope: top.inf File: apb_interface.sv Line: 67
@@ -1530,11 +1532,11 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h9  
 #   apb_write_data     integral           8     'h42 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 315: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 9|apb_write_data = 42|apb_read_paddr = 0|apb_read_data_out = 0        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 9|apb_write_data = 42|apb_read_paddr = 5|apb_read_data_out = 91        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 315: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -1545,13 +1547,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h9  
 #   apb_write_data     integral           8     'h42 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 315: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 315 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 17| transfer = 1|read_write = 0| apb_write_paddr = 9|apb_write_data = 42|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 17| transfer = 1|read_write = 0| apb_write_paddr = 9|apb_write_data = 42|apb_read_paddr = 5|apb_read_data_out = 5145        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________WRITE_PASS__________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 315: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -1564,8 +1566,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h9  
 #   apb_write_data     integral           8     'h42 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 315: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -1576,8 +1578,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h9  
 #   apb_write_data     integral           8     'h42 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 315: uvm_test_top.env.sb [MATCH] Match count = 13
 # UVM_INFO apb_scoreboard.sv(108) @ 315: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -1593,13 +1595,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h1  
 #   apb_write_data     integral           8     'h8d 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 325: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 325 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 17| transfer = 1|read_write = 0| apb_write_paddr = 1|apb_write_data = 8d|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 17| transfer = 1|read_write = 0| apb_write_paddr = 1|apb_write_data = 8d|apb_read_paddr = 5|apb_read_data_out = 5145        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # ** Error: STABLE WRITE ADDRESS: ASSERTION FAIL
 #    Time: 325 ns Started: 325 ns  Scope: top.inf File: apb_interface.sv Line: 67
@@ -1632,11 +1634,11 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h1  
 #   apb_write_data     integral           8     'h8d 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 335: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 1|apb_write_data = 8d|apb_read_paddr = 0|apb_read_data_out = 0        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 1|apb_write_data = 8d|apb_read_paddr = 5|apb_read_data_out = 91        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 335: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -1647,13 +1649,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h1  
 #   apb_write_data     integral           8     'h8d 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 335: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 335 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 18| transfer = 1|read_write = 0| apb_write_paddr = 1|apb_write_data = 8d|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 18| transfer = 1|read_write = 0| apb_write_paddr = 1|apb_write_data = 8d|apb_read_paddr = 5|apb_read_data_out = 5145        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________WRITE_PASS__________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 335: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -1666,8 +1668,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h1  
 #   apb_write_data     integral           8     'h8d 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 335: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -1678,8 +1680,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h1  
 #   apb_write_data     integral           8     'h8d 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 335: uvm_test_top.env.sb [MATCH] Match count = 14
 # UVM_INFO apb_scoreboard.sv(108) @ 335: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -1695,13 +1697,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h0  
 #   apb_write_data     integral           8     'h30 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 345: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 345 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 18| transfer = 1|read_write = 0| apb_write_paddr = 0|apb_write_data = 30|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 18| transfer = 1|read_write = 0| apb_write_paddr = 0|apb_write_data = 30|apb_read_paddr = 5|apb_read_data_out = 5145        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # ** Error: STABLE WRITE ADDRESS: ASSERTION FAIL
 #    Time: 345 ns Started: 345 ns  Scope: top.inf File: apb_interface.sv Line: 67
@@ -1734,11 +1736,11 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h0  
 #   apb_write_data     integral           8     'h30 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 355: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 0|apb_write_data = 30|apb_read_paddr = 0|apb_read_data_out = 0        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 0|apb_write_data = 30|apb_read_paddr = 5|apb_read_data_out = 91        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 355: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -1749,13 +1751,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h0  
 #   apb_write_data     integral           8     'h30 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 355: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 355 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 19| transfer = 1|read_write = 0| apb_write_paddr = 0|apb_write_data = 30|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 19| transfer = 1|read_write = 0| apb_write_paddr = 0|apb_write_data = 30|apb_read_paddr = 5|apb_read_data_out = 5145        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________WRITE_PASS__________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 355: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -1768,8 +1770,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h0  
 #   apb_write_data     integral           8     'h30 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 355: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -1780,8 +1782,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h0  
 #   apb_write_data     integral           8     'h30 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_paddr     integral           9     'h5  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 355: uvm_test_top.env.sb [MATCH] Match count = 15
 # UVM_INFO apb_scoreboard.sv(108) @ 355: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -1798,14 +1800,15 @@
 #   apb_write_paddr    integral           9     'h0  
 #   apb_write_data     integral           8     'h30 
 #   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 365: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 365 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 19| transfer = 1|read_write = 1| apb_write_paddr = 0|apb_write_data = 30|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 19| transfer = 1|read_write = 1| apb_write_paddr = 0|apb_write_data = 30|apb_read_paddr = 0|apb_read_data_out = 0145        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
-# STABLE READ ADDRESS: ASSERTION PASS
+# ** Error: STABLE READ ADDRESS: ASSERTION FAIL
+#    Time: 365 ns Started: 365 ns  Scope: top.inf File: apb_interface.sv Line: 76
 # VALID READ ADDRESS: ASSERTION PASS
 # TRANSFER CHECK: ASSERTION PASS
 # UVM_INFO apb_driver.sv(64) @ 375: uvm_test_top.env.a_agent.drv [driver] --------------------------------------------Driver--------------------------------------------
@@ -1851,12 +1854,12 @@
 #   apb_write_paddr    integral           9     'h0  
 #   apb_write_data     integral           8     'h30 
 #   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h0  
+#   apb_read_data_out  integral           8     'h91 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 375: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 375 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 20| transfer = 1|read_write = 1| apb_write_paddr = 0|apb_write_data = 30|apb_read_paddr = 0|apb_read_data_out = 0  0        100
+# Input QueueExpected txn: Queue size = 20| transfer = 1|read_write = 1| apb_write_paddr = 0|apb_write_data = 30|apb_read_paddr = 0|apb_read_data_out = 0145        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________READ_PASS________________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 375: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -2122,7 +2125,7 @@
 #   read_write                   integral           1     'h1                                                    
 #   apb_write_paddr              integral           9     'hf2                                                   
 #   apb_write_data               integral           8     'h39                                                   
-#   apb_read_paddr               integral           9     'h0                                                    
+#   apb_read_paddr               integral           9     'h2                                                    
 #   apb_read_data_out            integral           8     'h0                                                    
 #   begin_time                   time               64    415                                                    
 #   depth                        int                32    'd2                                                    
@@ -2203,15 +2206,16 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h2  
 #   apb_write_data     integral           8     'he1 
-#   apb_read_paddr     integral           9     'h0  
+#   apb_read_paddr     integral           9     'h2  
 #   apb_read_data_out  integral           8     'h30 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 445: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 445 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 23| transfer = 1|read_write = 1| apb_write_paddr = 2|apb_write_data = e1|apb_read_paddr = 0|apb_read_data_out = 0 48        100
+# Input QueueExpected txn: Queue size = 23| transfer = 1|read_write = 1| apb_write_paddr = 2|apb_write_data = e1|apb_read_paddr = 2|apb_read_data_out = 2 48        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
-# STABLE READ ADDRESS: ASSERTION PASS
+# ** Error: STABLE READ ADDRESS: ASSERTION FAIL
+#    Time: 445 ns Started: 445 ns  Scope: top.inf File: apb_interface.sv Line: 76
 # VALID READ ADDRESS: ASSERTION PASS
 # TRANSFER CHECK: ASSERTION PASS
 # UVM_INFO apb_driver.sv(64) @ 455: uvm_test_top.env.a_agent.drv [driver] --------------------------------------------Driver--------------------------------------------
@@ -2241,11 +2245,11 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h2  
 #   apb_write_data     integral           8     'he1 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 455: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 1| apb_write_paddr = 2|apb_write_data = e1|apb_read_paddr = 0|apb_read_data_out = 30        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 1| apb_write_paddr = 2|apb_write_data = e1|apb_read_paddr = 2|apb_read_data_out = e1        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 455: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -2256,13 +2260,13 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h2  
 #   apb_write_data     integral           8     'he1 
-#   apb_read_paddr     integral           9     'h0  
+#   apb_read_paddr     integral           9     'h2  
 #   apb_read_data_out  integral           8     'h30 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 455: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 455 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 24| transfer = 1|read_write = 1| apb_write_paddr = 2|apb_write_data = e1|apb_read_paddr = 0|apb_read_data_out = 0 48        100
+# Input QueueExpected txn: Queue size = 24| transfer = 1|read_write = 1| apb_write_paddr = 2|apb_write_data = e1|apb_read_paddr = 2|apb_read_data_out = 2 48        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________READ_PASS________________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 455: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -2275,8 +2279,8 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h2  
 #   apb_write_data     integral           8     'he1 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 455: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -2287,8 +2291,8 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h2  
 #   apb_write_data     integral           8     'he1 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 455: uvm_test_top.env.sb [MATCH] Match count = 20
 # UVM_INFO apb_scoreboard.sv(108) @ 455: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -2304,13 +2308,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h0  
 #   apb_write_data     integral           8     'h53 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 465: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 465 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 24| transfer = 1|read_write = 0| apb_write_paddr = 0|apb_write_data = 53|apb_read_paddr = 0|apb_read_data_out = 0 48        100
+# Input QueueExpected txn: Queue size = 24| transfer = 1|read_write = 0| apb_write_paddr = 0|apb_write_data = 53|apb_read_paddr = 2|apb_read_data_out = 2225        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # ** Error: STABLE WRITE ADDRESS: ASSERTION FAIL
 #    Time: 465 ns Started: 465 ns  Scope: top.inf File: apb_interface.sv Line: 67
@@ -2343,11 +2347,11 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h0  
 #   apb_write_data     integral           8     'h53 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 475: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 0|apb_write_data = 53|apb_read_paddr = 0|apb_read_data_out = 30        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 0|apb_write_data = 53|apb_read_paddr = 2|apb_read_data_out = e1        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 475: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -2358,13 +2362,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h0  
 #   apb_write_data     integral           8     'h53 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 475: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 475 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 25| transfer = 1|read_write = 0| apb_write_paddr = 0|apb_write_data = 53|apb_read_paddr = 0|apb_read_data_out = 0 48        100
+# Input QueueExpected txn: Queue size = 25| transfer = 1|read_write = 0| apb_write_paddr = 0|apb_write_data = 53|apb_read_paddr = 2|apb_read_data_out = 2225        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________WRITE_PASS__________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 475: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -2377,8 +2381,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h0  
 #   apb_write_data     integral           8     'h53 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 475: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -2389,8 +2393,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h0  
 #   apb_write_data     integral           8     'h53 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 475: uvm_test_top.env.sb [MATCH] Match count = 21
 # UVM_INFO apb_scoreboard.sv(108) @ 475: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -2406,13 +2410,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'hc7 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 485: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 485 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 25| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = c7|apb_read_paddr = 0|apb_read_data_out = 0 48        100
+# Input QueueExpected txn: Queue size = 25| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = c7|apb_read_paddr = 2|apb_read_data_out = 2225        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # ** Error: STABLE WRITE ADDRESS: ASSERTION FAIL
 #    Time: 485 ns Started: 485 ns  Scope: top.inf File: apb_interface.sv Line: 67
@@ -2445,11 +2449,11 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'hc7 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 495: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = c7|apb_read_paddr = 0|apb_read_data_out = 30        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = c7|apb_read_paddr = 2|apb_read_data_out = e1        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 495: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -2460,13 +2464,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'hc7 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 495: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 495 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 26| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = c7|apb_read_paddr = 0|apb_read_data_out = 0 48        100
+# Input QueueExpected txn: Queue size = 26| transfer = 1|read_write = 0| apb_write_paddr = 8|apb_write_data = c7|apb_read_paddr = 2|apb_read_data_out = 2225        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________WRITE_PASS__________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 495: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -2479,8 +2483,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'hc7 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 495: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -2491,8 +2495,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h8  
 #   apb_write_data     integral           8     'hc7 
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 495: uvm_test_top.env.sb [MATCH] Match count = 22
 # UVM_INFO apb_scoreboard.sv(108) @ 495: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -2508,13 +2512,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 505: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 505 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 26| transfer = 1|read_write = 0| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 0|apb_read_data_out = 0 48        100
+# Input QueueExpected txn: Queue size = 26| transfer = 1|read_write = 0| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 2|apb_read_data_out = 2225        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # ** Error: STABLE WRITE ADDRESS: ASSERTION FAIL
 #    Time: 505 ns Started: 505 ns  Scope: top.inf File: apb_interface.sv Line: 67
@@ -2529,7 +2533,7 @@
 #   read_write                   integral           1     'h1                                                    
 #   apb_write_paddr              integral           9     'h148                                                  
 #   apb_write_data               integral           8     'h91                                                   
-#   apb_read_paddr               integral           9     'h0                                                    
+#   apb_read_paddr               integral           9     'h7                                                    
 #   apb_read_data_out            integral           8     'h0                                                    
 #   begin_time                   time               64    495                                                    
 #   depth                        int                32    'd2                                                    
@@ -2547,11 +2551,11 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 515: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 0|apb_read_data_out = 30        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 0| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 2|apb_read_data_out = e1        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 515: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -2562,13 +2566,13 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 515: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 515 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 27| transfer = 1|read_write = 0| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 0|apb_read_data_out = 0 48        100
+# Input QueueExpected txn: Queue size = 27| transfer = 1|read_write = 0| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 2|apb_read_data_out = 2225        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________WRITE_PASS__________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 515: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -2581,8 +2585,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 515: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -2593,8 +2597,8 @@
 #   read_write         integral           1     'h0  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h2  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 515: uvm_test_top.env.sb [MATCH] Match count = 23
 # UVM_INFO apb_scoreboard.sv(108) @ 515: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -2610,15 +2614,16 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 525: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 525 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 27| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 0|apb_read_data_out = 0 48        100
+# Input QueueExpected txn: Queue size = 27| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 7|apb_read_data_out = 7225        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
-# STABLE READ ADDRESS: ASSERTION PASS
+# ** Error: STABLE READ ADDRESS: ASSERTION FAIL
+#    Time: 525 ns Started: 525 ns  Scope: top.inf File: apb_interface.sv Line: 76
 # VALID READ ADDRESS: ASSERTION PASS
 # TRANSFER CHECK: ASSERTION PASS
 # UVM_INFO apb_out_mon.sv(43) @ 535: uvm_test_top.env.p_agent.output_mon [output monitor] ----------------------------------Output monitor-----------------------------
@@ -2630,11 +2635,11 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 535: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 0|apb_read_data_out = 53        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 7|apb_read_data_out = 1        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 535: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -2645,13 +2650,13 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h30 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'he1 
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 535: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 535 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 28| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 0|apb_read_data_out = 0 48        100
+# Input QueueExpected txn: Queue size = 28| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 7|apb_read_data_out = 7225        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________READ_PASS________________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 535: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -2664,8 +2669,8 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 535: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -2676,8 +2681,8 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 535: uvm_test_top.env.sb [MATCH] Match count = 24
 # UVM_INFO apb_scoreboard.sv(108) @ 535: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -2693,13 +2698,13 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 545: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 545 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 28| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 0|apb_read_data_out = 0 83        100
+# Input QueueExpected txn: Queue size = 28| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 7|apb_read_data_out = 7  1        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # STABLE READ ADDRESS: ASSERTION PASS
 # VALID READ ADDRESS: ASSERTION PASS
@@ -2713,11 +2718,11 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 555: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 0|apb_read_data_out = 53        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 7|apb_read_data_out = 1        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 555: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -2728,13 +2733,13 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 555: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 555 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 29| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 0|apb_read_data_out = 0 83        100
+# Input QueueExpected txn: Queue size = 29| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 7|apb_read_data_out = 7  1        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________READ_PASS________________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 555: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -2747,8 +2752,8 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 555: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -2759,8 +2764,8 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 555: uvm_test_top.env.sb [MATCH] Match count = 25
 # UVM_INFO apb_scoreboard.sv(108) @ 555: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -2776,13 +2781,13 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 565: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 565 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 29| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 0|apb_read_data_out = 0 83        100
+# Input QueueExpected txn: Queue size = 29| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 7|apb_read_data_out = 7  1        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # STABLE READ ADDRESS: ASSERTION PASS
 # VALID READ ADDRESS: ASSERTION PASS
@@ -2796,11 +2801,11 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 575: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 0|apb_read_data_out = 53        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 7|apb_read_data_out = 1        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 575: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -2811,13 +2816,13 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 575: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 575 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 30| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 0|apb_read_data_out = 0 83        100
+# Input QueueExpected txn: Queue size = 30| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 7|apb_read_data_out = 7  1        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________READ_PASS________________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 575: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -2830,8 +2835,8 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 575: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -2842,8 +2847,8 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 575: uvm_test_top.env.sb [MATCH] Match count = 26
 # UVM_INFO apb_scoreboard.sv(108) @ 575: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -2859,13 +2864,13 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 585: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 585 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 30| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 0|apb_read_data_out = 0 83        100
+# Input QueueExpected txn: Queue size = 30| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 7|apb_read_data_out = 7  1        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # STABLE READ ADDRESS: ASSERTION PASS
 # VALID READ ADDRESS: ASSERTION PASS
@@ -2879,11 +2884,11 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_out_mon.sv(45) @ 595: uvm_test_top.env.p_agent.output_mon [output monitor] ------------------------------------------------------------------------------
-# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 0|apb_read_data_out = 53        100
+# Output QueueActual txn: Queue size = 1| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 7|apb_read_data_out = 1        100
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # UVM_INFO apb_in_mon.sv(41) @ 595: uvm_test_top.env.a_agent.input_mon [input mon] -----------------------------------Input mon----------------------------------------
 # ---------------------------------------------------
@@ -2894,13 +2899,13 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 595: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 595 ns  Iteration: 6  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 31| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 0|apb_read_data_out = 0 83        100
+# Input QueueExpected txn: Queue size = 31| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 7|apb_read_data_out = 7  1        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # _____________________________________READ_PASS________________________________________________________________
 # UVM_INFO apb_scoreboard.sv(104) @ 595: uvm_test_top.env.sb [Check_start] ---Start Check---
@@ -2913,8 +2918,8 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(106) @ 595: uvm_test_top.env.sb [actual] ---Actual---
 # ---------------------------------------------------
@@ -2925,8 +2930,8 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_scoreboard.sv(107) @ 595: uvm_test_top.env.sb [MATCH] Match count = 27
 # UVM_INFO apb_scoreboard.sv(108) @ 595: uvm_test_top.env.sb [Check_stop] ---Stop Check---
@@ -2942,13 +2947,13 @@
 #   read_write         integral           1     'h1  
 #   apb_write_paddr    integral           9     'h7  
 #   apb_write_data     integral           8     'h1  
-#   apb_read_paddr     integral           9     'h0  
-#   apb_read_data_out  integral           8     'h53 
+#   apb_read_paddr     integral           9     'h7  
+#   apb_read_data_out  integral           8     'h1  
 # ---------------------------------------------------
 # UVM_INFO apb_in_mon.sv(43) @ 605: uvm_test_top.env.a_agent.input_mon [input mon] --------------------------------------------------------------------------------------
 # ** Warning: (vsim-PLI-3070) apb_scoreboard.sv(46): $sformatf : Too many arguments.
 #    Time: 605 ns  Iteration: 5  Region: /uvm_pkg::uvm_task_phase::execute
-# Input QueueExpected txn: Queue size = 31| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 0|apb_read_data_out = 0 83        100
+# Input QueueExpected txn: Queue size = 31| transfer = 1|read_write = 1| apb_write_paddr = 7|apb_write_data = 1|apb_read_paddr = 7|apb_read_data_out = 7  1        100
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # STABLE READ ADDRESS: ASSERTION PASS
 # VALID READ ADDRESS: ASSERTION PASS
@@ -2982,5 +2987,5 @@
 # [output monitor]    60
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
 #    Time: 615 ns  Iteration: 56  Instance: /top
-# End time: 14:47:24 on May 28,2025, Elapsed time: 0:00:08
-# Errors: 17, Warnings: 65
+# End time: 15:15:17 on May 28,2025, Elapsed time: 0:00:06
+# Errors: 22, Warnings: 65
