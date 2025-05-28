@@ -1,8 +1,9 @@
 # vsim -c top 
-# Start time: 12:31:16 on May 28,2025
+# Start time: 12:35:00 on May 28,2025
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # ** Warning: apb_top.sv(26): (vopt-2685) [TFMPC] - Too few port connections for 'dut'.  Expected 9, found 8.
 # ** Warning: apb_top.sv(26): (vopt-2718) [TFMPC] - Missing connection for port 'PSLVERR'.
+# ** Warning: apb_sequence.sv(22): (vopt-2240) Treating stand-alone use of function 'randomize' as an implicit VOID cast.
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
 # //
@@ -1760,5 +1761,5 @@
 # [output monitor]    36
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
 #    Time: 375 ns  Iteration: 56  Instance: /top
-# End time: 12:31:21 on May 28,2025, Elapsed time: 0:00:05
-# Errors: 8, Warnings: 39
+# End time: 12:35:06 on May 28,2025, Elapsed time: 0:00:06
+# Errors: 8, Warnings: 40
