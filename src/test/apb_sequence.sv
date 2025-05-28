@@ -176,14 +176,14 @@ class apb_transfer_disable extends apb_sequence;
 endclass
 
 //////////////////////////////////////////////////////////////Continuous write with read to slave 1////////////////////////////////////////////////////////////////////
-class apb_continuous_write_by_read_slave0 extends apb_sequence;
-  `uvm_object_utils(apb_continuous_write_by_read_slave0)
+class apb_continuous_write_by_read0 extends apb_sequence;
+  `uvm_object_utils(apb_continuous_write_by_read0)
 
   apb_sequence_item item;
   
   bit [8:0] addr;
   
-  function new(string name = "apb_continuous_write_by_read_slave0");
+  function new(string name = "apb_continuous_write_by_read0");
     super.new(name);
   endfunction
   
@@ -206,14 +206,14 @@ class apb_continuous_write_by_read_slave0 extends apb_sequence;
 endclass
 
 //////////////////////////////////////////////////////////////Continuous write with read to slave 2////////////////////////////////////////////////////////////////////
-class apb_continuous_write_by_read_slave1 extends apb_sequence;
-  `uvm_object_utils(apb_continuous_write_by_read_slave1)
+class apb_continuous_write_by_read1 extends apb_sequence;
+  `uvm_object_utils(apb_continuous_write_by_read1)
 
   apb_sequence_item item;
   
   bit [8:0] addr;
   
-  function new(string name = "apb_continuous_write_by_read_slave1");
+  function new(string name = "apb_continuous_write_by_read1");
     super.new(name);
   endfunction
   
