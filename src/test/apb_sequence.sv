@@ -82,7 +82,7 @@ class apb_read0 extends uvm_sequence;
    req = apb_sequence_item::type_id::create("req");    
   `uvm_do_with(req, {transfer == 1;read_write == 1'b1;
                        apb_write_paddr[8] == 1'b0;})
-   `uvm_send(req);
+//   `uvm_send(req);
    end
   endtask
 endclass
@@ -100,7 +100,7 @@ class apb_read1 extends uvm_sequence;
    repeat(10) begin
     `uvm_do_with(req, {transfer == 1; read_write == 1'b1;
                        apb_write_paddr[8] == 1'b1;})
-    `uvm_send(req); 
+  //  `uvm_send(req); 
    end
   endtask
 endclass
@@ -122,7 +122,7 @@ class apb_write_read0 extends uvm_sequence;
   wr_item = apb_sequence_item::type_id::create("wr_item");
   `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b0;
                        wr_item.apb_write_paddr[8] == 1'b0;})
-  `uvm_send(wr_item);
+ // `uvm_send(wr_item);
    addr = wr_item.apb_write_paddr;
 
   `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b1;
@@ -149,7 +149,7 @@ class apb_write_read1 extends uvm_sequence;
   wr_item = apb_sequence_item::type_id::create("wr_item");
   `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b0;
                          wr_item.apb_write_paddr[8] == 1'b1;})
-  `uvm_send(wr_item);
+ // `uvm_send(wr_item);
    addr = wr_item.apb_write_paddr;
 
       `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b0;
@@ -170,6 +170,6 @@ class apb_transfer_disable extends apb_sequence;
   virtual task body();
     req = apb_sequence_item::type_id::create("req");
     `uvm_do_with(req,{req.transfer == 0;})
-    `uvm_send(req);
+   // `uvm_send(req);
   endtask
 endclass
