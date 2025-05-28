@@ -47,7 +47,7 @@ module top();
   end
   
   initial begin
-    run_test ("apb_write_read1_slave1"); 
+    run_test ("apb_continuous_write_by_read_slave0"); 
   end
 endmodule
 

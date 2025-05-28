@@ -188,7 +188,7 @@ class apb_continuous_write_by_read0 extends apb_sequence;
   endfunction
   
  task body();
-    repeat (4) begin
+    repeat (6) begin
      item = apb_sequence_item::type_id::create("item");
       `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
                        apb_write_paddr[8] == 1'b0;})
