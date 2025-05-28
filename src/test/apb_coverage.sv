@@ -9,7 +9,7 @@
 `uvm_analysis_imp_decl(_in_mon)
 `uvm_analysis_imp_decl(_out_mon)
 
-class apb_cov extends uvm_subscriber#(apb_sequence_item);
+class apb_coverage extends uvm_subscriber#(apb_sequence_item);
  `uvm_component_utils(apb_coverage)
 
   apb_sequence_item in_pkt;
@@ -77,19 +77,19 @@ class apb_cov extends uvm_subscriber#(apb_sequence_item);
   endfunction
 
   //defining write method for input monitor port
-  virtual function void write_in_mon(apb_seq_item pkt);
+  virtual function void write_in_mon(apb_sequence_item pkt);
     this.in_pkt = pkt;
     input_cg.sample();
   endfunction
 
   //defining write method for output monitor port
-  virtual function void write_out_mon(apb_seq_item pkt);
+  virtual function void write_out_mon(apb_sequence_item pkt);
     this.out_pkt = pkt;
     output_cg.sample();
   endfunction
 
   //defining default write method
-  virtual function void write(apb_seq_item t);
+  virtual function void write(apb_sequence_item t);
   endfunction
 
   function void report_phase(uvm_phase phase);
