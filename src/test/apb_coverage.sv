@@ -77,13 +77,13 @@ class apb_coverage extends uvm_subscriber#(apb_sequence_item);
   endfunction
 
   //defining write method for input monitor port
-  virtual function void write_in_mon(apb_sequence_item pkt);
+  virtual function void write_ip(apb_sequence_item pkt);
     this.in_pkt = pkt;
     input_cg.sample();
   endfunction
 
   //defining write method for output monitor port
-  virtual function void write_out_mon(apb_sequence_item pkt);
+  virtual function void write_op(apb_sequence_item pkt);
     this.out_pkt = pkt;
     output_cg.sample();
   endfunction
