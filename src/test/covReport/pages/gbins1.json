@@ -1,0 +1,22 @@
+var g_data = {
+c1469:[4,'transfer_cp',[],,'1468',1,1,'input_cg','1463','/apb_top_sv_unit/apb_coverage',[[],[0,'1','16',,'transfer_0'],[0,'1','767',,'transfer_1']],[]],
+c1470:[4,'read_write_cp',[],,'1468',1,1,'input_cg','1463','/apb_top_sv_unit/apb_coverage',[[],[0,'1','592',,'read_write_0'],[0,'1','191',,'read_write_1']],[]],
+c1471:[4,'apb_write_paddr_cp',[],,'1468',1,1,'input_cg','1463','/apb_top_sv_unit/apb_coverage',[[],[0,'1','777',,'apb_write_paddr']],[]],
+c1472:[4,'apb_write_slave_select_cp',[],,'1468',1,1,'input_cg','1463','/apb_top_sv_unit/apb_coverage',[[],[0,'1','547',,'apb_write_paddr_0'],[0,'1','230',,'apb_write_paddr_1']],[]],
+c1473:[4,'apb_write_data_cp',[],,'1468',1,1,'input_cg','1463','/apb_top_sv_unit/apb_coverage',[[],[0,'1','777',,'pwdata']],[]],
+c1474:[5,'apb_write_data_cp_x_apb_write_paddr_cp',['apb_write_data_cp','apb_write_paddr_cp'],,'1468',1,1,'input_cg','1463','/apb_top_sv_unit/apb_coverage',[[],[4,'1','777',,'pwdata','apb_write_paddr']],[[]]],
+c1476:[4,'apb_read_data_out_cp',[],,'1475',1,1,'output_cg','1463','/apb_top_sv_unit/apb_coverage',[[],[0,'1','391',,'prdata']],[]],
+c1477:[4,'apb_read_paddr_cp',[],,'1475',1,1,'output_cg','1463','/apb_top_sv_unit/apb_coverage',[[],[0,'1','287',,'apb_read_paddr']],[]],
+c1478:[5,'apb_read_data_out_cp_x_apb_read_paddr_cp',['apb_read_data_out_cp','apb_read_paddr_cp'],,'1475',1,1,'output_cg','1463','/apb_top_sv_unit/apb_coverage',[[],[4,'1','287',,'prdata','apb_read_paddr']],[[]]],
+c1937:[4,'transfer_cp',[],,'1936',1,1,'input_cg','1931','work.apb_top_sv_unit::apb_coverage',[[],[0,'1','16',,'transfer_0'],[0,'1','767',,'transfer_1']],[]],
+c1938:[4,'read_write_cp',[],,'1936',1,1,'input_cg','1931','work.apb_top_sv_unit::apb_coverage',[[],[0,'1','592',,'read_write_0'],[0,'1','191',,'read_write_1']],[]],
+c1939:[4,'apb_write_paddr_cp',[],,'1936',1,1,'input_cg','1931','work.apb_top_sv_unit::apb_coverage',[[],[0,'1','777',,'apb_write_paddr']],[]],
+c1940:[4,'apb_write_slave_select_cp',[],,'1936',1,1,'input_cg','1931','work.apb_top_sv_unit::apb_coverage',[[],[0,'1','547',,'apb_write_paddr_0'],[0,'1','230',,'apb_write_paddr_1']],[]],
+c1941:[4,'apb_write_data_cp',[],,'1936',1,1,'input_cg','1931','work.apb_top_sv_unit::apb_coverage',[[],[0,'1','777',,'pwdata']],[]],
+c1942:[5,'apb_write_data_cp_x_apb_write_paddr_cp',['apb_write_data_cp','apb_write_paddr_cp'],,'1936',1,1,'input_cg','1931','work.apb_top_sv_unit::apb_coverage',[[],[4,'1','777',,'pwdata','apb_write_paddr']],[[]]],
+c1944:[4,'apb_read_data_out_cp',[],,'1943',1,1,'output_cg','1931','work.apb_top_sv_unit::apb_coverage',[[],[0,'1','391',,'prdata']],[]],
+c1945:[4,'apb_read_paddr_cp',[],,'1943',1,1,'output_cg','1931','work.apb_top_sv_unit::apb_coverage',[[],[0,'1','287',,'apb_read_paddr']],[]],
+c1946:[5,'apb_read_data_out_cp_x_apb_read_paddr_cp',['apb_read_data_out_cp','apb_read_paddr_cp'],,'1943',1,1,'output_cg','1931','work.apb_top_sv_unit::apb_coverage',[[],[4,'1','287',,'prdata','apb_read_paddr']],[[]]],
+dummyEnd:0
+};
+processCovergroupsData(g_data);
