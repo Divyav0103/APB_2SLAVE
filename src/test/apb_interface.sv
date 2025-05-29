@@ -76,12 +76,13 @@ assert property(check_valid_write_data)
   
 property check_valid_read_data;
   @(posedge pclk) 
-  (read_write && transfer) |=> !$isunknown(apb_read_data_out);
+  (read_write && transfer) |=> ##2 !$isunknown(apb_read_data_out);
 endproperty
 
 assert property(check_valid_read_data)
        $display("VALID READ DATA: ASSERTION PASS");
   else $error("VALID READ DATA: ASSERTION FAIL",$time);
+
 
 //RESET CHECK//
   property check_resetn;

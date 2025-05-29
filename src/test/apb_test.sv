@@ -282,18 +282,18 @@ class reg_test extends apb_test;
 
   task run_phase (uvm_phase phase);
     super.run_phase(phase);
-    repeat(5)begin
+   // repeat(5)begin
     phase.raise_objection (this);
     pkt1.start(env.a_agent.seqr); 
     phase.drop_objection (this);
-        end
+   //     end
     phase.phase_done.set_drain_time(this,100);
 
-  repeat(5)begin
+ // repeat(5)begin
    phase.raise_objection (this);
    pkt2.start(env.a_agent.seqr); 
    phase.drop_objection (this);
-      end
+//      end
    phase.phase_done.set_drain_time(this,100);
    /* 
  repeat(5)begin
@@ -312,41 +312,41 @@ repeat(5)begin
    phase.phase_done.set_drain_time(this,100);
     
 */
- repeat(5)begin
+ //repeat(5)begin
     phase.raise_objection (this);
     pkt5.start(env.a_agent.seqr); 
    phase.drop_objection (this);
-     end
+  //   end
    phase.phase_done.set_drain_time(this,100);
 
     
- repeat(5)begin
+// repeat(5)begin
     phase.raise_objection (this);
     pkt6.start(env.a_agent.seqr); 
    phase.drop_objection (this);
-    end
+    //end
    phase.phase_done.set_drain_time(this,100);
 
- repeat(5)begin
+ //repeat(5)begin
     phase.raise_objection (this);
     pkt7.start(env.a_agent.seqr); 
     phase.drop_objection (this);
-    end
+  //  end
    phase.phase_done.set_drain_time(this,100);
 
 
- repeat(5)begin
+// repeat(5)begin
     phase.raise_objection (this);
     pkt8.start(env.a_agent.seqr); 
     phase.drop_objection (this);
-    end
+  //  end
    phase.phase_done.set_drain_time(this,100);
 
- repeat(5)begin
+// repeat(5)begin
     phase.raise_objection (this);
     pkt9.start(env.a_agent.seqr); 
     phase.drop_objection (this);
-    end
+  //  end
    phase.phase_done.set_drain_time(this,100);
      
 endtask

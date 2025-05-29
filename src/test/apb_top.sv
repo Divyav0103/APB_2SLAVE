@@ -17,8 +17,8 @@ module top();
   bit pclk;
   
   initial begin
-    //presetn = 0;
-    //#10 
+    presetn = 0;
+    #10 
     presetn = 1;
   end
   
@@ -47,7 +47,7 @@ module top();
   end
   
   initial begin
-    run_test ("reg_test"); 
+    run_test ("apb_write0_slave0"); 
   end
 endmodule
 
