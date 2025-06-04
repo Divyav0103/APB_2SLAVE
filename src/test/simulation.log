@@ -1,10 +1,8 @@
 # vsim -vopt work.top -voptargs="+acc=npr" -assertdebug -l simulation.log -coverage -c -do "coverage save -onexit -assert -directive -cvg -codeAll coverage.ucdb; run -all; coverage report -detail; exit" 
-# Start time: 10:52:19 on May 29,2025
+# Start time: 12:17:32 on May 29,2025
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# ** Note: (vopt-143) Recognized 1 FSM in module "master_bridge(fast)".
 # ** Warning: apb_top.sv(26): (vopt-2685) [TFMPC] - Too few port connections for 'dut'.  Expected 9, found 8.
 # ** Warning: apb_top.sv(26): (vopt-2718) [TFMPC] - Missing connection for port 'PSLVERR'.
-# ** Warning: apb_sequence.sv(22): (vopt-2240) Treating stand-alone use of function 'randomize' as an implicit VOID cast.
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
 # //
@@ -17773,5 +17771,5 @@
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
 #    Time: 3955 ns  Iteration: 55  Instance: /top
 # Saving coverage database on exit...
-# End time: 10:52:23 on May 29,2025, Elapsed time: 0:00:04
-# Errors: 0, Warnings: 398
+# End time: 12:17:36 on May 29,2025, Elapsed time: 0:00:04
+# Errors: 0, Warnings: 397
