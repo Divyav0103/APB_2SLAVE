@@ -43,13 +43,17 @@ class apb_scoreboard extends uvm_scoreboard;
 
   virtual function void write_in(apb_sequence_item in_txn);
     exp_q.push_back(in_txn);
-    $display("Input Queue", $sformatf("Expected txn: Queue size = %0d| transfer = %0b|read_write = %0b| apb_write_paddr = %0h|apb_write_data = %0h|apb_read_paddr = %0h|apb_read_data_out = %0h",exp_q.size(), in_txn.transfer,in_txn.read_write,in_txn.apb_write_paddr,in_txn.apb_write_data,in_txn.apb_read_paddr,in_txn.apb_read_paddr, in_txn.apb_read_data_out), UVM_LOW);
+    $display("Expected Scoreboared Results:");
+    in_txn.print();
+    //$display("Input Queue", $sformatf("Expected txn: Queue size = %0d| transfer = %0b|read_write = %0b| apb_write_paddr = %0h|apb_write_data = %0h|apb_read_paddr = %0h|apb_read_data_out = %0h",exp_q.size(), in_txn.transfer,in_txn.read_write,in_txn.apb_write_paddr,in_txn.apb_write_data,in_txn.apb_read_paddr,in_txn.apb_read_paddr, in_txn.apb_read_data_out), UVM_LOW);
     $display("--------------------------------------------------------------------------------------------------------------------------------------------------");
   endfunction
 
   virtual function void write_out(apb_sequence_item out_txn);
     act_q.push_back(out_txn);
-    $display("Output Queue", $sformatf("Actual txn: Queue size = %0d| transfer = %0b|read_write = %0b| apb_write_paddr = %0h|apb_write_data = %0h|apb_read_paddr = %0h|apb_read_data_out = %0h",act_q.size(), out_txn.transfer,out_txn.read_write,out_txn.apb_write_paddr,out_txn.apb_write_data,out_txn.apb_read_paddr, out_txn.apb_read_data_out), UVM_LOW);
+    out_txn.print();
+    $display("Actual Scoreboard Results:");
+   // $display("Output Queue", $sformatf("Actual txn: Queue size = %0d| transfer = %0b|read_write = %0b| apb_write_paddr = %0h|apb_write_data = %0h|apb_read_paddr = %0h|apb_read_data_out = %0h",act_q.size(), out_txn.transfer,out_txn.read_write,out_txn.apb_write_paddr,out_txn.apb_write_data,out_txn.apb_read_paddr, out_txn.apb_read_data_out), UVM_LOW);
     $display("-------------------------------------------------------------------------------------------------------------------------------------------------");
   endfunction
 
