@@ -231,3 +231,28 @@ class apb_continuous_write_by_read1 extends apb_sequence;
   endtask
 endclass
 
+//////////////////////////////////////////////////////////////////////////slave_toggle////////////////////////////////////////////////////////////////////////////
+class apb_slave_toggle extends apb_sequence;
+  `uvm_object_utils(apb_slave_toggle)
+  apb_sequence_item pkt;
+  
+  bit [8:0] addr;
+  
+  function new(string name = "apb_slave_toggle");
+    super.new(name);
+  endfunction
+    
+  task body();
+    $display("SLAVE TOGGLE");
+    pkt = apb_sequence_item::type_id::create("pkt");
+    `uvm_do_with(pkt, {pkt.read_write == 1'b0; pkt.transfer == 1'b1; pkt.apb_write_paddr[8] == 0;})
+    addr = pkt.apb_write_paddr;
+    `uvm_do_with(pkt, {pkt.read_write == 1'b1; pkt.transfer == 1'b1; pkt.apb_read_paddr == addr;})
+    `uvm_do_with(pkt, {pkt.read_write == 1'b0; pkt.transfer == 1'b1; pkt.apb_write_paddr[8] == 1;})
+    addr = pkt.apb_write_paddr;
+    `uvm_do_with(pkt, {pkt.read_write == 1'b1; pkt.transfer == 1'b1; pkt.apb_read_paddr == addr;})
+    $display("SLAVE TOGGLE DONE");
+  endtask
+endclass
+
+
