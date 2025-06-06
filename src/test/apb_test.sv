@@ -272,8 +272,8 @@ class reg_test extends apb_test;
     pkt7 = apb_transfer_disable::type_id::create("pkt7", this);
     pkt8 = apb_continuous_write_by_read0::type_id::create("pkt8", this);
     pkt9 = apb_continuous_write_by_read1::type_id::create("pkt9", this);
+    pkt10 = apb_slave_toggle::type_id::create("pkt10", this);
   
-
   endfunction
 
   virtual function void end_of_elaboration();
@@ -328,6 +328,10 @@ class reg_test extends apb_test;
   pkt9.start(env.a_agent.seqr); 
   phase.drop_objection (this);
   phase.phase_done.set_drain_time(this,100);
-  
+
+  phase.raise_objection (this);
+  pkt10.start(env.a_agent.seqr); 
+  phase.drop_objection (this);
+  phase.phase_done.set_drain_time(this,100);
   endtask
 endclass
