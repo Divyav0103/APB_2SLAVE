@@ -37,12 +37,11 @@ class apb_write0 extends apb_sequence;
   virtual task body();
     item = apb_sequence_item::type_id::create("item");
     repeat(10) begin
-    $display("WRITE TO SLAVE1");
-    `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
+      $display("WRITE TO SLAVE1");
+      `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
                        apb_write_paddr[8] == 1'b0;})
-   // `uvm_send(item);
-    $display("WRITE TO SLAVE1 DONE");
-     end
+      $display("WRITE TO SLAVE1 DONE");
+    end
   endtask
 endclass
 
@@ -59,13 +58,12 @@ class apb_write1 extends uvm_sequence;
   virtual task body();
     item = apb_sequence_item::type_id::create("item");
     repeat(10) begin
-     $display("WRITE TO SLAVE2");
-    `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
+      $display("WRITE TO SLAVE2");
+      `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
                        apb_write_paddr[8] == 1'b1;})
-    // `uvm_send(item);
       $display("WRITE TO SLAVE2 DONE");
-  end 
- endtask
+    end
+  endtask
 endclass
 
 //////////////////////////////////////////////////////////////////////READ TO SLAVE 1////////////////////////////////////////////////////////////////////////
@@ -79,15 +77,14 @@ class apb_read0 extends uvm_sequence;
   endfunction
   
   virtual task body();
-  repeat(10) begin
-    $display("READ TO SLAVE1");
-   req = apb_sequence_item::type_id::create("req");    
-  `uvm_do_with(req, {transfer == 1;read_write == 1'b1;
+    repeat(10) begin
+      $display("READ TO SLAVE1");
+      req = apb_sequence_item::type_id::create("req");
+      `uvm_do_with(req, {transfer == 1;read_write == 1'b1;
                        apb_write_paddr[8] == 1'b0;})
-//   `uvm_send(req);
-    $display("READ TO SLAVE1 DONE");
-   end
-  endtask
+      $display("READ TO SLAVE1 DONE");
+    end
+ endtask
 endclass
 
 //////////////////////////////////////////////////////////////////////READ TO SLAVE 2////////////////////////////////////////////////////////////////////////
@@ -100,67 +97,59 @@ class apb_read1 extends uvm_sequence;
   endfunction
   
   virtual task body();
-   repeat(10) begin
-     $display("READ TO SLAVE2");
-    `uvm_do_with(req, {transfer == 1; read_write == 1'b1;
+    repeat(10) begin
+      $display("READ TO SLAVE2");
+      `uvm_do_with(req, {transfer == 1; read_write == 1'b1;
                        apb_write_paddr[8] == 1'b1;})
-  //  `uvm_send(req); 
-     $display("READ TO SLAVE2 DONE");
-   end
+      $display("READ TO SLAVE2 DONE");
+    end
   endtask
 endclass
 
 //////////////////////////////////////////////////////////////WRITE AND THEN READ TO SLAVE 1///////////////////////////////////////////////////////////////
 class apb_write_read0 extends uvm_sequence;
-  
-`uvm_object_utils(apb_write_read0)
+  `uvm_object_utils(apb_write_read0)
   apb_sequence_item wr_item;
 
  bit[8:0] addr;
-
+  
   function new(string name = "apb_write_read0");
     super.new(name);
   endfunction
   
   task body();
     repeat(4) begin
-       $display("WRITE AND THEN READ TO SLAVE 1");
-  wr_item = apb_sequence_item::type_id::create("wr_item");
-  `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b0;
+      $display("WRITE AND THEN READ TO SLAVE 1");
+      wr_item = apb_sequence_item::type_id::create("wr_item");
+      `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b0;
                        wr_item.apb_write_paddr[8] == 1'b0;})
- // `uvm_send(wr_item);
-   addr = wr_item.apb_write_paddr;
-
-  `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b1;
-                       wr_item.apb_read_paddr == addr;})
- // `uvm_send(wr_item);
-             $display("WRITE AND THEN READ TO SLAVE 1 DONE");
- end
+      addr = wr_item.apb_write_paddr;
+      `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b1;
+                             wr_item.apb_read_paddr == addr;})
+      $display("WRITE AND THEN READ TO SLAVE 1 DONE");
+    end
   endtask
 endclass
 
 //////////////////////////////////////////////////////////////WRITE AND THEN READ TO SLAVE 2///////////////////////////////////////////////////////////////
 class apb_write_read1 extends uvm_sequence;
-  
   `uvm_object_utils(apb_write_read1)
   apb_sequence_item wr_item;
 
  bit[8:0] addr;
-
+  
   function new(string name = "apb_write_read1");
     super.new(name);
   endfunction
   
   task body();
-    repeat(4) begin  
+    repeat(4) begin
       $display("WRITE AND THEN READ TO SLAVE 2");
-  wr_item = apb_sequence_item::type_id::create("wr_item");
-  `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b0;
+      wr_item = apb_sequence_item::type_id::create("wr_item");
+      `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b0;
                        wr_item.apb_write_paddr[8] == 1'b1;})
- // `uvm_send(wr_item);
-   addr = wr_item.apb_write_paddr;
-
-  `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b1;
+      addr = wr_item.apb_write_paddr;
+      `uvm_do_with(wr_item, {wr_item.transfer == 1;wr_item.read_write == 1'b1;
                        wr_item.apb_read_paddr == addr;})
       $display("WRITE AND THEN READ TO SLAVE 2 DONE");
    end
@@ -170,7 +159,7 @@ endclass
 //////////////////////////////////////////////////////////////WHEN TRANSFER IS LOW////////////////////////////////////////////////////////////////////////
 class apb_transfer_disable extends apb_sequence;
   `uvm_object_utils(apb_transfer_disable)
-
+  
   function new(string name = "apb_transfer_disable");
    super.new(name);
   endfunction
@@ -178,7 +167,6 @@ class apb_transfer_disable extends apb_sequence;
   virtual task body();
     req = apb_sequence_item::type_id::create("req");
     `uvm_do_with(req,{req.transfer == 0;})
-   // `uvm_send(req);
   endtask
 endclass
 
@@ -197,7 +185,7 @@ class apb_continuous_write_by_read0 extends apb_sequence;
  virtual task body();
     repeat (6) begin
       $display("CONTINUOUS WRITE WITH READ TO SLAVE1");
-     item = apb_sequence_item::type_id::create("item");
+      item = apb_sequence_item::type_id::create("item");
       `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
                        apb_write_paddr[8] == 1'b0;})
       `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
@@ -226,8 +214,8 @@ class apb_continuous_write_by_read1 extends apb_sequence;
   
  task body();
     repeat (4) begin
-    $display("CONTINUOUS WRITE WITH READ TO SLAVE2");
-     item = apb_sequence_item::type_id::create("item");
+      $display("CONTINUOUS WRITE WITH READ TO SLAVE2");
+      item = apb_sequence_item::type_id::create("item");
       `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
                           apb_write_paddr[8] == 1'b1;})
       `uvm_do_with(item, {transfer == 1;read_write == 1'b0;
@@ -238,7 +226,7 @@ class apb_continuous_write_by_read1 extends apb_sequence;
       addr = item.apb_write_paddr;
       `uvm_do_with(item, {transfer == 1;read_write == 1'b1;
                        apb_read_paddr == addr;})
-     $display("CONTINUOUS WRITE WITH READ TO SLAVE2 DONE");
+      $display("CONTINUOUS WRITE WITH READ TO SLAVE2 DONE");
     end
   endtask
 endclass
