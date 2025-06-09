@@ -30,7 +30,7 @@ interface apb_if(input bit pclk,input bit presetn);
   modport MON(clocking mon_cb);
 
   property check_transfer;
-  @(posedge pclk) disable iff (!presetn)
+  @(posedge pclk) 
   transfer |-> (read_write ? !$isunknown(apb_read_paddr) : !$isunknown(apb_write_paddr));
 endproperty
 
@@ -42,7 +42,7 @@ assert property(check_transfer)
    //VALID WRITE ADDRESS//
   
   property check_valid_write_addr;
-  @(posedge pclk) disable iff (!presetn)
+  @(posedge pclk) 
   (!read_write && transfer) |-> !$isunknown(apb_write_paddr);
 endproperty
 
