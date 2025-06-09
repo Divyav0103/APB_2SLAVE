@@ -39,7 +39,7 @@ class apb_driver extends uvm_driver#(apb_sequence_item);
     @(vif.drv_cb)
       begin
        if(!vif.presetn) begin
-         // @(vif.drv_cb);
+         @(vif.drv_cb);//change
           vif.drv_cb.transfer <= 0;
           vif.drv_cb.apb_write_paddr <= 0;
           vif.drv_cb.read_write <= 0;
@@ -48,7 +48,7 @@ class apb_driver extends uvm_driver#(apb_sequence_item);
        
        end else begin
         
-    repeat(4) @(vif.drv_cb);
+         repeat(3) @(vif.drv_cb);
          vif.drv_cb.transfer <= req.transfer;
          vif.drv_cb.read_write <= req.read_write;
          if(req.transfer) 
