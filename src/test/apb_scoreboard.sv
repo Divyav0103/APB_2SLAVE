@@ -100,7 +100,6 @@ class apb_scoreboard extends uvm_scoreboard;
           end
           compare(exp_pkt, act_pkt);
     end
-    #10ns;
     end
   endtask
  
@@ -113,10 +112,21 @@ class apb_scoreboard extends uvm_scoreboard;
   endfunction
 
   function void display_mismatch(apb_sequence_item in_pkt, apb_sequence_item out_pkt);
-    `uvm_info("Check_start", "---Start Check---", UVM_LOW);
-    `uvm_info("expected", "---Expected---", UVM_LOW); in_pkt.print();
-    `uvm_info("actual", "---Actual---", UVM_LOW); out_pkt.print();
-    `uvm_info("MISMATCH", $sformatf("Mismatch count = %0d", mismatch), UVM_LOW);
+   // WRITE transaction
+    if (in_pkt.read_write == 0) begin 
+      if (in_pkt.apb_write_paddr != out_pkt.apb_write_paddr)
+        `uvm_info("ADDR_MISMATCH", $sformatf("Expected Addr: %0h, Got: %0h", in_pkt.apb_write_paddr, out_pkt.apb_write_paddr), UVM_LOW);
+      if (in_pkt.apb_write_data != out_pkt.apb_write_data)
+        `uvm_info("DATA_MISMATCH", $sformatf("Expected Data: %0h, Got: %0h", in_pkt.apb_write_data, out_pkt.apb_write_data), UVM_LOW);
+    end else begin 
+
+      // READ transaction
+      if (in_pkt.apb_read_paddr != out_pkt.apb_read_paddr)
+        `uvm_info("ADDR_MISMATCH", $sformatf("Expected Addr: %0h, Got: %0h", in_pkt.apb_read_paddr, out_pkt.apb_read_paddr), UVM_LOW);
+      if (in_pkt.apb_read_data_out != out_pkt.apb_read_data_out)
+        `uvm_info("DATA_MISMATCH", $sformatf("Expected Data: %0h, Got: %0h", in_pkt.apb_read_data_out, out_pkt.apb_read_data_out), UVM_LOW);
+    end
+    `uvm_error("MISMATCH", $sformatf("Mismatch count = %0d", mismatch));
     `uvm_info("Check_stop", "---Stop Check---", UVM_LOW);
   endfunction
 endclass
