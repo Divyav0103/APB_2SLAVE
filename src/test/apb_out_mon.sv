@@ -29,13 +29,11 @@ class apb_out_monitor extends uvm_monitor;
    virtual task run_phase(uvm_phase phase);
      @(vif.mon_cb);
        forever begin
-         @(vif.mon_cb);
+         @(vif.mon_cb) begin
          item.transfer = vif.mon_cb.transfer;
          item.read_write = vif.mon_cb.read_write;
-         if(vif.read_write) begin
          item.apb_read_paddr = vif.mon_cb.apb_read_paddr;
          item.apb_read_data_out = vif.mon_cb.apb_read_data_out;
-         end else begin
          item.apb_write_paddr = vif.mon_cb.apb_write_paddr;
          item.apb_write_data = vif.mon_cb.apb_write_data;
          end
